@@ -2,12 +2,11 @@ EQUIPO:T-SOLUTIONS
 
 INTEGRANTES:    
     FABER ALBERTO HOYOS ORDOSGOITIA
-    
-       -C.C. 1006618199
-       -Estudiante Ingeniería de sistemas de información (8tavo semestre)
-       -Tel: 3106083446
 
     MANUEL JOSÉ GÚZMAN GÚZMAN
+    estudiante de ingenieria de sistemas de informacion (8vo semestre)
+    No: 3003987175
+    manuelguma25@gmail.com
 
     YINETH PAOLA DUARTE CONTRERAS 
 
