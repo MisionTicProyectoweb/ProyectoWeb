@@ -2,7 +2,7 @@ import './Styles/gestionVentas.css'
 
 function gestionVentas() {
     return(
-        <div className="Login">
+        <div className="gestionVentas">
             <div className="body">
                 <h1>T-SOLUTIONS</h1>
                 <p>Gestion de ventas</p>
