@@ -1,6 +1,5 @@
 import './Styles/Login.css';
-import './App';
-import {Link } from 'react-router-dom';
+import{Link} from "react-router-dom";
 
 function Login() {
     return(
@@ -10,13 +9,15 @@ function Login() {
                 <ul>
                     <li>Faber Alberto Hoyos Ordosgoitia</li>
                     <li>Manuel José Guzman Guzman</li>
-                    <li>Yineth</li>
-                    <li>Nicolas</li>
+                    <li>Yineth Paola Duarte Contreras</li>
+                    <li>Nicolas Mateo Jimenez Daza</li>
                 </ul>
                 <form>
                     <input type="text" name="Usuario" placeholder="Usuario"></input>
+                    <input type="password" name="pass" placeholder="Contraseña"></input>
                 </form>
-                <button className="btnGestionVentas">Ir a Gestion Ventas</button>
+                <button className="btnGestionVentas"><Link to='/gestionVentas'>Ir a Gestion Ventas</Link></button>
+                <button className="btnListaVentas"><Link to='/listaVentas'>Ir a lista Ventas</Link></button>
             </div>
         </div>
     );
