@@ -8,25 +8,25 @@ import iconoUsuarios from "media/usuarios.png"
 const SidebarAdmin = () => {
     return (
         <ul className="contenedorSideBar">
-            <li className="ContenedorIconoYNombre">
+            <li>
                 <div className="contenedorImagen">
                 <img src={iconoAdmin} alt="Icono Administrador" />
                 </div>
                 <span>Nombre del Administrador</span>
             </li>
-            <li className="ContenedorIconoYNombre">
+            <li>
                 <div className="contenedorImagen">
                 <img src={iconoVentas} alt="Icono ventas" />
                 </div>
                 <span>Gestion Ventas</span>
             </li>
-            <li className="ContenedorIconoYNombre">
+            <li>
                 <div className="contenedorImagen">
                 <img src={iconoProductos} alt="Icono caja con productos" />
                 </div>
                 <span>Gestion productos</span>
             </li>
-            <li className="ContenedorIconoYNombre">
+            <li>
                 <div className="contenedorImagen">
                 <img src={iconoUsuarios} alt="Icono usuarios" />
                 </div>
