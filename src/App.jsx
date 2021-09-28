@@ -1,29 +1,34 @@
 import React from 'react';
-import GestVentas from './Pages/gestionVentas';
-import Login from './Pages/login';
-import ListVentas from './Pages/listaVentas';
-import{
-    BrowserRouter,
-    Switch,
-    Route
-} from "react-router-dom";
 
-export default function App(){
+import Index from 'Pages/Index';
+import GestionVentas from 'Pages/GestionVentas';
+import GestionProductos from 'Pages/GestionProductos';
+import GestionUsuarios from 'Pages/GestionUsuarios';
+import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import LayoutPublico from 'layouts/LayoutPublico';
+
+
+export default function App(){  
     return(
-        <div className="App">
-            <BrowserRouter>
-                <Switch> 
-                    <Route path='/listaVentas'>
-                        <ListVentas/>
+       <div>
+           <Router>
+               <Switch>
+                    <Route path="/ventas">
+                        <GestionVentas/>
                     </Route>
-                    <Route path='/gestionVentas'>
-                        <GestVentas/>
+                    <Route path="/productos">
+                        <GestionProductos/>
                     </Route>
-                    <Route path='/'>
-                        <Login/>
-                    </Route> 
-                </Switch>
-            </BrowserRouter>
-        </div>
+                    <Route path="/usuarios">
+                        <GestionUsuarios/>
+                    </Route>
+                    <Route path="/">
+                        <LayoutPublico>
+                            <Index/>
+                        </LayoutPublico>
+                    </Route>
+               </Switch>
+           </Router>
+       </div>
     );
 }
