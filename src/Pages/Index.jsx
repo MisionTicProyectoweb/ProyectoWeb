@@ -2,9 +2,7 @@ import './Styles/Login.css';
 import imagenLogin from 'media/login.svg';
 import GoogleLogin from 'react-google-login'
 import googlelogo from 'media/googlelogin.svg'
-//import{Link} from "react-router-dom";
-
-//flex items-center bg-black border-none rounded-bl-3xl shadow-sm box-border m-40px p-20px w-396px
+import{Link} from "react-router-dom";
 
 function Login() {
     return(
@@ -24,10 +22,12 @@ function Login() {
                         buttonText="iniciar sesión con google"
                         render = {
                             renderProps => (
-                                <button onClick={renderProps.onCLick} className="items-center justify-center flex bg-white text-black text-sm rounded p-1 m-3 rounded-md">
-                                    <img className="pl-2 w-lg"src={googlelogo} alt="LogoGoogle"/>
-                                    <span className="pl-2 pr-2">Iniciar sesión con Google</span>
-                                </button>
+                                <Link to="/bienvenida">
+                                    <button className="items-center justify-center flex bg-white text-black text-sm rounded-lg p-1 m-3 rounded-md">
+                                        <img className="pl-2 w-1/4" src={googlelogo} alt="LogoGoogle"/>
+                                        <span className="pl-2 pr-2">Iniciar sesión con Google</span>
+                                    </button>
+                                </Link>
                             )
                         }
                     />
