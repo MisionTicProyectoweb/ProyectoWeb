@@ -10,7 +10,7 @@ function Login() {
                 <ul>
                     <li>Faber Alberto Hoyos Ordosgoitia</li>
                     <li>Manuel José Guzman Guzman</li>
-                    <li>Yineth</li>
+                    <li>Yineth Paola Duarte Contreras</li>
                     <li>Nicolas</li>
                 </ul>
                 <form>
