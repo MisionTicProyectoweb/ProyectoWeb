@@ -1,5 +1,5 @@
 import './Styles/Login.css';
-import login from 'media/login.svg';
+import imagenLogin from 'media/login.svg';
 import GoogleLogin from 'react-google-login'
 import googlelogo from 'media/googlelogin.svg'
 //import{Link} from "react-router-dom";
@@ -12,7 +12,7 @@ function Login() {
            <div className="cen">
                <div className="fondo">
                    <span className="p-2 font-sick font-semibold text-6xl flex justify-center">T-SOLUTIONS</span>
-                   <img className="imagenLogo"src={login} alt="Logo"/>
+                   <img className="imagenLogo"src={imagenLogin} alt="Logo"/>
                </div>
                <form>
                    <div>
@@ -25,7 +25,7 @@ function Login() {
                         render = {
                             renderProps => (
                                 <button onClick={renderProps.onCLick} className="items-center justify-center flex bg-white text-black text-sm rounded p-1 m-3 rounded-md">
-                                    <img className="pl-2 w-2/7"src={googlelogo} alt="LogoGoogle"/>
+                                    <img className="pl-2 w-lg"src={googlelogo} alt="LogoGoogle"/>
                                     <span className="pl-2 pr-2">Iniciar sesión con Google</span>
                                 </button>
                             )
