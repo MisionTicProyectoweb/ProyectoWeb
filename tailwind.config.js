@@ -3,6 +3,9 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {},
+    font: {
+      sick: ["Stick No Bills","font-serif"]
+    }
   },
   variants: {
     extend: {},
