@@ -1,4 +1,4 @@
-import SidebarVendedor from 'Components/SidebarVendedor'
+import SidebarVendedor from 'components/SidebarVendedor'
 import React from 'react'
 
 const LayoutPrivado = ({children}) => {
