@@ -14,9 +14,18 @@ export default function App() {
         <div>
             <Router>
                 <Switch>
-                    <Route path={["/bienvenida"]}>
+                    <Route path={["/bienvenida","/bienvenida/usuarios"]}>
                         <LayoutPrivado>
                             <Switch>
+                                <Route path="/bienvenida/ventas">
+                                    <GestionVentas />
+                                </Route>
+                                <Route path="/bienvenida/productos">
+                                    <GestionProductos />
+                                </Route>
+                                <Route path="/bienvenida/usuarios">
+                                    <GestionUsuarios />
+                                </Route>
                                 <Route path="/bienvenida">
                                     <Bienvenida />
                                 </Route>
@@ -24,11 +33,13 @@ export default function App() {
                         </LayoutPrivado>
                     </Route>
                     <Route path={["/"]}>
-                        <LayoutPublico>                           
-                            <Route path='/'>
-                                <Index />
-                            </Route>
-                        </LayoutPublico>                           
+                        <LayoutPublico>
+                            <Switch>
+                                <Route path='/'>
+                                    <Index />
+                                </Route>
+                            </Switch>
+                        </LayoutPublico>
                     </Route>
                 </Switch>
             </Router>
