@@ -1,17 +1,18 @@
 .body {
-    background-color: rgb(199, 185, 211);
+    background-color: rgb(249, 250, 251);
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: calc(10px + 2vmin);
     color: white;
-  }
+}
 
-  span{
-    font-family:'Stick No Bills', sans-serif;
-  }
-  .btnGestionVentas{
+span {
+    font-family: 'Stick No Bills', sans-serif;
+}
+
+.btnGestionVentas {
     font-family: 'Helvetica', 'Arial', sans-serif;
     display: inline-block;
     font-size: 1em;
@@ -26,9 +27,9 @@
     position: relative;
     transition: transform ease-in 0.1s, box-shadow ease-in 0.25s;
     box-shadow: 0 2px 25px rgba(175, 40, 187, 0.5);
-  }  
+}
 
-  .btnListaVentas{
+.btnListaVentas {
     font-family: 'Helvetica', 'Arial', sans-serif;
     display: inline-block;
     font-size: 1em;
@@ -42,13 +43,14 @@
     cursor: pointer;
     position: relative;
     transition: transform ease-in 0.1s, box-shadow ease-in 0.25s;
-    box-shadow: 0 2px 25px rgba(175, 40, 187, 0.5);
-  }
-.cen{
+    box-shadow: 0 2px 25px rgba(80, 202, 19, 0.5);
+}
+
+.cen {
     display: flex;
     text-align: center;
     align-items: center;
-    background-color:rgba(109, 14, 117, 0.479);
+    background-color: rgba(109, 14, 117, 0.479);
     border: none;
     border-radius: 20px;
     box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
@@ -58,8 +60,8 @@
     justify-content: center;
 }
 
-.imagenLogo{
-  width: 520px;
-  margin-right: 50px;
-  margin-left: 0.5px;
+.imagenLogo {
+    width: 520px;
+    margin-right: 50px;
+    margin-left: 0.5px;
 }
