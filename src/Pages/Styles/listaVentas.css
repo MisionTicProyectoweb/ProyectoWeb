@@ -1,10 +1,25 @@
-.body {
-    background-color: #9d3cc4;
-    min-height: 100vh;
+#body {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
+    font-family: 'Merriweather', serif;
+    color: black;
+}
+
+#barraNavegador{
+    background-color: rgba(109, 14, 117, 0.479);
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+
+th{
+    border: 2px;
+    width: 200px;
+    height: 40px;
+    text-align: center;
+}
+
+span{
+    color: revert;
 }

@@ -4,6 +4,7 @@ import Index from 'Pages/Index';
 import GestionVentas from 'Pages/GestionVentas';
 import GestionProductos from 'Pages/GestionProductos';
 import GestionUsuarios from 'Pages/GestionUsuarios';
+import ListVentas from 'Pages/listaVentas';
 import Bienvenida from 'Pages/bienvenida';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import LayoutPrivado from 'layouts/LayoutPrivado';
@@ -15,6 +16,9 @@ export default function App(){
        <div>
            <Router>
                <Switch>
+                    <Route path="/listaventas">
+                        <ListVentas/>
+                    </Route>
                     <Route path="/ventas">
                         <GestionVentas/>
                     </Route>
@@ -35,7 +39,7 @@ export default function App(){
                     </Route>
                     <Route path="/">
                         <LayoutPublico>
-                            <Index/>
+                            <ListVentas/>
                         </LayoutPublico>
                     </Route>
                </Switch>

@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {},
     font: {
-      sick: ["Stick No Bills","font-serif"]
+      sick: ["'Merriweather', serif","font-serif"]
     }
   },
   variants: {
