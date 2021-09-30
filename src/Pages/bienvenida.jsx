@@ -1,6 +1,7 @@
 import React from 'react'
 
-const Bienvenida = () => {
+const Bienvenida = () =>
+ {
     return (
         <div>
             Bienvenida
