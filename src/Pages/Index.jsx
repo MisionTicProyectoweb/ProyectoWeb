@@ -14,8 +14,8 @@ function Login() {
                </div>
                <form>
                    <div>
-                       <span className="p-2 font-semibold text-4xl flex justify-center">ACCEDER</span>
-                       <span className="p-2 text-sm flex justify-center">Ir a la tienda tecnologica</span>
+                       <span className="p-0 font-semibold text-4xl flex justify-center">ACCEDER</span>
+                       <span className="p-0 text-sm flex justify-center">Ir a la tienda tecnológica</span>
                    </div>
                     <GoogleLogin 
                         clientId="" 
@@ -24,7 +24,7 @@ function Login() {
                             renderProps => (
                                 <Link to="/bienvenida">
                                     <button className="items-center justify-center flex bg-white text-black text-sm rounded-lg p-1 m-3 rounded-md">
-                                        <img className="pl-2 w-1/4" src={googlelogo} alt="LogoGoogle"/>
+                                        <img className="pl-1 w-1/6" src={googlelogo} alt="LogoGoogle"/>
                                         <span className="pl-2 pr-2">Iniciar sesión con Google</span>
                                     </button>
                                 </Link>
