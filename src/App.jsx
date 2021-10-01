@@ -39,7 +39,7 @@ export default function App(){
                     </Route>
                     <Route path="/">
                         <LayoutPublico>
-                            <ListVentas/>
+                            <Index/>
                         </LayoutPublico>
                     </Route>
                </Switch>

@@ -22,7 +22,7 @@ function Login() {
                         buttonText="iniciar sesión con google"
                         render = {
                             renderProps => (
-                                <Link to="/bienvenida">
+                                <Link to="/listaventas">
                                     <button className="items-center justify-center flex bg-white text-black text-sm rounded-lg p-1 m-3 rounded-md">
                                         <img className="pl-1 w-1/6" src={googlelogo} alt="LogoGoogle"/>
                                         <span className="pl-2 pr-2">Iniciar sesión con Google</span>
