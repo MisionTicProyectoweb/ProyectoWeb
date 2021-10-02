@@ -10,6 +10,7 @@ import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import LayoutPrivado from 'layouts/LayoutPrivado';
 import LayoutPublico from 'layouts/LayoutPublico';
 import Sidebar from 'components/SidebarVendedor'
+import ModificacionUsuarios from "Pages/ModificacionUsuarios";
 
 
 export default function App(){  
@@ -32,20 +33,19 @@ export default function App(){
                             <GestionProductos/>
                         </LayoutPrivado>
                     </Route>
-                    <Route path="/usuarios">
-                        <LayoutPrivado>
-                            <GestionUsuarios/>
-                        </LayoutPrivado>
-                    </Route>
-                    <Route path={["/bienvenida"]}>
+                    <Route path={["/usuarios", "/usuarios/modificaciones"]}>
                         <LayoutPrivado>
                             <Switch>
-                                <Route path="/">
-                                    <ListVentas/>
+                                <Route path="/usuarios/modificaciones">
+                                    <ModificacionUsuarios />
+                                </Route>
+                                <Route path="/usuarios">
+                                <GestionUsuarios/>
                                 </Route>
                             </Switch>
                         </LayoutPrivado>
                     </Route>
+                    
                     <Route path="/">
                         <Index/>
                     </Route>

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import logo from 'media/login.svg';
+import logoTS from 'media/logoTSolutions.png';
 
 const SidebarVendedor = () => {
 
@@ -8,7 +8,7 @@ const SidebarVendedor = () => {
         <div className='h-screen bg-indigo-500 flex flex-col justify-between text-white shadow-md'>
           <nav className='w-52 flex justify-center'>
             <ul className='w-full'>
-              <li> <img className='h-25 w-full' src={logo} alt="imagen" /></li>
+              <li> <img className='pt-3 pl-3 h-20 ' src={logoTS} alt="imagen" /></li>
               <li className='py-2'>
                 <Link to='/'>
                   <button type="button" className="w-full flex items-center block px-3 py-3 mt-2 text-sm font-semibold bg-transparent dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-indigo-300 focus:bg-indigo-200 focus:outline-none focus:shadow-outline">

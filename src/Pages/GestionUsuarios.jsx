@@ -7,24 +7,25 @@ const GestionUsuarios = () => {
         <div className="h-full w-full flex flex-col">
            <div>
            <navbar className="bg-indigo-500 mb-16 flex justify-between w-full h-20 p-5 rounded-br-3xl rounded-bl-3xl ">
-               <h1 className="text-white font-bold text-5xl ">Gestion de usuarios</h1>
-               <Link to="/bienvenida/usuarios/modificaciones">
-               <button className="bg-indigo-500 text-white rounded-lg p-1 hover:bg-indigo-600 ">Modificar</button>
+               <h1 className="text-white font-bold text-5xl">Gestion de usuarios</h1>
+               <Link to="/usuarios/modificaciones">
+               <button className="bg-indigo-500 text-white transform hover:scale-110  hover:bg-indigo-600   float-left ml-20 flex items-center p-2 rounded-lg border shadow-md">Modificar</button>
                </Link>
            </navbar>
            </div>
-           <div className="flex flex-col pt-32 items-center">
-           <table cellPadding="10" >
-                <thead>
+           <div className="flex flex-col pt-20 items-center">
+               <h2 className="text-2xl font-extrabold text-gray-700 pb-4">Listado de usuarios</h2>
+           <table cellPadding="8" >
+                <thead > 
                     <tr>
-                        <th>Usuario</th>
+                        <th >Usuario</th>
                         <th>Rol</th>
                         <th>Estado</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody className="text-center">
                     <tr>
-                        <td > Administrador X</td>
+                        <td >Administrador X</td>
                         <td>Administrador</td>
                         <td>Autorizado</td>
                     </tr>
