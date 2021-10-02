@@ -6,8 +6,8 @@ const GestionUsuarios = () => {
     return (
         <div className="h-full w-full flex flex-col">
            <div>
-           <navbar className="flex justify-between bg-indigo-400 p-7">
-               <h1 className="text-gray-900 font-bold text-5xl ">Listado de usuarios</h1>
+           <navbar className="bg-indigo-500 mb-16 flex justify-between w-full h-20 p-5 rounded-br-3xl rounded-bl-3xl ">
+               <h1 className="text-white font-bold text-5xl ">Gestion de usuarios</h1>
                <Link to="/bienvenida/usuarios/modificaciones">
                <button className="bg-indigo-500 text-white rounded-lg p-1 hover:bg-indigo-600 ">Modificar</button>
                </Link>

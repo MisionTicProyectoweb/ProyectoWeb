@@ -2,7 +2,6 @@
 //import Navbar from '/Components/Navbar'
 import React from 'react'
 import Sidebar from 'components/SidebarVendedor'
-
 const LayoutPublico = ({children}) => {
     return (
         
