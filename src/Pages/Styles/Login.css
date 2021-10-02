@@ -1,12 +1,10 @@
-.body {
-    background-color: #9d3cc4;
+#loginbody {
     min-height: 100vh;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
     font-size: calc(10px + 2vmin);
-    color: white;
+    color: negra;
   }
 
   .btnGestionVentas{
@@ -24,9 +22,7 @@
     position: relative;
     transition: transform ease-in 0.1s, box-shadow ease-in 0.25s;
     box-shadow: 0 2px 25px rgba(175, 40, 187, 0.5);
-  }
-
-  
+  }  
 
   .btnListaVentas{
     font-family: 'Helvetica', 'Arial', sans-serif;
@@ -44,4 +40,27 @@
     transition: transform ease-in 0.1s, box-shadow ease-in 0.25s;
     box-shadow: 0 2px 25px rgba(175, 40, 187, 0.5);
   }
-  
+.cen{
+    display: flex;
+    text-align: center;
+    align-items: center;
+    background-color: rgb(249,250,251);
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
+    box-sizing: border-box;
+    width: 1050px;
+    height: 550px;
+    justify-content: center;
+}
+
+.imagenLogo{
+  width: 520px;
+  margin-right: 50px;
+  margin-left: 0.5px;
+}
+
+#botongoogle{
+  background-color: #F2F2F2;
+  border: 0.5px solid;
+}
