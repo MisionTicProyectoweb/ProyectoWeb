@@ -64,3 +64,28 @@
   background-color: #F2F2F2;
   border: 0.5px solid;
 }
+
+/*
+#sidebar ul li:hover .tooltip{
+  transition: all 0.5s ease;
+  opacity: 1;
+  top: 50%;
+}
+
+#sidebar ul li .tooltip{
+  position: absulote;
+  opacity: 0;
+  pointer-events: none;
+  height: 35px;
+  width: 122px;
+  left: 122px;
+  top: 0;
+  transform: translateY(-1%);
+  border-radius: 6px;
+  background: #FFF;
+  line-height: 35px;
+  text-align: center;
+  transition: 0s;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+}
+*/

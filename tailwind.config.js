@@ -5,6 +5,9 @@ module.exports = {
     extend: {},
     font: {
       sick: ["'Merriweather', serif","font-serif"]
+    },
+    color: {
+      colored: "#606DF6"
     }
   },
   variants: {
