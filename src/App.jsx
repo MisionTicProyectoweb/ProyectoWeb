@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 import Index from 'Pages/Index';
 import GestionVentas from 'Pages/GestionVentas';
