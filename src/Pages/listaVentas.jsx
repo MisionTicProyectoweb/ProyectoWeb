@@ -61,7 +61,7 @@ function ListVentas(ventas,tVentas){
             <ToastContainer
                 position="bottom-center "
                 margin={2}
-                Theme="dark"
+                theme="dark"
                 autoClose={5000} 
             />
         </div>
