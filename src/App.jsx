@@ -9,6 +9,7 @@ import Bienvenida from 'Pages/bienvenida';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import LayoutPrivado from 'layouts/LayoutPrivado';
 import LayoutPublico from 'layouts/LayoutPublico';
+import Sidebar from 'components/SidebarVendedor'
 
 
 export default function App(){  
@@ -17,30 +18,36 @@ export default function App(){
            <Router>
                <Switch>
                     <Route path="/listaventas">
-                        <ListVentas/>
+                        <LayoutPublico>
+                           <ListVentas/>
+                        </LayoutPublico>
                     </Route>
                     <Route path="/ventas">
-                        <GestionVentas/>
+                        <LayoutPrivado>
+                           <GestionVentas/>
+                        </LayoutPrivado>
                     </Route>
                     <Route path="/productos">
-                        <GestionProductos/>
+                        <LayoutPrivado>                   
+                            <GestionProductos/>
+                        </LayoutPrivado>
                     </Route>
                     <Route path="/usuarios">
-                        <GestionUsuarios/>
+                        <LayoutPrivado>
+                            <GestionUsuarios/>
+                        </LayoutPrivado>
                     </Route>
                     <Route path={["/bienvenida"]}>
                         <LayoutPrivado>
                             <Switch>
-                                <Route path="/bienvenida">
-                                    <Bienvenida/>
+                                <Route path="/">
+                                    <ListVentas/>
                                 </Route>
                             </Switch>
                         </LayoutPrivado>
                     </Route>
                     <Route path="/">
-                        <LayoutPublico>
-                            <Index/>
-                        </LayoutPublico>
+                        <Index/>
                     </Route>
                </Switch>
            </Router>

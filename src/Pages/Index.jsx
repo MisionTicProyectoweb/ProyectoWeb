@@ -3,10 +3,12 @@ import imagenLogin from 'media/login.svg';
 import GoogleLogin from 'react-google-login'
 import googlelogo from 'media/googlelogin.svg'
 import{Link} from "react-router-dom";
+import Bienvenido from './listaVentas';
 
 function Login() {
     return(
-        <div className="body">
+        <div id="loginbody" className="bg-indigo-500">
+            
            <div className="cen">
                <div className="fondo">
                    <span className="p-2 font-sick font-semibold text-6xl flex justify-center">T-SOLUTIONS</span>
@@ -14,7 +16,7 @@ function Login() {
                </div>
                <form>
                    <div>
-                       <span className="p-0 font-semibold text-4xl flex justify-center">ACCEDER</span>
+                       <span className="p-0 font-semibold text-4xl flex justify-center">Iniciar Sesion</span>
                        <span className="p-0 text-sm flex justify-center">Ir a la tienda tecnológica</span>
                    </div>
                     <GoogleLogin 
@@ -23,7 +25,10 @@ function Login() {
                         render = {
                             renderProps => (
                                 <Link to="/listaventas">
-                                    <button className="items-center justify-center flex bg-white text-black text-sm rounded-lg p-1 m-3 rounded-md">
+                                    <button id="botongoogle" className="transform hover:scale-110 shadow-md items-center justify-center flex text-black text-sm rounded-lg p-1 m-3 rounded-md"
+                                    onClick={()=>{
+                                        Bienvenido('Faber');
+                                      }}>
                                         <img className="pl-1 w-1/6" src={googlelogo} alt="LogoGoogle"/>
                                         <span className="pl-2 pr-2">Iniciar sesión con Google</span>
                                     </button>

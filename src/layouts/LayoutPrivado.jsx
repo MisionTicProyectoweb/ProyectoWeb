@@ -1,11 +1,11 @@
 import React from 'react'
+import Sidebar from 'components/SidebarVendedor'
 
 const LayoutPrivado = ({children}) => {
     return (
-        <div className='flex w-screen h-screen border-t-0'>
-            <div className='flex flex-nowrap h-full w-full'>
-                <main className='flex w-full  overflow-y-scroll items-center justify-center'>{children}</main>
-            </div>
+        <div className="flex h-screen">
+            <Sidebar/>
+            <main className="w-screen">{children}</main>
         </div>
     )
 }
