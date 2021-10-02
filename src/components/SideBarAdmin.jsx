@@ -7,7 +7,7 @@ import { Link } from "react-router-dom"
 
 const SideBarAdmin=()=>{
     return(
-        <div className="flex flex-col w-72 border bg-purple-500 pt-5 pb-5 items-center">
+        <div className="flex flex-col w-72  bg-indigo-300 pt-5 pb-5 items-center ">
         <ul className="flex flex-col justify-between h-full ">
             <li className="flex flex-col items-center">
                 <img className="w-20 cursor-pointer" src={IconoAdminis} alt="Icono administrador" />

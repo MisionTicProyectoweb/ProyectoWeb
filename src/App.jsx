@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import LayoutPrivado from 'layouts/LayoutPrivado';
 import Bienvenida from 'Pages/Bienvenida';
 import LayoutPublico from 'layouts/LayoutPublico';
+import ModificacionUsuarios from 'Pages/ModificacionUsuarios';
 
 
 export default function App() {
@@ -14,7 +15,7 @@ export default function App() {
         <div>
             <Router>
                 <Switch>
-                    <Route path={["/bienvenida","/bienvenida/usuarios"]}>
+                    <Route path={["/bienvenida","/bienvenida/usuarios", "/bienvenida/productos", "/bienvenida/usuarios/modificaciones"]}>
                         <LayoutPrivado>
                             <Switch>
                                 <Route path="/bienvenida/ventas">
@@ -22,6 +23,9 @@ export default function App() {
                                 </Route>
                                 <Route path="/bienvenida/productos">
                                     <GestionProductos />
+                                </Route>
+                                <Route path="/bienvenida/usuarios/modificaciones">
+                                    <ModificacionUsuarios />
                                 </Route>
                                 <Route path="/bienvenida/usuarios">
                                     <GestionUsuarios />
