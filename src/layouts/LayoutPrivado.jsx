@@ -5,7 +5,7 @@ const LayoutPrivado = ({children}) => {
     return (
         <div className="flex h-screen">
             <Sidebar/>
-            <main className="w-screen">{children}</main>
+            <main className="bg-gray-100 w-screen">{children}</main>
         </div>
     )
 }

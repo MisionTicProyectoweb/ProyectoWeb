@@ -5,6 +5,8 @@ import GestionVentas from 'Pages/GestionVentas';
 import GestionProductos from 'Pages/GestionProductos';
 import GestionUsuarios from 'Pages/GestionUsuarios';
 import ListVentas from 'Pages/listaVentas';
+import Usuarios from 'Pages/listaUsuarios';
+import ListProductos from 'Pages/listaProductos';
 import Bienvenida from 'Pages/bienvenida';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import LayoutPrivado from 'layouts/LayoutPrivado';
@@ -22,6 +24,11 @@ export default function App(){
                            <ListVentas/>
                         </LayoutPublico>
                     </Route>
+                    <Route path="/listaproductos">
+                        <LayoutPublico>
+                           <ListProductos/>
+                        </LayoutPublico>
+                    </Route>
                     <Route path="/ventas">
                         <LayoutPrivado>
                            <GestionVentas/>
@@ -30,6 +37,11 @@ export default function App(){
                     <Route path="/productos">
                         <LayoutPrivado>                   
                             <GestionProductos/>
+                        </LayoutPrivado>
+                    </Route>
+                    <Route path="/listausuarios">
+                        <LayoutPrivado>
+                            <Usuarios/>
                         </LayoutPrivado>
                     </Route>
                     <Route path="/usuarios">
@@ -41,7 +53,7 @@ export default function App(){
                         <LayoutPrivado>
                             <Switch>
                                 <Route path="/">
-                                    <ListVentas/>
+                                    <Bienvenida/>
                                 </Route>
                             </Switch>
                         </LayoutPrivado>

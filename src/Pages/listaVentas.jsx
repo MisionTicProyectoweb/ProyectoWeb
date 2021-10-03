@@ -1,10 +1,136 @@
 import './Styles/listaVentas.css';
+import React, { useEffect, useState, useRef } from "react";
 import{Link} from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+const ventasBackend  = [
+    {
+        id: 101,
+        fecha: "02-10-2021",
+        ccCliente: "1234567890",
+        idVendedor: "987654321",
+        valor: "$ 250.000"
+    },{
+        id: 101,
+        fecha: "02-10-2021",
+        ccCliente: "1234567890",
+        idVendedor: "987654321",
+        valor: "$ 250.000"
+    },{
+        id: 101,
+        fecha: "02-10-2021",
+        ccCliente: "1234567890",
+        idVendedor: "987654321",
+        valor: "$ 250.000"
+    },{
+        id: 101,
+        fecha: "02-10-2021",
+        ccCliente: "1234567890",
+        idVendedor: "987654321",
+        valor: "$ 250.000"
+    },{
+        id: 101,
+        fecha: "02-10-2021",
+        ccCliente: "1234567890",
+        idVendedor: "987654321",
+        valor: "$ 250.000"
+    },{
+        id: 101,
+        fecha: "02-10-2021",
+        ccCliente: "1234567890",
+        idVendedor: "987654321",
+        valor: "$ 250.000"
+    },
+    {
+        id: 101,
+        fecha: "02-10-2021",
+        ccCliente: "1234567890",
+        idVendedor: "987654321",
+        valor: "$ 250.000"
+    },
+    {
+        id: 101,
+        fecha: "02-10-2021",
+        ccCliente: "1234567890",
+        idVendedor: "987654321",
+        valor: "$ 250.000"
+    },
+    {
+        id: 101,
+        fecha: "02-10-2021",
+        ccCliente: "1234567890",
+        idVendedor: "987654321",
+        valor: "$ 250.000"
+    },
+    {
+        id: 101,
+        fecha: "02-10-2021",
+        ccCliente: "1234567890",
+        idVendedor: "987654321",
+        valor: "$ 250.000"
+    },
+    {
+        id: 101,
+        fecha: "02-10-2021",
+        ccCliente: "1234567890",
+        idVendedor: "987654321",
+        valor: "$ 250.000"
+    },
+    {
+        id: 101,
+        fecha: "02-10-2021",
+        ccCliente: "1234567890",
+        idVendedor: "987654321",
+        valor: "$ 250.000"
+    },
+    {
+        id: 101,
+        fecha: "02-10-2021",
+        ccCliente: "1234567890",
+        idVendedor: "987654321",
+        valor: "$ 250.000"
+    },
+    {
+        id: 101,
+        fecha: "02-10-2021",
+        ccCliente: "1234567890",
+        idVendedor: "987654321",
+        valor: "$ 250.000"
+    },
+    {
+        id: 101,
+        fecha: "02-10-2021",
+        ccCliente: "1234567890",
+        idVendedor: "987654321",
+        valor: "$ 250.000"
+    },
+    {
+        id: 101,
+        fecha: "02-10-2021",
+        ccCliente: "1234567890",
+        idVendedor: "987654321",
+        valor: "$ 250.000"
+    },
+    {
+        id: 101,
+        fecha: "02-10-2021",
+        ccCliente: "1234567890",
+        idVendedor: "987654321",
+        valor: "$ 250.000"
+    },
+  ];
 
-function ListVentas(ventas,tVentas){
+
+
+const ListVentas = () => {
+
+    const [ventas, setVentas] = useState([]); //
+    useEffect(() => {
+        //Obtener ventas desde el backend
+        setVentas(ventasBackend);
+      }, []);
+
     const Bienvenido = (valor) => {
         toast.success("Bienvenido" + valor);
     }
@@ -32,6 +158,7 @@ function ListVentas(ventas,tVentas){
                 <input type="text" className="p-2 ml-4 w-96 h-10 rounded-lg border shadow-md" placeholder="Buscar por ..."></input>
                 <select name="select" className="font-semibold text-center ml-4 border h-10 rounded-lg shadow-md">
                     <option value="value1" selected>Id</option>
+                    <option value="value2">Fecha</option>
                     <option value="value2">Cc Cliente</option>
                     <option value="value3">ID vendedor</option>
                 </select>
@@ -45,27 +172,50 @@ function ListVentas(ventas,tVentas){
                 </Link>
             </div>
 
-            <div className="flex items-center justify-center">
-                <table className="border-2 font-semibold">
-                    <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>Fecha</th>
-                            <th>C.C Cliente</th>
-                            <th>ID Vendedor</th> 
-                            <th>Valor</th>
-                        </tr>
-                    </thead>
-                </table>
+            <div className="overflow-y-scroll h-96 w-10/12">
+                <TablaVentas listaventas = {ventas} />
+                <ToastContainer position="bottom-center" autoClose={5000} />
             </div>
-            <ToastContainer
-                position="bottom-center "
-                margin={2}
-                theme="dark"
-                autoClose={5000} 
-            />
         </div>
         
     );
+}
+
+const TablaVentas = ({listaventas}) => {
+    return (
+        <div className="flex items-center justify-center">
+            <table className="border-2">
+                <thead className="border-2 font-semibold">
+                    <tr>
+                        <th>Id</th>
+                        <th>Fecha</th>
+                        <th>C.C Clientes</th>
+                        <th>Id vendedor</th> 
+                        <th>Valor</th> 
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+                <tbody className="border-2">{listaventas.map((ventas) => {
+                    return (
+                        <tr className="border-2 text-center justify-center">
+                            <td > {ventas.id} </td>
+                            <td > {ventas.fecha} </td>
+                            <td > {ventas.ccCliente} </td>
+                            <td > {ventas.idVendedor} </td>
+                            <td > {ventas.valor} </td>
+                            <td className="flex justify-center">
+                                <button>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="hover:bg-gray-300 rounded-full h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                                    </svg>
+                                </button>
+                            </td>
+                        </tr>
+                    );
+                    })}
+                </tbody>
+            </table>
+    </div>
+    )
 }
 export default ListVentas;

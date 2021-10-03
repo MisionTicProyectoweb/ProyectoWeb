@@ -24,11 +24,9 @@ function Login() {
                         buttonText="iniciar sesión con google"
                         render = {
                             renderProps => (
-                                <Link to="/listaventas">
+                                <Link to="/bienvenida">
                                     <button id="botongoogle" className="transform hover:scale-110 shadow-md items-center justify-center flex text-black text-sm rounded-lg p-1 m-3 rounded-md"
-                                    onClick={()=>{
-                                        Bienvenido('Faber');
-                                      }}>
+                                    >
                                         <img className="pl-1 w-1/6" src={googlelogo} alt="LogoGoogle"/>
                                         <span className="pl-2 pr-2">Iniciar sesión con Google</span>
                                     </button>

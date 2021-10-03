@@ -4,18 +4,13 @@ import { Link } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-
-
 const GestVentas = () => {
   // Estados
   const [mostrarTabla, setMostrarTabla] = useState(true);
   const [ventas, setVentas] = useState([]); //pata obtener informacion desde el backend
   return (
     <div className="font-sick flex-col" id="body">
-      <div
-        id="barraNavegador"
-        className="bg-indigo-500 flex items-center justify-center w-full h-20 shadow-md"
-      >
+      <div id="barraNavegador" className="bg-indigo-500 flex items-center justify-center w-full h-20">
         <nav className="flex text-white">
           <div className="mr-10">
             <ul className="flex">
@@ -99,7 +94,7 @@ const FormularioVentas = ({ setMostrarTabla, listaVentas, setVentas }) => {
         <label htmlFor="fechaVenta">
           Fecha Venta
           <input
-            className=" bg-gray-50 border border-gray-200 m-1 p-3 rounded-lg appearance-none relative block px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+            className="bg-gray-50 border border-gray-200 m-1 p-3 rounded-lg appearance-none relative block px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
             name="fechaVenta"
             type="date"
             required
@@ -180,7 +175,7 @@ const FormularioVentas = ({ setMostrarTabla, listaVentas, setVentas }) => {
 const TablaVentas = ({ listaVentas }) => {
   return (
     <div>
-      <div className="top-0 w-full h-48 overflow-scroll flex flex-col items-center justify-center">
+      <div className="border rounded-lg top-0 mr-44 ml-44 h-48 overflow-y-scroll flex flex-col items-center justify-center">
         <div className="h-full text-center">
           <h2 className="text-2xl font-extrabold text-gray-700">Detalle</h2>
           <table className="border-2 font-semibold justify-center">
