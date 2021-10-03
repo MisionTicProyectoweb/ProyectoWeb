@@ -57,7 +57,7 @@ const SidebarVendedor = () => {
             </ul>
           </nav>
           <div className="bottom w-full">
-                  <Link to='/'>
+                  <Link to='/TSolutions'>
                       <button type="button" className=" mx-2 w-full flex items-center block px-3 py-3 mt-2 text-sm font-semibold bg-transparent dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-indigo-300 focus:bg-indigo-200 focus:outline-none focus:shadow-outline">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />

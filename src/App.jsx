@@ -8,6 +8,7 @@ import ListVentas from 'Pages/listaVentas';
 import Usuarios from 'Pages/listaUsuarios';
 import ListProductos from 'Pages/listaProductos';
 import Bienvenida from 'Pages/bienvenida';
+import TSolutions from 'Pages/TSolutions';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import LayoutPrivado from 'layouts/LayoutPrivado';
 import LayoutPublico from 'layouts/LayoutPublico';
@@ -19,16 +20,21 @@ export default function App(){
     return(
        <div>
            <Router>
-               <Switch>
-                    <Route path="/listaventas">
+                <Switch>
+                    <Route path="/TSolutions">
                         <LayoutPublico>
-                           <ListVentas/>
+                            <TSolutions />
                         </LayoutPublico>
                     </Route>
+                    <Route path="/listaventas">
+                        <LayoutPrivado>
+                           <ListVentas/>
+                        </LayoutPrivado>
+                    </Route>
                     <Route path="/listaproductos">
-                        <LayoutPublico>
+                        <LayoutPrivado>
                            <ListProductos/>
-                        </LayoutPublico>
+                        </LayoutPrivado>
                     </Route>
                     <Route path="/ventas">
                         <LayoutPrivado>
