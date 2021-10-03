@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import logo from 'media/login.svg';
+import logo from 'media/logoTSolutions.png';
 import 'Pages/Styles/Login.css';
 
 const SidebarVendedor = () => {
@@ -9,7 +9,7 @@ const SidebarVendedor = () => {
         <div className='bg-indigo-500 flex flex-col justify-between text-white shadow-md'>
           <nav id="sidebar"className='w-52 flex justify-center'>
             <ul className='w-full'>
-              <li> <img className='w-40 ml-9 mt-6' src={logo} alt="imagen" /></li>
+              <li> <img className='w-40 ml-9 mt-6 mb-20' src={logo} alt="imagen" /></li>
               <li className='py-2'>
                 <Link to='/bienvenida'>
                   <button type="button" className="w-full flex items-center block px-3 py-3 mt-2 text-sm font-semibold bg-transparent dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-indigo-300 focus:bg-indigo-200 focus:outline-none focus:shadow-outline">
