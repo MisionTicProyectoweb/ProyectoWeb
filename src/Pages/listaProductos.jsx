@@ -120,7 +120,7 @@ const ListProductos = () => {
                   </div>
                   <div className="font-sick">   
                       <ul className="flex mt-1.5">
-                          <li className="ml-3 mr-4 text-2xl">Cantidad de productos 586</li>
+                          <li className="ml-3 mr-4 text-2xl">Total: 586</li>
                       </ul>
                   </div>
               </nav>
@@ -135,7 +135,7 @@ const ListProductos = () => {
                   <option value="value2">Descripcion</option>
                   <option value="value3">Estado</option>
               </select>
-              <Link to="/productos">
+              <Link to="/admin/listaproducto/Gestionproductos">
                   <button type="button" className="bg-indigo-500 text-white transform hover:scale-110  rounded-lg p-1 hover:bg-indigo-600   float-left ml-20 flex items-center p-2 rounded-lg border shadow-md">
                       <svg xmlns="http://www.w3.org/2000/svg" class="mr-2 h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                       <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clip-rule="evenodd" />

@@ -162,7 +162,7 @@ const ListVentas = () => {
                     <option value="value2">Cc Cliente</option>
                     <option value="value3">ID vendedor</option>
                 </select>
-                <Link to="/ventas">
+                <Link to="/admin/listaventa/GestionVentas">
                     <button type="button" className="bg-indigo-500 text-white transform hover:scale-110  rounded-lg p-1 hover:bg-indigo-600   float-left ml-20 flex items-center p-2 rounded-lg border shadow-md">
                         <svg xmlns="http://www.w3.org/2000/svg" class="mr-2 h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                         <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clip-rule="evenodd" />
