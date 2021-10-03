@@ -9,9 +9,9 @@ const SidebarVendedor = () => {
         <div className='bg-indigo-500 flex flex-col justify-between text-white shadow-md'>
           <nav id="sidebar"className='w-52 flex justify-center'>
             <ul className='w-full'>
-              <li> <img className='h-25 w-full' src={logo} alt="imagen" /></li>
+              <li> <img className='w-40 ml-9 mt-6' src={logo} alt="imagen" /></li>
               <li className='py-2'>
-                <Link to='/Bienvenida'>
+                <Link to='/bienvenida'>
                   <button type="button" className="w-full flex items-center block px-3 py-3 mt-2 text-sm font-semibold bg-transparent dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-indigo-300 focus:bg-indigo-200 focus:outline-none focus:shadow-outline">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" />
@@ -58,7 +58,7 @@ const SidebarVendedor = () => {
           </nav>
           <div className="bottom w-full">
                   <Link to='/'>
-                      <button type="button" className="w-full flex items-center block px-3 py-3 mt-2 text-sm font-semibold bg-transparent dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-indigo-300 focus:bg-indigo-200 focus:outline-none focus:shadow-outline">
+                      <button type="button" className=" mx-2 w-full flex items-center block px-3 py-3 mt-2 text-sm font-semibold bg-transparent dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-indigo-300 focus:bg-indigo-200 focus:outline-none focus:shadow-outline">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
                         </svg>
