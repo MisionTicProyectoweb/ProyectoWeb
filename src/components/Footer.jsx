@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Footer = () => {
-    return <div className='bg-indigo-500  justify-between h-full '>
+    return <div className='bg-indigo-500  justify-between '>
         <nav className="shadow-md text-right p-2 text-white">
             <ul className='my-1'>
                 <li>Contáctenos: </li>

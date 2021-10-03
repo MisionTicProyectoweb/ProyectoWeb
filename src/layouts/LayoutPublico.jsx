@@ -7,9 +7,9 @@ import Footer from 'components/Footer';
 const LayoutPublico = ({children}) => {
     return (
         /*El h-screen se usa para tomar todo el alto de la pantalla*/
-        <div className="mainContainer">
+        <div className='flex flex-col justify-between h-screen'>
             <Navbar/>
-            <main className="bg-gray-100 w-screen">{children}</main>
+            <main className='bg-gray-100  h-full overflow-y-scroll'>{children}</main>
             <Footer />
         </div>
     )

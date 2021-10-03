@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from 'media/logoTSolutions.png';
 
+
 const Navbar = () => {
     return (
         <div className="bg-indigo-500 ">
@@ -12,7 +13,7 @@ const Navbar = () => {
                     { /*<li className="ml-1 mr-4 text-5xl font-semibold">TSolutions</li>*/}
                     <li className='px-2'>
                         {/* Link: para q al dar click en el boton me redirija a la pág de login */}
-                        <Link to='/login'>
+                        <Link to='/'>
                             <button className='bg-indigo-400 p-2 text-gray-100 rounded-lg shadow-md hover:bg-indigo-600 m-3'>
                                 Iniciar Sesión
                             </button>
