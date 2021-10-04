@@ -4,6 +4,7 @@ import{Link} from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+
 const ventasBackend  = [
     {
         id: 101,
@@ -135,7 +136,7 @@ const ListVentas = () => {
         toast.success("Bienvenido" + valor);
     }
     return (   
-        <div className="font-sick" id="listabody">
+        <div className="flex h-full w-full flex-col items-center justify-start">
             <div id="barraNavegador" className="bg-indigo-500 mb-16 flex items-center justify-center w-full h-20">
                 <nav className="flex text-white">
                     <div className="mr-10">

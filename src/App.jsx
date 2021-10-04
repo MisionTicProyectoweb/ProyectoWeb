@@ -1,5 +1,4 @@
 import React from "react";
-
 import Index from 'Pages/Index';
 import GestionVentas from 'Pages/GestionVentas';
 import GestionProductos from 'Pages/GestionProductos';
@@ -8,6 +7,7 @@ import ListVentas from 'Pages/listaVentas';
 import Usuarios from 'Pages/listaUsuarios';
 import ListProductos from 'Pages/listaProductos';
 import Bienvenida from 'Pages/bienvenida';
+import Inicio from 'Pages/inicio';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import LayoutPrivado from 'layouts/LayoutPrivado';
 import LayoutPublico from 'layouts/LayoutPublico';
@@ -95,14 +95,32 @@ export default function App(){
                    {/*  <Route path={["/bienvenida"]}>
                         <LayoutPrivado>
                             <Switch>
-                                <Route path="/">
-                                    <Bienvenida/>
+                                <Route path="/bienvenida">
+                                    <Bienvenida />
+                                </Route>
+                                <Route path="/listaventas">
+                                    <ListaVentas />
+                                </Route>
+                                <Route path="/ventas">
+                                        <GestionVentas />
+                                </Route>
+                                <Route path="/listaProductos">
+                                    <ListaProductos />
+                                </Route>
+                                <Route path="/productos">
+                                    <GestionProductos />
+                                </Route>
+                                <Route path="/listausuarios">
+                                    <ListaUsuarios />
+                                </Route>
+                                <Route path="/usuarios">
+                                    <GestionUsuarios />
                                 </Route>
                             </Switch>
                         </LayoutPrivado>
                     </Route> */}
                     <Route path="/">
-                        <Index/>
+                        <Inicio/>
                     </Route>
                </Switch>
            </Router>
