@@ -24,6 +24,10 @@ export default function App(){
                    {/* aqui va la administracion, y se desprenden paginas
                    como vendedor, usuario, dashboard, ventas  y productos 
                    */}
+                   
+                <Route path='/index'>
+                    <Index/>
+                </Route>
                <Route path={['/admin','/admin/Dashboard','/admin/listaproductos', '/admin/listaventas','/admin/listausuarios','/admin/Gestionusuario','admin/listausuario/modificaciones','/admin/listaventa/GestionVentas','/admin/listaproducto/Gestionproductos']}>
                         <LayoutPrivado>
                         <Switch>
@@ -119,8 +123,8 @@ export default function App(){
                             </Switch>
                         </LayoutPrivado>
                     </Route> */}
-                    <Route path="/">
-                        <Inicio/>
+                    <Route path='/'>
+                                <Inicio />
                     </Route>
                </Switch>
            </Router>
