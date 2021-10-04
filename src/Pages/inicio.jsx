@@ -8,7 +8,7 @@ import imagenLogin from 'media/login.svg';
 import Bienvenido from './listaVentas';
 
 
-function TSolutions() {
+function inicio() {
     return (
         <div class="h-full w-full">
                 <span className="pt-5 font-sick font-semibold text-6xl flex justify-center">T-SOLUTIONS</span>
@@ -38,4 +38,4 @@ function TSolutions() {
     );
 }
 
-export default TSolutions
+export default inicio

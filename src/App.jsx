@@ -1,5 +1,4 @@
 import React from "react";
-
 import Index from 'Pages/index';
 import GestionVentas from 'Pages/GestionVentas';
 import GestionProductos from 'Pages/GestionProductos';

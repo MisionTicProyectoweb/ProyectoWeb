@@ -2,7 +2,7 @@ import './Styles/Login.css';
 import imagenLogin from 'media/login.svg';
 import GoogleLogin from 'react-google-login'
 import googlelogo from 'media/googlelogin.svg'
-import{Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import Bienvenido from './listaVentas';
 
 function Login() {
