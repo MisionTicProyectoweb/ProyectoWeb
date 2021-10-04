@@ -139,8 +139,8 @@ const TablaUsuarios = ({ listaUsuarios }) => {
     return (
       <div className="flex flex-col items-center justify-center">
         <h2 className="text-2xl font-extrabold text-gray-700">Usuarios</h2>
-        <table className="table">
-          <thead>
+        <table className="border-2">
+          <thead className="border-2 font-semibold">
             <tr>
               <th>Cedula</th>
               <th>Nombre</th>
@@ -151,10 +151,10 @@ const TablaUsuarios = ({ listaUsuarios }) => {
               <th>Acción</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="border-2">
             {listaUsuarios.map((usuarios) => {
               return (
-                <tr className="text-center justify-center">
+                <tr className="border-2 text-center justify-center">
                     <td> {usuarios.cedula} </td>
                     <td> {usuarios.nombre} </td>
                     <td> {usuarios.apellido} </td>
