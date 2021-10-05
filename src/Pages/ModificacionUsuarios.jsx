@@ -10,7 +10,7 @@ const Mensaje = () =>{
 }
 
     return (
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col w-full items-center">
             <navbar className="text-center bg-indigo-500 mb-16 w-full h-20 p-5 rounded-br-3xl rounded-bl-3xl ">
                 <h1 className="text-white font-bold text-5xl ">Modificacion de usuarios</h1>
             </navbar>
