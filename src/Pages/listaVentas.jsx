@@ -11,114 +11,145 @@ const ventasBackend  = [
         fecha: "02-10-2021",
         ccCliente: "1234567890",
         idVendedor: "987654321",
-        valor: "$ 250.000"
+        valor: 250000,
     },{
         id: 101,
         fecha: "02-10-2021",
         ccCliente: "1234567890",
         idVendedor: "987654321",
-        valor: "$ 250.000"
+        valor: 250000,
     },{
         id: 101,
         fecha: "02-10-2021",
         ccCliente: "1234567890",
         idVendedor: "987654321",
-        valor: "$ 250.000"
+        valor: 250000,
     },{
         id: 101,
         fecha: "02-10-2021",
         ccCliente: "1234567890",
         idVendedor: "987654321",
-        valor: "$ 250.000"
+        valor: 250000,
     },{
         id: 101,
         fecha: "02-10-2021",
         ccCliente: "1234567890",
         idVendedor: "987654321",
-        valor: "$ 250.000"
+        valor: 250000,
     },{
         id: 101,
         fecha: "02-10-2021",
         ccCliente: "1234567890",
         idVendedor: "987654321",
-        valor: "$ 250.000"
-    },
-    {
+        valor: 250000,
+    },{
         id: 101,
         fecha: "02-10-2021",
         ccCliente: "1234567890",
         idVendedor: "987654321",
-        valor: "$ 250.000"
-    },
-    {
+        valor: 250000,
+    },{
         id: 101,
         fecha: "02-10-2021",
         ccCliente: "1234567890",
         idVendedor: "987654321",
-        valor: "$ 250.000"
-    },
-    {
+        valor: 250000,
+    },{
         id: 101,
         fecha: "02-10-2021",
         ccCliente: "1234567890",
         idVendedor: "987654321",
-        valor: "$ 250.000"
-    },
-    {
+        valor: 250000,
+    },{
         id: 101,
         fecha: "02-10-2021",
         ccCliente: "1234567890",
         idVendedor: "987654321",
-        valor: "$ 250.000"
-    },
-    {
+        valor: 250000,
+    },{
         id: 101,
         fecha: "02-10-2021",
         ccCliente: "1234567890",
         idVendedor: "987654321",
-        valor: "$ 250.000"
-    },
-    {
+        valor: 250000,
+    },{
         id: 101,
         fecha: "02-10-2021",
         ccCliente: "1234567890",
         idVendedor: "987654321",
-        valor: "$ 250.000"
-    },
-    {
+        valor: 250000,
+    },{
         id: 101,
         fecha: "02-10-2021",
         ccCliente: "1234567890",
         idVendedor: "987654321",
-        valor: "$ 250.000"
-    },
-    {
+        valor: 250000,
+    },{
         id: 101,
         fecha: "02-10-2021",
         ccCliente: "1234567890",
         idVendedor: "987654321",
-        valor: "$ 250.000"
-    },
-    {
+        valor: 250000,
+    },{
         id: 101,
         fecha: "02-10-2021",
         ccCliente: "1234567890",
         idVendedor: "987654321",
-        valor: "$ 250.000"
-    },
-    {
+        valor: 250000,
+    },{
         id: 101,
         fecha: "02-10-2021",
         ccCliente: "1234567890",
         idVendedor: "987654321",
-        valor: "$ 250.000"
-    },
-    {
+        valor: 250000,
+    },{
         id: 101,
         fecha: "02-10-2021",
         ccCliente: "1234567890",
         idVendedor: "987654321",
-        valor: "$ 250.000"
+        valor: 250000,
+    },{
+        id: 101,
+        fecha: "02-10-2021",
+        ccCliente: "1234567890",
+        idVendedor: "987654321",
+        valor: 250000,
+    },{
+        id: 101,
+        fecha: "02-10-2021",
+        ccCliente: "1234567890",
+        idVendedor: "987654321",
+        valor: 250000,
+    },{
+        id: 101,
+        fecha: "02-10-2021",
+        ccCliente: "1234567890",
+        idVendedor: "987654321",
+        valor: 250000,
+    },{
+        id: 101,
+        fecha: "02-10-2021",
+        ccCliente: "1234567890",
+        idVendedor: "987654321",
+        valor: 250000,
+    },{
+        id: 101,
+        fecha: "02-10-2021",
+        ccCliente: "1234567890",
+        idVendedor: "987654321",
+        valor: 250000,
+    },{
+        id: 101,
+        fecha: "02-10-2021",
+        ccCliente: "1234567890",
+        idVendedor: "987654321",
+        valor: 250000,
+    },{
+        id: 101,
+        fecha: "02-10-2021",
+        ccCliente: "1234567890",
+        idVendedor: "987654321",
+        valor: 250000,
     },
   ];
 
@@ -146,7 +177,7 @@ const ListVentas = () => {
                     </div>
                     <div className="font-sick">   
                         <ul className="flex mt-1.5">
-                            <li className="ml-3 mr-4 text-2xl">Ventas completadas</li>
+                            <li className="ml-3 mr-4 text-2xl">Ventas completadas {ventasBackend.length}</li>
                             <li className="ml-3 mr-4 text-2xl">Acumulado de ventas</li>
                         </ul>
                     </div>

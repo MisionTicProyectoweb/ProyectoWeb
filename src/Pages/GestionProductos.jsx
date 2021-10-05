@@ -22,8 +22,8 @@ const GestionProductos = ({setMostrarTabla,listaProductos,setProductos}) => {
       toast.success("Se ha registrado el producto con éxito");
     }; */
     return (
-       <div>
-           <div id="barraNavegador" className="bg-indigo-500 mb-16 flex items-center justify-center w-full h-20">
+       <div className="w-full text-center">
+           <div id="barraNavegador" className="bg-indigo-500 mb-16 flex items-center justify-center h-20">
                 <nav className="flex text-white">
                     <div className="mr-10">
                         <ul className="flex">

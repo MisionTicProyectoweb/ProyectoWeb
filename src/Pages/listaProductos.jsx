@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import{Link} from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 
-const productosBackend  = [
+let productosBackend  = [
     {
         id: 101,
         descripcion: "computador portatil",
@@ -108,7 +108,6 @@ const ListProductos = () => {
         //Obtener productos desde el backend
         setProductos(productosBackend);
       }, []);
-
       return(
           <div className="flex h-full w-full flex-col items-center justify-start">
               <div id="barraNavegador" className="bg-indigo-500 mb-16 flex items-center justify-center w-full h-20">
@@ -120,7 +119,7 @@ const ListProductos = () => {
                   </div>
                   <div className="font-sick">   
                       <ul className="flex mt-1.5">
-                          <li className="ml-3 mr-4 text-2xl">Total: 586</li>
+                          <li className="ml-3 mr-4 text-2xl">Total: {productosBackend.length}</li>
                       </ul>
                   </div>
               </nav>
@@ -129,7 +128,7 @@ const ListProductos = () => {
           <div className="mb-8 flex items-center justify-center w-full h-20">
               <label className="text-base font-semibold mr-5 text-black">Buscar:</label>                    
               <svg width="24" height="24" fill="none" class="text-gray-400 group-hover:text-gray-500 transition-colors duration-200"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-              <input type="text" className="p-2 ml-4 w-96 h-10 rounded-lg border shadow-md" placeholder="Buscar por ..."></input>
+              <input type="text" id="txtBuscar" className="p-2 ml-4 w-96 h-10 rounded-lg border shadow-md" placeholder="Buscar por ..."></input>
               <select name="select" className="font-semibold text-center ml-4 border h-10 rounded-lg shadow-md">
                   <option value="value1" selected>Id</option>
                   <option value="value2">Descripcion</option>
@@ -143,11 +142,12 @@ const ListProductos = () => {
                       Insertar
                   </button>
               </Link>
-          </div>
-          <div className="overflow-y-scroll h-96">
-              <TablaProductos listaproductos={productos}/>
-              <ToastContainer position="bottom-center" autoClose={5000} />
           </div>  
+          
+            <div className="overflow-y-scroll h-96">
+                <TablaProductos listaproductos={productos} />
+                <ToastContainer position="bottom-center" autoClose={5000} />
+            </div>
         </div>
     );}
 
@@ -164,7 +164,7 @@ const TablaProductos = ({listaproductos}) => {
                         <th>Acción</th>
                     </tr>
                 </thead>
-                <tbody className="border-2">{listaproductos.map((productos) => {
+                <tbody className="border-2">{listaproductos.map((productos) => {                    
                     return (
                         <tr className="border-2 text-center justify-center">
                             <td > {productos.id} </td>
