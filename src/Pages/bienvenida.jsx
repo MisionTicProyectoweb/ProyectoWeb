@@ -1,58 +1,34 @@
 import React from 'react'
+import { Dashobard } from './Dashobard'
 
 const Bienvenida = () => {
+
     return (
-        <div className="flex h-full w-full flex-col items-center justify-start">
-                <div id="barraNavegador" className="bg-indigo-500 mb-16 flex items-center justify-center w-full h-20">
-                <nav className="flex text-white">
+
+      
+         <div className=" flex h-full w-full flex-col items-center justify-start  shadow-md">
+                <div id="barraNavegador" className="  bg-indigo-500 mb-16 flex items-center justify-center w-full h-20  ">
+                <nav className="flex text-white ">
                     <div className="mr-10">
                         <ul className="flex">
-                            <li className="ml-1 mr-4 text-5xl font-semibold">T-Solutions</li>
+                            <li className="ml-1 mr-4 text-5xl font-semibold ">T-Solutions</li>
                         </ul>
                     </div>
                 </nav>
             </div>
-            <div className="m-5 ml-30 mr-30 h-64 grid grid-cols-3">
-                <div className="flex flex-col items-center justify-center h-full bg-white border-2 rounded-lg">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-44 w-60" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    <label>Faber Hoyos</label>
-                </div>
-                <div className="flex flex-col items-center justify-center h-full ml-2 bg-white border-2 rounded-lg">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-44 w-60" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    <label>Manuel Guzman</label>
-                </div>
-                <div className="flex flex-col items-center justify-center h-full ml-2 bg-white border-2 rounded-lg">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-44 w-60" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    <label>Nicolas Jimenez</label>
-                </div>
+            <div className="mb-3 mt-0 ml-30 mr-30 h-64 grid grid-cols-3 flex justify-between">
+                <Dashobard nombre="Faber Hoyos"/>
+                <Dashobard nombre="Manuel Guzman"/>
+                <Dashobard nombre="Nicolas Jimenez"/>
             </div>
-            <div className="m-5 ml-30 mr-30 h-64 grid grid-cols-3">
-                <div className="flex flex-col items-center justify-center h-full bg-white border-2 rounded-lg">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-44 w-60" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    <label>Yineth Contreras</label>
-                </div>
-                <div className="flex flex-col items-center justify-center h-full ml-2 bg-white border-2 rounded-lg">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-44 w-60" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    <label>Marcela Reyes</label>
-                </div>
-                <div className="flex flex-col items-center justify-center h-full ml-2 bg-white border-2 rounded-lg">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-44 w-60" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    <label>Juan Osorio</label>
-                </div>
+            <div className=" ml-30 mr-30 h-64 grid grid-cols-3 ">
+         
+            <Dashobard nombre="Yineth Contreras"/>
+            <Dashobard nombre="Marcela Reyes"/>
+            <Dashobard nombre="Juan Osorio"/>
+
             </div>
-        </div>
+        </div> 
     )
 }
 
