@@ -1,22 +1,16 @@
 import React, { useEffect, useState, useRef } from "react";
 import "./Styles/gestionVentas.css";
 import { Link } from "react-router-dom";
-
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const GestVentas = () => {
   // Estados
   const [mostrarTabla, setMostrarTabla] = useState(true);
   const [ventas, setVentas] = useState([]); //pata obtener informacion desde el backend
-
- 
-
   return (
     <div className="font-sick flex-col" id="body">
-      <div
-        id="barraNavegador"
-        className="bg-indigo-500 mb-5 flex items-center justify-center w-full h-20 shadow-md"
-      >
+      <div id="barraNavegador" className="bg-indigo-500 flex items-center justify-center w-full h-20">
         <nav className="flex text-white">
           <div className="mr-10">
             <ul className="flex">
@@ -61,27 +55,8 @@ const FormularioVentas = ({ setMostrarTabla, listaVentas, setVentas }) => {
 
   return (
     <div className="flex flex-col items-center justify-center">
-      <h2 className="text-2xl font-extrabold text-gray-700">Registrar Venta</h2>
-      <div className="grid grid-cols-3 border rounded-lg">
-        <label htmlFor="idVenta">
-          Código Venta
-          <input
-            className=" bg-gray-50 border border-gray-200 m-1 p-3 rounded-lg appearance-none relative block px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-            name="idVenta"
-            type="text"
-            placeholder="FV-00001"
-          />
-        </label>
-        <label htmlFor="idVendedor">
-          Código Vendedor
-          <input
-            className=" bg-gray-50 border border-gray-200 m-1 p-3 rounded-lg appearance-none relative block px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-            name="idVendedor"
-            type="number"
-            min={0}
-            placeholder="10000000"
-          />
-        </label>
+      <h2 className="top-0 text-2xl font-extrabold text-gray-700">Registrar Venta</h2>
+      <div className="grid grid-cols-4 border rounded-lg">
         <label htmlFor="idcliente">
           Código Cliente
           <input
@@ -119,7 +94,7 @@ const FormularioVentas = ({ setMostrarTabla, listaVentas, setVentas }) => {
         <label htmlFor="fechaVenta">
           Fecha Venta
           <input
-            className=" bg-gray-50 border border-gray-200 m-1 p-3 rounded-lg appearance-none relative block px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+            className="bg-gray-50 border border-gray-200 m-1 p-3 rounded-lg appearance-none relative block px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
             name="fechaVenta"
             type="date"
             required
@@ -127,8 +102,8 @@ const FormularioVentas = ({ setMostrarTabla, listaVentas, setVentas }) => {
           />
         </label>
       </div>
-      <form ref={form} onSubmit={submitForm} className="flex flex-col m-2">
-        <div className="grid grid-cols-3 border rounded-lg m-2">
+      <form ref={form} onSubmit={submitForm} className="flex flex-col justify-center">
+        <div className="grid grid-cols-4 border rounded-lg m-2">
           <label htmlFor="idProducto">
             Código Producto
             <input
@@ -185,9 +160,11 @@ const FormularioVentas = ({ setMostrarTabla, listaVentas, setVentas }) => {
           </label>
           <button
             type="submit"
-            className="justify-center py-2 px-4 my-6 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-400 hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-          >
-            Insertar {">"}
+            className="flex justify-center py-2 px-4 my-6 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-400 hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+            <span>Agregar producto</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="ml-4 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
           </button>
         </div>
       </form>
@@ -197,39 +174,69 @@ const FormularioVentas = ({ setMostrarTabla, listaVentas, setVentas }) => {
 
 const TablaVentas = ({ listaVentas }) => {
   return (
-    <div className="flex flex-col items-center justify-center">
-      <h2 className="text-2xl font-extrabold text-gray-700">Detalle</h2>
-      <table className="border-2 font-semibold justify-center">
-        <thead>
-          <tr>
-            <th>Código Producto</th>
-            <th>Descripción</th>
-            <th>Cantidad</th>
-            <th>Valor Unitario</th>
-            <th>Valor Total</th>
-            <th>Acción</th>
-          </tr>
-        </thead>
-        <tbody>
-          {listaVentas.map((ventas) => {
-            return (
+    <div>
+      <div className="border rounded-lg top-0 mr-44 ml-44 h-48 overflow-y-scroll flex flex-col items-center justify-center">
+        <div className="h-full text-center">
+          <h2 className="text-2xl font-extrabold text-gray-700">Detalle</h2>
+          <table className="border-2 font-semibold justify-center">
+            <thead>
               <tr>
-                <td> {ventas.idProducto} </td>
-                <td> {ventas.nombreProducto} </td>
-                <td> {ventas.cantidad} </td>
-                <td> {ventas.valorUnitario} </td>
-                <td> {ventas.valorTotal} </td>
-                <td>
-                  <i className="fas fa-pencil-alt p-2 hover:bg-gray-300 rounded-full" />
-                  <i className="fas fa-trash-alt p-2 hover:bg-gray-300 rounded-full" />
-                </td>
+                <th>Código Producto</th>
+                <th>Descripción</th>
+                <th>Cantidad</th>
+                <th>Valor Unitario</th>
+                <th>Valor Total</th>
+                <th>Acción</th>
               </tr>
-            );
-          })}
-        </tbody>
-      </table>
+            </thead>
+            <tbody>
+              {listaVentas.map((ventas) => {
+                return (
+                  <tr className="justify-center">
+                    <td> {ventas.idProducto} </td>
+                    <td> {ventas.nombreProducto} </td>
+                    <td> {ventas.cantidad} </td>
+                    <td> {ventas.valorUnitario} </td>
+                    <td> {ventas.valorTotal} </td>
+                    <td className="flex justify-center">
+                      <button>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="hover:bg-gray-300 rounded-full h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                        </svg>
+                      </button>
+                      <button>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="hover:bg-gray-300 rounded-full h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                        </svg>
+                      </button>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div className="w-full flex items-center justify-center">
+        <button
+            onClick={() => {
+              regisCompra();
+            }
+            }
+            type="submit"
+            className="flex justify-center py-2 px-4 my-6 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-400 hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+            <span>Registrar Venta</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="ml-4 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+        </button>
+        <ToastContainer position="bottom-right" margin={2} theme="colored" autoClose={3000}/>
+      </div>
     </div>
   );
 };
 
+const regisCompra = () => {
+  toast.success("Compra Registrada");
+}
 export default GestVentas;

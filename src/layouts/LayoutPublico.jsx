@@ -1,13 +1,16 @@
 //import Footer from '/Components/Footer'
 //import Navbar from '/Components/Navbar'
 import React from 'react'
-import Sidebar from 'components/SidebarVendedor'
+import Navbar from 'components/Navbar';
+import Footer from 'components/Footer';
+
 const LayoutPublico = ({children}) => {
     return (
-        
-        <div className="flex h-screen">
-            <Sidebar/>
-            <main className="w-screen">{children}</main>
+        /*El h-screen se usa para tomar todo el alto de la pantalla*/
+        <div className='flex flex-col justify-between w-full'>
+            <Navbar/>
+            <main className='bg-gray-100 overflow-y-scroll'>{children}</main>
+            <Footer />
         </div>
     )
 }
