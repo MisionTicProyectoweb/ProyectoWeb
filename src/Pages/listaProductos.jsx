@@ -1,8 +1,8 @@
 import React, { useEffect, useState, useRef } from "react";
 import{Link} from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
-
-let productosBackend  = [
+import './Styles/tablaproducto.css';
+const productosBackend  = [
     {
         id: 101,
         descripcion: "computador portatil",
@@ -166,8 +166,8 @@ const TablaProductos = ({listaproductos}) => {
                 </thead>
                 <tbody className="border-2">{listaproductos.map((productos) => {                    
                     return (
-                        <tr className="border-2 text-center justify-center">
-                            <td > {productos.id} </td>
+                        <tr className="ml-20" className="bg-aqua  border-2 text-center justify-center">
+                            <td  > {productos.id} </td>
                             <td> {productos.descripcion} </td>
                             <td> {productos.valor} </td>
                             <td> {productos.estado} </td>

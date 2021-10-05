@@ -23,7 +23,7 @@ const GestionUsuarios = ({ setMostrarTabla, listaUsuarios, setUsuarios}) => {
 
     return (
       <div className="w-full text-center">
-          <div id="barraNavegador" className="bg-indigo-500 mb-16 flex items-center justify-center h-20">
+          <div id="barraNavegador" className="bg-indigo-500 mb-16 flex items-center justify-center w-full h-20">
                 <nav className="flex text-white">
                     <div className="mr-10">
                         <ul className="flex">

@@ -22,3 +22,7 @@ th {
 span {
     color: revert;
 }
+
+.tabla {
+    background-color: red;
+}
