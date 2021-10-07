@@ -2,8 +2,7 @@ import React from 'react'
 
 export const Dashobard = (nombre) => {
     return (
-      
-           
+       
            
                 <div className="ml-3 mb-0 flex flex-col items-center justify-center h-full bg-white border-2 rounded-lg shadow-md">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-44 w-60" fill="none" viewBox="0 0 24 24" stroke="currentColor">

@@ -11,7 +11,7 @@ const Navbar = () => {
                     
                     { /*<li className="ml-1 mr-4 text-5xl font-semibold">TSolutions</li>*/}
                     <li className='px-2'>
-                        <Link to='/index'>
+                        <Link to='/login'>
                             <button className='bg-indigo-400 p-2 text-gray-100 rounded-lg shadow-md hover:bg-indigo-600 m-3'>
                                 Iniciar Sesión
                             </button>

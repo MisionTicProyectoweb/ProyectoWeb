@@ -16,7 +16,7 @@ const Bienvenida = () => {
                     </div>
                 </nav>
             </div>
-            <div className="mb-3 mt-0 ml-30 mr-30 h-64 grid grid-cols-3 flex justify-between">
+            <div className="mb-3 mt-0 ml-30 mr-30 h-64 grid grid-cols-3 ">
                 <Dashobard nombre="Faber Hoyos"/>
                 <Dashobard nombre="Manuel Guzman"/>
                 <Dashobard nombre="Nicolas Jimenez"/>

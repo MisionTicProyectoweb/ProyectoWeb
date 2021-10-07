@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
 import { ToastContainer, toast } from "react-toastify";
-import{Link} from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 
 const GestionProductos = ({setMostrarTabla,listaProductos,setProductos}) => {
@@ -23,7 +22,7 @@ const GestionProductos = ({setMostrarTabla,listaProductos,setProductos}) => {
     }; */
     return (
        <div className="w-full text-center">
-           <div id="barraNavegador" className="w-full text-center bg-indigo-500 mb-16 flex items-center justify-center w-full h-20">
+           <div id="barraNavegador" className="w-full text-center bg-indigo-500 mb-16 flex items-center justify-center h-20">
                 <nav className="flex text-white">
                     <div className="mr-10">
                         <ul className="flex">

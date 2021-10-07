@@ -34,7 +34,7 @@ const GestionUsuarios = ({ setMostrarTabla, listaUsuarios, setUsuarios}) => {
           </div>
           <div className="flex flex-col items-center justify-center">
             <h2 className="text-2xl font-extrabold text-gray-700">Crear nuevo usuario</h2>
-            <form /* ref={form} onSubmit={submitForm} */ className="flex flex-col grid grid-cols-2 m-4">
+            <form /* ref={form} onSubmit={submitForm} */ className="flex flex-col grid-cols-2 m-4">
                 <label htmlFor="cedula">
                     Cedula
                     <input
