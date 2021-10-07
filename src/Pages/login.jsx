@@ -24,7 +24,7 @@ function Login() {
                         buttonText="iniciar sesión con google"
                         render = {
                             renderProps => (
-                                <Link to="/admin/Dashboard">
+                                <Link to="/admin/dashboard">
                                     <button id="botongoogle" className="transform hover:scale-110 shadow-md items-center justify-center flex text-black text-sm rounded-lg p-1 m-3"
                                     >
                                         <img className="pl-1 w-1/6" src={googlelogo} alt="LogoGoogle"/>

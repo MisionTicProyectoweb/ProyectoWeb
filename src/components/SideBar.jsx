@@ -12,10 +12,10 @@ const Sidebar = () => {
                 <img className='w-40 ml-9 mt-6 mb-10' src={logo} alt="imagen" />
             </Link>
             <div className='my-6'>
-                <Ruta icono='fas fa-users-cog' ruta='/admin/Dashboard' nombre='DashBoard' />
-                <Ruta icono='fas fa-cart-plus' ruta='/admin/listaproductos' nombre='Productos'/>
-                <Ruta icono='fas fa-clipboard-list' ruta='/admin/listaventas' nombre='Ventas' />
-                <Ruta icono='fas fa-users' ruta='/admin/listausuarios' nombre='Usuarios' />
+                <Ruta icono='fas fa-users-cog' ruta='/admin/dashboard' nombre='DashBoard' />
+                <Ruta icono='fas fa-cart-plus' ruta='/admin/productos' nombre='Productos'/>
+                <Ruta icono='fas fa-clipboard-list' ruta='/admin/ventas' nombre='Ventas' />
+                <Ruta icono='fas fa-users' ruta='/admin/usuarios' nombre='Usuarios' />
             </div>
             <div className='mt-40'>
                 <Ruta icono='fas fa-sign-out-alt' ruta='/inicio' nombre='Salir' />

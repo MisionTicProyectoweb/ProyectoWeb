@@ -18,9 +18,9 @@ const SidebarResponsive = () => {
       {mostrarNavegacion && (
         <ul className='bg-gray-200'>
           <ResponsiveRoute ruta='/admin/Dashboard' nombre='DashBoard' />
-          <ResponsiveRoute ruta='/admin/listaproductos' nombre='Productos'/>
-          <ResponsiveRoute ruta='/admin/listaventas' nombre='Ventas' />
-          <ResponsiveRoute ruta='/admin/listausuarios' nombre='Usuarios' />
+          <ResponsiveRoute ruta='/admin/productos' nombre='Productos'/>
+          <ResponsiveRoute ruta='/admin/ventas' nombre='Ventas' />
+          <ResponsiveRoute ruta='/admin/usuarios' nombre='Usuarios' />
           <ResponsiveRoute ruta='/inicio' nombre='Salir' />
         </ul>
       )}
