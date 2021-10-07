@@ -6,13 +6,13 @@ import Navbar from 'components/Navbar';
 import Footer from 'components/Footer';
 
 import imagenLogin from 'media/login.svg';
-import Bienvenido from './listaVentas';
+
 
 
 function inicio() {
     return (
         <div class="h-full w-full">
-                <Navbar/>
+                
                 <span className="pt-5 font-sick font-semibold text-6xl flex justify-center">T-SOLUTIONS</span>
                 <nav className="flex text-white">
                     <ul className='flex justify-between my-10'>
@@ -33,7 +33,7 @@ function inicio() {
                         </li>
                     </ul>
                 </nav>
-                <Footer/>
+               
         </div>
     );
 }
