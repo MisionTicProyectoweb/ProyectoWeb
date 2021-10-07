@@ -5,3 +5,28 @@
 .tr {
     background-color: aqua;
 }
+
+.table{
+    width: 100%;
+    margin: 10px;
+    overflow-y: scroll;
+}
+
+.table th, .table td{
+    @apply border border-gray-300 px-3 py-1;
+}
+
+.table th{
+    @apply text-gray-800 bg-gray-300 pt-2 pb-2 text-left;
+}
+
+.table tr:nth-child(even){
+    @apply bg-gray-100;
+}
+.table tr:hover {
+    @apply bg-blue-200 cursor-pointer;
+}
+
+.Input {
+    @apply bg-gray-50 border border-gray-200 m-2 p-3 rounded-lg appearance-none relative block px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm;
+}
