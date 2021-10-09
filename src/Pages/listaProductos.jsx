@@ -3,7 +3,7 @@ import { nanoid } from "nanoid";
 import React, { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
-import "./Styles/tablaproducto.css";
+import "./Styles/Tablas.css";
 import "react-toastify/dist/ReactToastify.css";
 
 const productosBackend = [
@@ -160,7 +160,7 @@ const ListProductos = () => {
         <Link to="/admin/productos/gestionproductos">
           <button
             type="button"
-            className="bg-indigo-500 text-white transform hover:scale-110  rounded-lg p-1 hover:bg-indigo-600   float-left ml-20 flex items-center p-2 rounded-lg border shadow-md"
+            className="bg-indigo-500 text-white transform hover:scale-110 hover:bg-indigo-600   float-left ml-20 flex items-center p-2 rounded-lg border shadow-md"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
