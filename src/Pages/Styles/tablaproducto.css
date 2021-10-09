@@ -17,7 +17,7 @@
 }
 
 .table th{
-    @apply text-gray-800 bg-gray-300 pt-2 pb-2 text-left;
+    @apply text-gray-800 bg-gray-300 pt-2 pb-2 text-center;
 }
 
 .table tr:nth-child(even){
