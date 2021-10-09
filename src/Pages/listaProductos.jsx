@@ -3,7 +3,7 @@ import { nanoid } from "nanoid";
 import React, { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
-import "./Styles/tablaproducto.css";
+import "./Styles/Tablas.css";
 import "react-toastify/dist/ReactToastify.css";
 
 const productosBackend = [
