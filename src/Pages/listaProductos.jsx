@@ -1,103 +1,28 @@
-import { Dialog, Tooltip } from "@material-ui/core";
-import { nanoid } from "nanoid";
 import React, { useEffect, useState, useRef } from "react";
-import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
+import axios from "axios";
+import { nanoid } from "nanoid";
+import { Dialog, Tooltip } from "@material-ui/core";
+import { obtenerProductos } from "utils/api";
+import { Link } from "react-router-dom";
 import "./Styles/Tablas.css";
 import "react-toastify/dist/ReactToastify.css";
 
-const productosBackend = [
-  {
-    id: 101,
-    descripcion: "computador portatil",
-    valor: 1205000,  
-    estado: "Disponible",
-  },
-  {
-    id: 101,
-    descripcion: "computador portatil",
-    valor: 1205000, 
-    estado: "Disponible",
-  },
-  {
-    id: 101,
-    descripcion: "computador portatil",
-    valor: 1205000, 
-    estado: "Disponible",
-  },
-  {
-    id: 101,
-    descripcion: "computador portatil",
-    valor: 1205000, 
-    estado: "Disponible",
-  },
-  {
-    id: 101,
-    descripcion: "computador portatil",
-    valor: 1205000, 
-    estado: "Disponible",
-  },
-  {
-    id: 101,
-    descripcion: "computador portatil",
-    valor: 1205000, 
-    estado: "Disponible",
-  },
-  {
-    id: 101,
-    descripcion: "computador portatil",
-    valor: 1205000, 
-    estado: "Disponible",
-  },
-  {
-    id: 101,
-    descripcion: "computador portatil",
-    valor: 1205000, 
-    estado: "Disponible",
-  },
-  {
-    id: 101,
-    descripcion: "computador portatil",
-    valor: 1205000, 
-    estado: "Disponible",
-  },
-  {
-    id: 101,
-    descripcion: "computador portatil",
-    valor: 1205000, 
-    estado: "Disponible",
-  },
-  {
-    id: 101,
-    descripcion: "computador portatil",
-    valor: 1205000, 
-    estado: "Disponible",
-  },
-  {
-    id: 101,
-    descripcion: "computador portatil",
-    valor: 1205000,
-    estado: "Disponible",
-  },
-  {
-    id: 101,
-    descripcion: "computador portatil",
-    valor: 1205000, 
-    estado: "Disponible",
-  },
-  {
-    id: 101,
-    descripcion: "computador portatil",
-    valor: 1205000,
-    estado: "Disponible",
-  },
-];
-
 const ListProductos = () => {
-  const [productos, setProductos] = useState([]); //
+  const [productos, setProductos] = useState([]);
+  const [ejecutarConsulta, setEjecutarConsulta] = useState(true);
+
+  useEffect(() => {
+    console.log("consulta", ejecutarConsulta);
+    if (ejecutarConsulta) {
+      obtenerProductos(setProductos, setEjecutarConsulta);
+    }
+  }, [ejecutarConsulta]);
+
   useEffect(() => {
     //Obtener productos desde el backend
-    setProductos(productosBackend);
+    //setProductos(productosBackend);
+    setEjecutarConsulta(true);
   }, []);
   return (
     <div className="flex h-full w-full flex-col items-center justify-start">
@@ -116,7 +41,7 @@ const ListProductos = () => {
           <div className="font-sick">
             <ul className="flex mt-1.5">
               <li className="ml-3 mr-4 text-2xl">
-                Total: {productosBackend.length}
+                Total: {setEjecutarConsulta.length}
               </li>
             </ul>
           </div>
@@ -180,14 +105,30 @@ const ListProductos = () => {
       </div>
 
       <div className="overflow-y-scroll h-96">
-        <TablaProductos listaproductos={productos} />
+        <TablaProductos
+          listaProductos={productos}
+          setEjecutarConsulta={setEjecutarConsulta}
+        />
         <ToastContainer position="bottom-center" autoClose={5000} />
       </div>
     </div>
   );
 };
 
-const TablaProductos = ({ listaproductos }) => {
+const TablaProductos = ({ listaProductos, setEjecutarConsulta }) => {
+  const [busqueda, setBusqueda] = useState("");
+  const [productosFiltrados, setProductosFiltrados] = useState(listaProductos);
+
+  useEffect(() => {
+    setProductosFiltrados(
+      listaProductos.filter((elemento) => {
+        return JSON.stringify(elemento)
+          .toLowerCase()
+          .includes(busqueda.toLowerCase());
+      })
+    );
+  }, [busqueda, listaProductos]);
+
   return (
     <div className="flex items-center justify-center">
       <table className="table">
@@ -201,8 +142,14 @@ const TablaProductos = ({ listaproductos }) => {
           </tr>
         </thead>
         <tbody>
-          {listaproductos.map((productos) => {
-            return <FilaProducto key={nanoid()} productos={productos} />;
+          {productosFiltrados.map((productos) => {
+            return (
+              <FilaProducto
+                key={nanoid()}
+                productos={productos}
+                setEjecutarConsulta={setEjecutarConsulta}
+              />
+            );
           })}
         </tbody>
       </table>
@@ -210,9 +157,62 @@ const TablaProductos = ({ listaproductos }) => {
   );
 };
 
-const FilaProducto = ({ productos }) => {
+const FilaProducto = ({ productos, setEjecutarConsulta }) => {
   const [edit, setEdit] = useState(false);
   const [openDialog, setOpenDialog] = useState(false);
+  const [infoNuevoProducto, setInfoNuevoProducto] = useState({
+    _id: productos._id,
+    idProducto: productos.idProducto,
+    nombreProducto: productos.nombreProducto,
+    valorUnitario: productos.valorUnitario,
+    estado: productos.estado,
+  });
+
+  const actualizarProducto = async () => {
+    //enviar la info al backend
+    const options = {
+      method: "PATCH",
+      url: `http://localhost:5000/productos/${productos._id}/`,
+      headers: { "Content-Type": "application/json" },
+      data: { ...infoNuevoProducto, id: productos._id },
+    };
+
+    await axios
+      .request(options)
+      .then(function (response) {
+        console.log(response.data);
+        toast.success("El producto se ha modificado con éxito");
+        setEdit(false);
+        setEjecutarConsulta(true);
+      })
+      .catch(function (error) {
+        toast.error("Error al modificar el producto");
+        console.error(error);
+      });
+  };
+
+  const eliminarProducto = async () => {
+    const options = {
+      method: "DELETE",
+      url: `http://localhost:5000/productos/${productos._id}/`,
+      headers: { "Content-Type": "application/json" },
+      data: { id: productos._id },
+    };
+
+    await axios
+      .request(options)
+      .then(function (response) {
+        console.log(response.data);
+        toast.success("El producto se ha eliminado con éxito");
+        setEjecutarConsulta(true);
+      })
+      .catch(function (error) {
+        console.error(error);
+        toast.error("Error al eliminar el producto");
+      });
+    setOpenDialog(false);
+  };
+
   return (
     <tr>
       {edit ? (
@@ -221,28 +221,52 @@ const FilaProducto = ({ productos }) => {
             <input
               className="Input"
               type="number"
-              defaultValue={productos.id}
+              value={infoNuevoProducto.idProducto}
+              onChange={(e) =>
+                setInfoNuevoProducto({
+                  ...infoNuevoProducto,
+                  idProducto: e.target.value,
+                })
+              }
             />
           </td>
           <td>
             <input
               className="Input"
               type="text"
-              defaultValue={productos.descripcion}
+              value={infoNuevoProducto.nombreProducto}
+              onChange={(e) =>
+                setInfoNuevoProducto({
+                  ...infoNuevoProducto,
+                  nombreProducto: e.target.value,
+                })
+              }
             />
           </td>
           <td>
             <input
               className="Input"
               type="number"
-              defaultValue={productos.valor}
+              value={infoNuevoProducto.valorUnitario}
+              onChange={(e) =>
+                setInfoNuevoProducto({
+                  ...infoNuevoProducto,
+                  valorUnitario: e.target.value,
+                })
+              }
             />
           </td>
           <td>
             <select
               className="Input"
               type="text"
-              defaultValue={productos.estado}
+              value={infoNuevoProducto.estado}
+              onChange={(e) =>
+                setInfoNuevoProducto({
+                  ...infoNuevoProducto,
+                  estado: e.target.value,
+                })
+              }
             >
               <option disabled value={0}>
                 Seleccione una opción
@@ -254,9 +278,9 @@ const FilaProducto = ({ productos }) => {
         </>
       ) : (
         <>
-          <td> {productos.id} </td>
-          <td> {productos.descripcion} </td>
-          <td> {productos.valor} </td>
+          <td> {productos.idProducto} </td>
+          <td> {productos.nombreProducto} </td>
+          <td> {productos.valorUnitario} </td>
           <td> {productos.estado} </td>
         </>
       )}
@@ -266,7 +290,7 @@ const FilaProducto = ({ productos }) => {
             <>
               <Tooltip title="Confirmar Edición" arrow>
                 <i
-                  onClick={() => setEdit(!edit)}
+                  onClick={() => actualizarProducto()}
                   className="fas fa-check p-2 text-gray-700 hover:text-green-500 hover:bg-gray-300 rounded-full"
                 />
               </Tooltip>
@@ -282,13 +306,13 @@ const FilaProducto = ({ productos }) => {
               <Tooltip title="Editar Producto" arrow>
                 <i
                   onClick={() => setEdit(!edit)}
-                    className="fas fa-pencil-alt p-2 text-gray-700 hover:text-green-500 hover:bg-gray-300 rounded-full"
+                  className="fas fa-pencil-alt p-2 text-gray-700 hover:text-green-500 hover:bg-gray-300 rounded-full"
                 />
               </Tooltip>
               <Tooltip title="Eliminar Producto" arrow>
                 <i
                   onClick={() => setOpenDialog(true)}
-                    className="fas fa-trash-alt p-2 text-gray-700 hover:text-red-500 hover:bg-gray-300  rounded-full"
+                  className="fas fa-trash-alt p-2 text-gray-700 hover:text-red-500 hover:bg-gray-300  rounded-full"
                 />
               </Tooltip>
             </>
@@ -300,7 +324,10 @@ const FilaProducto = ({ productos }) => {
               ¿Está seguro de querer eliminar el producto?
             </h1>
             <div className="flex w-full items-center justify-center my-4">
-              <button className="mx-2 px-4 py-2 bg-green-400 text-white hover:bg-green-600 rounded-md shadow-md">
+              <button
+                onClick={() => eliminarProducto()}
+                className="mx-2 px-4 py-2 bg-green-400 text-white hover:bg-green-600 rounded-md shadow-md"
+              >
                 Sí
               </button>
               <button
