@@ -267,13 +267,13 @@ const FilaProducto = ({ productos }) => {
               <Tooltip title="Confirmar Edición" arrow>
                 <i
                   onClick={() => setEdit(!edit)}
-                  className="fas fa-check p-2 hover:bg-blue-600 rounded-full"
+                  className="fas fa-check p-2 text-gray-700 hover:text-green-500 hover:bg-gray-300 rounded-full"
                 />
               </Tooltip>
               <Tooltip title="Cancelar Edición" arrow>
                 <i
                   onClick={() => setEdit(!edit)}
-                  className="fas fa-times p-2 hover:bg-blue-600 rounded-full"
+                  className="fas fa-times p-2 text-gray-700 hover:text-red-500 hover:bg-gray-300 rounded-full"
                 />
               </Tooltip>
             </>
@@ -282,13 +282,13 @@ const FilaProducto = ({ productos }) => {
               <Tooltip title="Editar Producto" arrow>
                 <i
                   onClick={() => setEdit(!edit)}
-                  className="fas fa-pencil-alt p-2 hover:bg-blue-600 rounded-full"
+                    className="fas fa-pencil-alt p-2 text-gray-700 hover:text-green-500 hover:bg-gray-300 rounded-full"
                 />
               </Tooltip>
-              <Tooltip title="Elminar Producto" arrow>
+              <Tooltip title="Eliminar Producto" arrow>
                 <i
                   onClick={() => setOpenDialog(true)}
-                  className="fas fa-trash-alt p-2 hover:bg-blue-600 rounded-full"
+                    className="fas fa-trash-alt p-2 text-gray-700 hover:text-red-500 hover:bg-gray-300  rounded-full"
                 />
               </Tooltip>
             </>
@@ -296,16 +296,16 @@ const FilaProducto = ({ productos }) => {
         </div>
         <Dialog open={openDialog}>
           <div className="p-8 flex flex-col">
-            <h1 className="text-gray-900 text-2xl font-bold">
+            <h1 className="text-gray-800 text-xl font-bold">
               ¿Está seguro de querer eliminar el producto?
             </h1>
             <div className="flex w-full items-center justify-center my-4">
-              <button className="mx-2 px-4 py-2 bg-blue-500 text-white hover:bg-blue-700 rounded-md shadow-md">
+              <button className="mx-2 px-4 py-2 bg-green-400 text-white hover:bg-green-600 rounded-md shadow-md">
                 Sí
               </button>
               <button
                 onClick={() => setOpenDialog(false)}
-                className="mx-2 px-4 py-2 bg-green-500 text-white hover:bg-green-700 rounded-md shadow-md"
+                className="mx-2 px-4 py-2 bg-red-400 text-white hover:bg-red-600 rounded-md shadow-md"
               >
                 No
               </button>
