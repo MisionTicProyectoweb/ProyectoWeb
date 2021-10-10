@@ -30,78 +30,7 @@ const usuariosBackend = [
     estadoUsuario: "Autorizado",
     rol: "Administrador",
   },
-  {
-    cedula: 1007141358,
-    nombre: "Yineth",
-    apellido: "Contreras",
-    correo: "yinethpao170@gmail.com",
-    estadoUsuario: "Autorizado",
-    rol: "Administrador",
-  },
-  {
-    cedula: 1007141358,
-    nombre: "Yineth",
-    apellido: "Contreras",
-    correo: "yinethpao170@gmail.com",
-    estadoUsuario: "Autorizado",
-    rol: "Administrador",
-  },
-  {
-    cedula: 1007141358,
-    nombre: "Yineth",
-    apellido: "Contreras",
-    correo: "yinethpao170@gmail.com",
-    estadoUsuario: "Autorizado",
-    rol: "Administrador",
-  },
-  {
-    cedula: 1007141358,
-    nombre: "Yineth",
-    apellido: "Contreras",
-    correo: "yinethpao170@gmail.com",
-    estadoUsuario: "Autorizado",
-    rol: "Administrador",
-  },
-  {
-    cedula: 1007141358,
-    nombre: "Yineth",
-    apellido: "Contreras",
-    correo: "yinethpao170@gmail.com",
-    estadoUsuario: "Autorizado",
-    rol: "Administrador",
-  },
-  {
-    cedula: 1007141358,
-    nombre: "Yineth",
-    apellido: "Contreras",
-    correo: "yinethpao170@gmail.com",
-    estadoUsuario: "Autorizado",
-    rol: "Administrador",
-  },
-  {
-    cedula: 1007141358,
-    nombre: "Yineth",
-    apellido: "Contreras",
-    correo: "yinethpao170@gmail.com",
-    estadoUsuario: "Autorizado",
-    rol: "Administrador",
-  },
-  {
-    cedula: 1007141358,
-    nombre: "Yineth",
-    apellido: "Contreras",
-    correo: "yinethpao170@gmail.com",
-    estadoUsuario: "Autorizado",
-    rol: "Administrador",
-  },
-  {
-    cedula: 1007141358,
-    nombre: "Yineth",
-    apellido: "Contreras",
-    correo: "yinethpao170@gmail.com",
-    estadoUsuario: "Autorizado",
-    rol: "Administrador",
-  },
+
   {
     cedula: 1015455974,
     nombre: "Nicolas",
@@ -211,7 +140,7 @@ const Usuarios = () => {
 //componentes para mostar formulario o tabla
 const TablaUsuarios = ({ listaUsuarios }) => {
   return (
-    <div className="flex items-center justify-center ">
+    <div className=" p-10  justify-center ">
       <table className="table">
         <thead >
           <tr>

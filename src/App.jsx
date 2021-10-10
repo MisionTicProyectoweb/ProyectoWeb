@@ -53,9 +53,6 @@ export default function App() {
                 <Route path="/admin/usuarios/gestionusuario">
                   <GestionUsuarios />
                 </Route>
-                <Route path="/admin/usuarios/modificaciones">
-                  <ModificacionUsuarios />
-                </Route>
                 <Route path="/admin/usuarios">
                   <Usuarios />
                 </Route>
