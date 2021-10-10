@@ -93,35 +93,14 @@ const ListProductos = () => {
           className="p-2 ml-4 w-96 h-10 rounded-lg border shadow-md"
           placeholder="Buscar por ..."
         ></input>
-        <select
-          value={filtroCampo}
-          onChange={(e) => setFilroCampo(e.target.value)}
-          name="select"
-          className="font-semibold text-center ml-4 border h-10 rounded-lg shadow-md"
-        >
-          <option value="idProducto" selected>Id</option>
-          <option value="nombreProducto">Descripcion</option>
-          <option value="estado">Estado</option>
-        </select>
+
         <Link to="/admin/productos/gestionproductos">
-          <button
-            type="button"
-            className="bg-indigo-500 text-white transform hover:scale-110 hover:bg-indigo-600   float-left ml-20 flex items-center p-2 rounded-lg border shadow-md"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="mr-2 h-5 w-5"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z"
-                clip-rule="evenodd"
-              />
-            </svg>
-            Insertar
-          </button>
+        <button
+         type="button"
+          className="fas fa-plus-circle mr-2 bg-indigo-500 text-white text-base transform hover:scale-110 hover:bg-indigo-600 float-left ml-20 flex items-left p-2 rounded-lg border shadow-md"
+        >
+           Insertar
+        </button>
         </Link>
       </div>
 

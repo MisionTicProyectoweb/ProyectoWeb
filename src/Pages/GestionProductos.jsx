@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
 import "react-toastify/dist/ReactToastify.css";
+import { Link } from "react-router-dom";
 
 const GestionProductos = () => {
   const [productos, setProductos] = useState([]);
@@ -36,10 +37,8 @@ const GestionProductos = () => {
 const FormularioProductos = () => {
   const form = useRef(null);
 
-  const submitForm = async (e) => {
-    e.preventDefault();
+  const submitForm = async (e) => {e.preventDefault();
     const fd = new FormData(form.current);
-
     const nuevoProducto = {};
     fd.forEach((value, key) => {
       nuevoProducto[key] = value;
@@ -68,6 +67,7 @@ const FormularioProductos = () => {
         toast.error("Error creando un producto");
       });
   };
+
   return (
     <div className="flex flex-col items-center justify-center">
       <h2 className="text-2xl font-extrabold text-gray-700">
@@ -120,26 +120,21 @@ const FormularioProductos = () => {
             <option>No disponible </option>
           </select>
         </label>
-      <button
-        type="submit"
-        className="flex justify-center py-2 px-4 my-6 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-400 hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-      >
-        <span>Registrar Producto</span>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="ml-4 h-6 w-6"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M9 5l7 7-7 7"
-          />
-        </svg>
-      </button>
+        <button
+          type="submit"
+            className="fas fa-plus-circle mr-2 bg-indigo-500 text-white text-base transform hover:scale-110 hover:bg-indigo-600 float-left ml-20 flex items-left p-2 rounded-lg border shadow-md"
+          >
+          <span>Registrar Producto</span>
+          
+        </button>
+        <Link to="/admin/productos">
+          <button
+            className="fas fa-plus-circle mr-2 bg-indigo-500 text-white text-base transform hover:scale-110 hover:bg-indigo-600 float-left ml-20 flex items-left p-2 rounded-lg border shadow-md"
+            >
+              Atras
+          </button>
+        </Link>
+
       </form>
     </div>
   );
