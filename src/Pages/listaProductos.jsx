@@ -10,7 +10,9 @@ import "react-toastify/dist/ReactToastify.css";
 
 const ListProductos = () => {
   const [productos, setProductos] = useState([]);
+  const [busqueda, setBusqueda] = useState('');
   const [ejecutarConsulta, setEjecutarConsulta] = useState(true);
+  
 
   useEffect(() => {
     console.log("consulta", ejecutarConsulta);
@@ -67,8 +69,10 @@ const ListProductos = () => {
           ></path>
         </svg>
         <input
-          type="text"
-          id="txtBuscar"
+          //type="text"
+          //id="txtBuscar"
+          value={busqueda}
+          onChange={(e) => setBusqueda(e.target.value)}
           className="p-2 ml-4 w-96 h-10 rounded-lg border shadow-md"
           placeholder="Buscar por ..."
         ></input>
@@ -161,7 +165,7 @@ const FilaProducto = ({ productos, setEjecutarConsulta }) => {
   const [edit, setEdit] = useState(false);
   const [openDialog, setOpenDialog] = useState(false);
   const [infoNuevoProducto, setInfoNuevoProducto] = useState({
-    _id: productos._id,
+    id: productos._id,
     idProducto: productos.idProducto,
     nombreProducto: productos.nombreProducto,
     valorUnitario: productos.valorUnitario,
@@ -174,7 +178,7 @@ const FilaProducto = ({ productos, setEjecutarConsulta }) => {
       method: "PATCH",
       url: `http://localhost:5000/productos/${productos._id}/`,
       headers: { "Content-Type": "application/json" },
-      data: { ...infoNuevoProducto, id: productos._id },
+      data: { ...infoNuevoProducto},
     };
 
     await axios
