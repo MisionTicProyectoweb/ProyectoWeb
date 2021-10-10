@@ -60,7 +60,7 @@ const ListProductos = () => {
           <div className="font-sick">
             <ul className="flex mt-1.5">
               <li className="ml-3 mr-4 text-2xl">
-                Total: {setEjecutarConsulta.length}
+                Total: {productosFiltrados.length}
               </li>
             </ul>
           </div>
