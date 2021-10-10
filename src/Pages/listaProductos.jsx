@@ -10,7 +10,9 @@ import "react-toastify/dist/ReactToastify.css";
 
 const ListProductos = () => {
   const [productos, setProductos] = useState([]);
+  const [productosFiltrados, setProductosFiltrados] = useState([]);
   const [busqueda, setBusqueda] = useState('');
+  const [filtroCampo, setFilroCampo] = useState('idProducto');
   const [ejecutarConsulta, setEjecutarConsulta] = useState(true);
   
 
@@ -19,7 +21,22 @@ const ListProductos = () => {
     if (ejecutarConsulta) {
       obtenerProductos(setProductos, setEjecutarConsulta);
     }
+    setProductosFiltrados(productos);
+    console.log(productos);
   }, [ejecutarConsulta]);
+
+  useEffect(() => {
+    console.log(busqueda, filtroCampo);
+
+    setProductosFiltrados(
+      productos.filter((elemento) => {
+        console.log(busqueda);
+        console.log(JSON.stringify(elemento));
+        return JSON.stringify(elemento).toLowerCase().includes(busqueda.toLowerCase());
+      })
+    );
+
+  }, [busqueda, filtroCampo]);
 
   useEffect(() => {
     //Obtener productos desde el backend
@@ -77,14 +94,14 @@ const ListProductos = () => {
           placeholder="Buscar por ..."
         ></input>
         <select
+          value={filtroCampo}
+          onChange={(e) => setFilroCampo(e.target.value)}
           name="select"
           className="font-semibold text-center ml-4 border h-10 rounded-lg shadow-md"
         >
-          <option value="value1" selected>
-            Id
-          </option>
-          <option value="value2">Descripcion</option>
-          <option value="value3">Estado</option>
+          <option value="idProducto" selected>Id</option>
+          <option value="nombreProducto">Descripcion</option>
+          <option value="estado">Estado</option>
         </select>
         <Link to="/admin/productos/gestionproductos">
           <button
@@ -110,7 +127,7 @@ const ListProductos = () => {
 
       <div className="overflow-y-scroll h-96">
         <TablaProductos
-          listaProductos={productos}
+          listaProductos={productosFiltrados}
           setEjecutarConsulta={setEjecutarConsulta}
         />
         <ToastContainer position="bottom-center" autoClose={5000} />
@@ -120,18 +137,12 @@ const ListProductos = () => {
 };
 
 const TablaProductos = ({ listaProductos, setEjecutarConsulta }) => {
-  const [busqueda, setBusqueda] = useState("");
   const [productosFiltrados, setProductosFiltrados] = useState(listaProductos);
 
   useEffect(() => {
-    setProductosFiltrados(
-      listaProductos.filter((elemento) => {
-        return JSON.stringify(elemento)
-          .toLowerCase()
-          .includes(busqueda.toLowerCase());
-      })
-    );
-  }, [busqueda, listaProductos]);
+    setProductosFiltrados(listaProductos);
+    console.log(productosFiltrados);
+  }, [listaProductos]);
 
   return (
     <div className="flex items-center justify-center">
@@ -196,6 +207,7 @@ const FilaProducto = ({ productos, setEjecutarConsulta }) => {
   };
 
   const eliminarProducto = async () => {
+    console.log(productos);
     const options = {
       method: "DELETE",
       url: `http://localhost:5000/productos/${productos._id}/`,
