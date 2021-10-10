@@ -73,11 +73,11 @@ const FormularioProductos = () => {
       <h2 className="text-2xl font-extrabold text-gray-700">
         Registrar nuevo producto
       </h2>
-      <form ref={form} onSubmit={submitForm} className="grid grid-cols-2 m-4">
+      <form ref={form} onSubmit={submitForm} className=" flex-col items-center justify-center grid grid-cols-2 m-6 my-4">
         <label htmlFor="idProducto">
           ID Producto
           <input
-            className=" bg-gray-50 border border-gray-200 m-2 p-3 rounded-lg appearance-none relative block px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+            className=" w-44 my-5  bg-gray-50 border border-gray-200 m-2 p-3 rounded-lg appearance-none relative block px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 "
             name="idProducto"
             type="number"
             min={0}
@@ -88,7 +88,7 @@ const FormularioProductos = () => {
         <label htmlFor="nombreProducto">
           Descripción
           <input
-            className=" bg-gray-50 border border-gray-200 m-2 p-3 rounded-lg appearance-none relative block px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+            className=" w-44 my-5 ml-5 bg-gray-50 border border-gray-200 m-2 p-3 rounded-lg appearance-none relative block px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10"
             name="nombreProducto"
             type="text"
             required
@@ -98,7 +98,7 @@ const FormularioProductos = () => {
         <label htmlFor="valorUnitario">
           Valor Unitario
           <input
-            className=" bg-gray-50 border border-gray-200 m-2 p-3 rounded-lg appearance-none relative block px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+            className=" w-44 my-5  bg-gray-50 border border-gray-200 m-2 p-3 rounded-lg appearance-none relative block px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 "
             name="valorUnitario"
             type="number"
             min={0}
@@ -109,7 +109,7 @@ const FormularioProductos = () => {
         <label htmlFor="estado">
           Estado
           <select
-            className=" bg-gray-50 border border-gray-200 m-2 p-3 rounded-lg appearance-none relative block px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+            className="w-44 my-5  bg-gray-50 border border-gray-200 m-2 p-3 rounded-lg appearance-none relative block px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10  ml-5"
             name="estado"
             defaultValue={0}
           >
@@ -122,20 +122,19 @@ const FormularioProductos = () => {
         </label>
         <button
           type="submit"
-            className="fas fa-plus-circle mr-2 bg-indigo-500 text-white text-base transform hover:scale-110 hover:bg-indigo-600 float-left ml-20 flex items-left p-2 rounded-lg border shadow-md"
+          className="w-44 mr-2 my-10 bg-indigo-500 text-white text-base transform hover:scale-110 hover:bg-indigo-600 float-left f  p-2 rounded-lg border shadow-md"
           >
-          <span>Registrar Producto</span>
-          
+          <span>Registrar Producto   </span>
+          <span className=" fas fa-angle-right ">  </span>
         </button>
         <Link to="/admin/productos">
           <button
-            className="fas fa-plus-circle mr-2 bg-indigo-500 text-white text-base transform hover:scale-110 hover:bg-indigo-600 float-left ml-20 flex items-left p-2 rounded-lg border shadow-md"
-            >
-              Atras
+            className="w-44 mr-2 my-10 bg-indigo-500 text-white text-base transform hover:scale-110 hover:bg-indigo-600 float-left ml-5 p-2 rounded-lg border shadow-md">
+            <span>Atras     </span>
+            <span className=" fas fa-angle-double-left ">  </span>
           </button>
         </Link>
-
-      </form>
+      </form>    
     </div>
   );
 };

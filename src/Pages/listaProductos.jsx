@@ -71,35 +71,20 @@ const ListProductos = () => {
         <label className="text-base font-semibold mr-5 text-black">
           Buscar:
         </label>
-        <svg
-          width="24"
-          height="24"
-          fill="none"
-          class="text-gray-400 group-hover:text-gray-500 transition-colors duration-200"
-        >
-          <path
-            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          ></path>
-        </svg>
+
         <input
-          //type="text"
-          //id="txtBuscar"
           value={busqueda}
           onChange={(e) => setBusqueda(e.target.value)}
-          className="p-2 ml-4 w-96 h-10 rounded-lg border shadow-md"
+          className="p-2 ml-2 w-96 h-10 rounded-lg border shadow-md"
           placeholder="Buscar por ..."
         ></input>
-
+        <span className=" fas fa-search text-gray-400 group-hover:text-gray-500 transition-colors duration-200 ml-4 ">  </span>
         <Link to="/admin/productos/gestionproductos">
         <button
          type="button"
-          className="fas fa-plus-circle mr-2 bg-indigo-500 text-white text-base transform hover:scale-110 hover:bg-indigo-600 float-left ml-20 flex items-left p-2 rounded-lg border shadow-md"
-        >
-           Insertar
+            className="w-36 bg-indigo-500 text-white text-base transform hover:scale-110 hover:bg-indigo-600 float-left ml-20 p-2 rounded-lg border shadow-md" >
+            <span className=" fas fa-plus-circle sm"> </span>
+            <span>Insertar</span>  
         </button>
         </Link>
       </div>

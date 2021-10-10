@@ -7,7 +7,7 @@ import useActiveRoute from 'hooks/useActiveRoute';
 const Sidebar = () => {
 
     return (
-        <nav className='hidden lg:flex lg:w-72 border border-indigo-500 h-full flex-col bg-indigo-500 w-52'>
+        <nav className='hidden lg:flex lg:w-72 border border-indigo-500 h-screem flex-col bg-indigo-500 w-52'>
             <Link to='/admin'>
                 <img className='w-40 ml-9 mt-6 mb-10' src={logo} alt="imagen" />
             </Link>
@@ -17,7 +17,7 @@ const Sidebar = () => {
                 <Ruta icono='fas fa-clipboard-list' ruta='/admin/ventas' nombre='Ventas' />
                 <Ruta icono='fas fa-users' ruta='/admin/usuarios' nombre='Usuarios' />
             </div>
-            <div className='mt-40'>
+            <div className='py-28'>
                 <Ruta icono='fas fa-sign-out-alt' ruta='/inicio' nombre='Salir' />
             </div>
         </nav>

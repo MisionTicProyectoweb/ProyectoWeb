@@ -8,7 +8,7 @@ const LayoutPrivado = ({children}) => {
             <div className='flex flex-col lg:flex-row flex-nowrap h-full w-full'>
                 <Sidebar />
                 <SidebarResponsive />
-                <main className="flex w-full bg-gray-100 ">{children}</main>
+                <main className="flex h-full w-full bg-gray-100 ">{children}</main>
             </div>
         </div>
     )
