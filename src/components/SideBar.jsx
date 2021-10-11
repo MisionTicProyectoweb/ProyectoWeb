@@ -5,7 +5,6 @@ import logo from 'media/logoTSolutions.png';
 import useActiveRoute from 'hooks/useActiveRoute';
 
 
-const Sidebar = () => {
 let estado,setEstado;
 const Sidebar = (navegar) => {
     [estado, setEstado] = useState(true);
@@ -50,7 +49,7 @@ const show = () => {
         <Ruta icono='fas fa-sign-out-alt' ruta='/inicio' nombre='Salir' />
     </div>
     </div>);
-}
+};
 
 const hide = () => {
     return(
@@ -67,7 +66,7 @@ const hide = () => {
             <Ruta icono='fas fa-sign-out-alt' ruta='/inicio'/>
         </div>
     </div>);
-}
+};
 
 const btnHide = () =>{
     return(
@@ -78,7 +77,7 @@ const btnHide = () =>{
         <i className={`mx-2 fas fa-${ estado ? 'chevron-left' : 'bars'} hover:text-black cursor-pointer h-15`}/> 
         </div>
     );
-}
+};
 
 
 export default Sidebar;
