@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
+import {NavBarFull} from 'components/Navbar';
 import "react-toastify/dist/ReactToastify.css";
 import { Link } from "react-router-dom";
 
@@ -70,7 +71,6 @@ const FormularioProductos = () => {
       });
       
   }; 
-
 
 
 
@@ -151,5 +151,6 @@ const FormularioProductos = () => {
     </div>
   );
 };
+
 
 export default GestionProductos;

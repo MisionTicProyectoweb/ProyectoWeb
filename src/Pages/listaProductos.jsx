@@ -7,6 +7,7 @@ import { obtenerProductos } from "utils/api";
 import { Link } from "react-router-dom";
 import "./Styles/Tablas.css";
 import "react-toastify/dist/ReactToastify.css";
+import { NavBarFull } from "components/Navbar";
 
 const ListProductos = () => {
   const [productos, setProductos] = useState([]);
@@ -43,6 +44,7 @@ const ListProductos = () => {
     setEjecutarConsulta(true);
   }, []);
   return (
+
     <div className="flex h-full w-full flex-col items-center justify-start">
       <div
         id="barraNavegador"
@@ -66,7 +68,8 @@ const ListProductos = () => {
         </nav>
       </div>
 
-      <div className="mb-8 flex items-center justify-center w-full h-20">
+
+      <div className="flex items-center justify-center w-full h-20">
         <label className="text-base font-semibold mr-5 text-black">
           Buscar:
         </label>

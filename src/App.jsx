@@ -11,7 +11,7 @@ import Inicio from "Pages/inicio";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import LayoutPrivado from "layouts/LayoutPrivado";
 import LayoutPublico from "layouts/LayoutPublico";
-import ModificacionUsuarios from "Pages/ModificacionUsuarios";
+
 
 
 export default function App() {
@@ -52,9 +52,6 @@ export default function App() {
                 </Route>
                 <Route path="/admin/usuarios/gestionusuario">
                   <GestionUsuarios />
-                </Route>
-                <Route path="/admin/usuarios/modificaciones">
-                  <ModificacionUsuarios />
                 </Route>
                 <Route path="/admin/usuarios">
                   <Usuarios />
