@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom';
 import logo from 'media/logoTSolutions.png';
 //import 'Pages/Styles/Login.css';
 import useActiveRoute from 'hooks/useActiveRoute';
+
+
+const Sidebar = () => {
 let estado,setEstado;
 const Sidebar = (navegar) => {
     [estado, setEstado] = useState(true);
@@ -11,6 +14,7 @@ const Sidebar = (navegar) => {
             <div>{btnHide()}</div>
             <div className="h-full">{estado===false ? hide():show()}</div>
         </div>        
+
     );
 };
 
