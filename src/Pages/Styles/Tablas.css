@@ -1,9 +1,8 @@
 
 .table{
-    width: 100%;
+    width: 90%;
     margin: 10px;
     overflow-y: scroll;
-    
 }
 
 .table th, .table td{
@@ -22,5 +21,5 @@
 }
 
 .Input {
-    @apply bg-gray-50 border border-gray-200 m-2 p-3 rounded-lg appearance-none relative block px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm;
+    @apply bg-gray-50 border border-gray-200 m-1 p-1 rounded-lg appearance-none relative block px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm;
 }

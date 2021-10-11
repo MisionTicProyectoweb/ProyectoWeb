@@ -3,7 +3,12 @@ import { Link } from 'react-router-dom';
 import logo from 'media/logoTSolutions.png';
 import useActiveRoute from 'hooks/useActiveRoute';
 
+<<<<<<< HEAD
 let estado, setEstado;
+=======
+
+let estado,setEstado;
+>>>>>>> 4e8695723e6e714c0504dec961d132883fd0464e
 const Sidebar = (navegar) => {
     [estado, setEstado] = useState(true);
     return (
@@ -27,6 +32,7 @@ const Ruta = ({ icono, ruta, nombre }) => {
     );
 };
 const show = () => {
+<<<<<<< HEAD
     return (
         <div className="flex flex-col items-center justify-center bg-indigo-500">
             <nav className='hidden lg:flex lg:w-56 border border-indigo-500 h-full flex-col bg-indigo-500 w-52'>
@@ -45,6 +51,26 @@ const show = () => {
             </div>
         </div>);
 }
+=======
+    return(
+    <div className="flex flex-col items-center justify-center bg-indigo-500">
+    <nav className='hidden lg:flex lg:w-56 border border-indigo-500 h-full flex-col bg-indigo-500 w-52'>
+        <Link to='/admin'>
+            <img className='w-40 ml-9 mt-6 mb-10' src={logo} alt="imagen" />
+        </Link>
+        <div className='my-6 '>
+            <Ruta icono='fas fa-users-cog' ruta='/admin/dashboard' nombre='DashBoard' />
+            <Ruta icono='fas fa-cart-plus' ruta='/admin/productos' nombre='Productos'/>
+            <Ruta icono='fas fa-clipboard-list' ruta='/admin/ventas' nombre='Ventas' />
+            <Ruta icono='fas fa-users' ruta='/admin/usuarios' nombre='Usuarios' />
+        </div>
+    </nav>
+    <div className="w-full bottom-0">
+        <Ruta icono='fas fa-sign-out-alt' ruta='/inicio' nombre='Salir' />
+    </div>
+    </div>);
+};
+>>>>>>> 4e8695723e6e714c0504dec961d132883fd0464e
 
 const hide = () => {
     return (
@@ -60,8 +86,17 @@ const hide = () => {
             <div className="w-full flex items-center justify-center">
                 <Ruta icono='fas fa-sign-out-alt' ruta='/inicio' />
             </div>
+<<<<<<< HEAD
         </div>);
 }
+=======
+        </nav>
+        <div className="w-full flex items-center justify-center">
+            <Ruta icono='fas fa-sign-out-alt' ruta='/inicio'/>
+        </div>
+    </div>);
+};
+>>>>>>> 4e8695723e6e714c0504dec961d132883fd0464e
 
 const btnHide = () => {
     return (
@@ -72,6 +107,6 @@ const btnHide = () => {
             <i className={`mx-8 fas fa-${estado ? 'chevron-left' : 'bars'} hover:text-black `} />
         </div>
     );
-}
+};
 
 export default Sidebar;
