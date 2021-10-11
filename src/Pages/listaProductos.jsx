@@ -39,8 +39,7 @@ const ListProductos = () => {
   }, [busqueda, filtroCampo]);
 
   useEffect(() => {
-    //Obtener productos desde el backend
-    //setProductos(productosBackend);
+    //Obtener productos desde el backend  
     setEjecutarConsulta(true);
   }, []);
   return (
@@ -83,7 +82,7 @@ const ListProductos = () => {
         <button
          type="button"
             className="w-36 bg-indigo-500 text-white text-base transform hover:scale-110 hover:bg-indigo-600 float-left ml-20 p-2 rounded-lg border shadow-md" >
-            <span className=" fas fa-plus-circle sm"> </span>
+            <span className=" fas fa-plus-circle sm mx-2"> </span>
             <span>Insertar</span>  
         </button>
         </Link>
@@ -115,7 +114,7 @@ const TablaProductos = ({ listaProductos, setEjecutarConsulta }) => {
           <tr>
             <th>Id</th>
             <th>Descripción</th>
-            <th>Valor</th>
+            <th>Valor ($)</th>
             <th>Estado</th>
             <th>Acción</th>
           </tr>
@@ -199,8 +198,9 @@ const FilaProducto = ({ productos, setEjecutarConsulta }) => {
         <>
           <td>
             <input
-              className="Input"
+              //className="Input"
               type="number"
+              disabled="true"
               value={infoNuevoProducto.idProducto}
               onChange={(e) =>
                 setInfoNuevoProducto({
