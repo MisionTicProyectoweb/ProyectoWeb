@@ -61,7 +61,8 @@ const FormularioProductos = () => {
       .request(options)
       .then(function (response) {
         console.log(response.data);
-        toast.success("Se ha agregado el producto con éxito");               
+        toast.success("Se ha agregado el producto con éxito");
+        e.target.reset();           
       })
       .catch(function (error) {
         console.error(error);
