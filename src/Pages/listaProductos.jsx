@@ -46,29 +46,7 @@ const ListProductos = () => {
   return (
 
     <div className="flex h-full w-full flex-col items-center justify-start">
-      <div
-        id="barraNavegador"
-        className="bg-indigo-500 mb-16 flex items-center justify-center w-full h-20"
-      >
-        <nav className="flex text-white">
-          <div className="mr-10">
-            <ul className="flex">
-              <li className="ml-1 mr-4 text-5xl font-semibold">
-                Listado Productos
-              </li>
-            </ul>
-          </div>
-          <div className="font-sick">
-            <ul className="flex mt-1.5">
-              <li className="ml-3 mr-4 text-2xl">
-                Total: {productosFiltrados.length}
-              </li>
-            </ul>
-          </div>
-        </nav>
-      </div>
-
-
+      <NavBarFull titulo="Listado de productos" subtitulo={"productos: "+ productos.length}/>
       <div className="flex items-center justify-center w-full h-20">
         <label className="text-base font-semibold mr-5 text-black">
           Buscar:
