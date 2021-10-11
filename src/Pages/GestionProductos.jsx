@@ -9,20 +9,7 @@ const GestionProductos = () => {
   const [productos, setProductos] = useState([]);
   return (
     <div className="w-full text-center">
-      <div
-        id="barraNavegador"
-        className="w-full text-center bg-indigo-500 mb-16 flex items-center justify-center h-20"
-      >
-        <nav className="flex text-white">
-          <div className="mr-10">
-            <ul className="flex">
-              <li className="ml-1 mr-4 text-5xl font-semibold">
-                Gestion Productos
-              </li>
-            </ul>
-          </div>
-        </nav>
-      </div>
+      <NavBarFull titulo="Gestion de productos"/>
       <div>
         <FormularioProductos
           listaProductos={productos}
