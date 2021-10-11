@@ -1,6 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo from 'media/logoTSolutions.png';
+import Sidebar from 'components/SideBar';
+
+const NavBarFull = ({titulo, subtitulo,subtitulo2}) =>{
+    
+    return(
+        <div className="h-14 bg-white text-indigo-500 flex items-center w-full mb-1">
+            <div className="flex text-indigo-500 justify-center w-full">
+                <nav className="flex items-center ">
+                    <div>
+                        <ul className="flex items-center justify-center text-center">
+                            <li className="ml-1 mr-4 text-5xl font-semibold">{titulo}</li>
+                            <li className="ml-1 mr-4 text-2xl font-semibold">{subtitulo}</li>
+                            <li className="ml-1 mr-4 text-2xl font-semibold">{subtitulo2}</li>
+                        </ul>
+                    </div>
+                </nav>
+            </div> 
+        </div>      
+    )
+}
 
 const Navbar = () => {
     return (
@@ -23,4 +43,4 @@ const Navbar = () => {
     )
 }
 
-export default Navbar;
+export {Navbar, NavBarFull};

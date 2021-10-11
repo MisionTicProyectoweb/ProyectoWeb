@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import{Link} from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
+import { NavBarFull } from "components/Navbar";
 
 const GestionUsuarios = ({ setMostrarTabla, listaUsuarios, setUsuarios}) => {
     /* const form = useRef(null);
@@ -23,15 +24,7 @@ const GestionUsuarios = ({ setMostrarTabla, listaUsuarios, setUsuarios}) => {
 
     return (
       <div className="w-full text-center">
-          <div id="barraNavegador" className="bg-indigo-500 mb-16 flex items-center justify-center w-full h-20">
-                <nav className="flex text-white">
-                    <div className="mr-10">
-                        <ul className="flex">
-                            <li className="ml-1 mr-4 text-5xl font-semibold">Gestion Usuarios</li>
-                        </ul>
-                    </div>
-                </nav>
-          </div>
+          <NavBarFull titulo="Gestion de Usuarios"/>
           <div className="flex flex-col items-center justify-center">
             <h2 className="text-2xl font-extrabold text-gray-700">Crear nuevo usuario</h2>
             <form /* ref={form} onSubmit={submitForm} */ className="flex flex-col grid-cols-2 m-4">

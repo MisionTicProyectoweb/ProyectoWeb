@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import { ToastContainer, toast } from "react-toastify";
+import {NavBarFull} from 'components/Navbar';
 import "react-toastify/dist/ReactToastify.css";
 
 const GestionProductos = ({setMostrarTabla,listaProductos,setProductos}) => {
@@ -22,15 +23,7 @@ const GestionProductos = ({setMostrarTabla,listaProductos,setProductos}) => {
     }; */
     return (
        <div className="w-full text-center">
-           <div id="barraNavegador" className="w-full text-center bg-indigo-500 mb-16 flex items-center justify-center h-20">
-                <nav className="flex text-white">
-                    <div className="mr-10">
-                        <ul className="flex">
-                            <li className="ml-1 mr-4 text-5xl font-semibold">Gestion Productos</li>
-                        </ul>
-                    </div>
-                </nav>
-            </div>
+            <NavBarFull titulo="Gestion de Productos" subtitulo="Total de ventas"/>
             <div className="flex flex-col items-center justify-center">
                 <h2 className="text-2xl font-extrabold text-gray-700">
                 Registrar nuevo producto
@@ -39,7 +32,7 @@ const GestionProductos = ({setMostrarTabla,listaProductos,setProductos}) => {
                 <label htmlFor="idProducto">
                     ID Producto
                     <input
-                    className=" bg-gray-50 border border-gray-200 m-2 p-3 rounded-lg appearance-none relative block px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                    className="bg-gray-50 border border-gray-200 m-2 p-3 rounded-lg appearance-none relative block px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                     name="idProducto"
                     type="number"
                     min={0}

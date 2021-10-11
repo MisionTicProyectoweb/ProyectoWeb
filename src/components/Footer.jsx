@@ -1,16 +1,16 @@
 import React from 'react';
 
 const Footer = () => {
-    return <div className='bg-indigo-500  justify-between '>
-        <nav className="shadow-md text-right p-2 text-white">
-            <ul className='my-1'>
+    return (
+        <nav className="absolute inset-x-0 bottom-0 bg-indigo-500 shadow-md text-right p-2 text-white bottom-0">
+            <ul>
                 <li>Contáctenos: </li>
                 <li>Teléfono:  (00) 744 44 33
                     Email: info@tsolutions.com</li>
                 <li>2021 Todos los derechos reservados TSolutions</li>
             </ul>
         </nav>
-    </div>
+    )
 };
 
 export default Footer;

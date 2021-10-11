@@ -3,6 +3,7 @@ import "./Styles/gestionVentas.css";
 import { Link } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import {NavBarFull} from 'components/Navbar';
 
 const GestVentas = () => {
   // Estados
@@ -10,18 +11,8 @@ const GestVentas = () => {
   const [ventas, setVentas] = useState([]); //pata obtener informacion desde el backend
   return (
     <div className="font-sick flex-col" id="body">
-      <div id="barraNavegador" className="bg-indigo-500 flex items-center justify-center w-full h-20">
-        <nav className="flex text-white">
-          <div className="mr-10">
-            <ul className="flex">
-              <li className="ml-1 mr-4 text-5xl font-semibold">
-                Gestión de Ventas
-              </li>
-            </ul>
-          </div>
-        </nav>
-      </div>
-      <div className="p-2">
+      <NavBarFull titulo="Gestion de Ventas"/>
+      <div className="p-1">
         <FormularioVentas
           setMostrarTabla={setMostrarTabla}
           listaVentas={ventas}

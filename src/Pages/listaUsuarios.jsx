@@ -5,6 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 import {Dialog, Tooltip} from "@material-ui/core";
 import "./Styles/Tablas.css";
 import { nanoid } from "nanoid";
+import {NavBarFull} from 'components/Navbar';
 
 const usuariosBackend = [
   {
@@ -78,28 +79,7 @@ const Usuarios = () => {
   }, [mostrarTabla]); */
   return (
     <div className="flex h-full w-full flex-col items-center justify-start ">
-      <div id="barraNavegador" className="bg-indigo-500 mb-16 flex items-center justify-center w-full h-20">
-        <nav className="flex text-white">
-          <div className="mr-10">
-            <ul className="flex">
-              <li className="ml-1 mr-4 text-5xl font-semibold my-4">Listado Usuarios</li>
-            </ul>
-          </div>
-          <div className="font-sick">
-            <ul className="flex mt-1.5">
-              <li className="ml-3 mr-4 text-2xl my-4">Número de Usuarios: 6</li>
-            </ul>
-          </div>
-        </nav>
-        {/* <button
-            onClick={() => {
-              setMostrarTabla(!mostrarTabla);
-            }}
-            className="text-white bg-purple-500 p-3 rounded-full my-6 hover:bg-purple-700 w-auto"
-          >
-            {textoBoton}
-          </button> */}
-      </div>
+      <NavBarFull titulo="Listado de Usuarios" subtitulo={`Usuarios: ${usuariosBackend.length}`}/>
       <div className="mb-2 flex items-center justify-center w-full h-20">
         <label className="text-base font-semibold mr-5 text-black">Buscar:</label>
         <svg width="24" height="24" fill="none" class="text-gray-400 group-hover:text-gray-500 transition-colors duration-200"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
