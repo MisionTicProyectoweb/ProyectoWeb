@@ -7,7 +7,7 @@ let estado,setEstado;
 const Sidebar = (navegar) => {
     [estado, setEstado] = useState(true);
     return(
-        <div className="hidden lg:flex h-screen flex flex-col items-center justify-center bg-indigo-500">
+        <div className="lg:flex h-screen flex flex-col items-center justify-center bg-indigo-500">
             <div>{btnHide()}</div>
             <div className="h-full">{estado===false ? hide():show()}</div>
         </div>        
@@ -42,7 +42,7 @@ const show = () => {
             <Ruta icono='fas fa-users' ruta='/admin/usuarios' nombre='Usuarios' />
         </div>
     </nav>
-    <div className="w-full bottom-0">
+    <div className="w-full bottom-0 py-18">
         <Ruta icono='fas fa-sign-out-alt' ruta='/inicio' nombre='Salir' />
     </div>
     </div>);
@@ -51,7 +51,7 @@ const show = () => {
 const hide = () => {
     return(
     <div className="mt-48 flex-col bg-indigo-500 items-center">
-        <nav className='flex items-center hidden lg:flex lg:w-14 border border-indigo-500 h-full flex-col bg-indigo-500'>
+        <nav className='flex items-center lg:flex lg:w-14 border border-indigo-500 h-full flex-col bg-indigo-500'>
             <div>
                 <Ruta icono='fas fa-users-cog' ruta='/admin/dashboard'/>
                 <Ruta icono='fas fa-cart-plus' ruta='/admin/productos'/>
