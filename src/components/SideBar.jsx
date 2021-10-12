@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
 import logo from 'media/logoTSolutions.png';
-//import 'Pages/Styles/Login.css';
 import useActiveRoute from 'hooks/useActiveRoute';
 
 
