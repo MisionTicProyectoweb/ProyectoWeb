@@ -41,7 +41,7 @@ const Usuarios = () => {
           </button>
         </Link>
       </div>
-      <div className="overflow-y-scroll h-96 ">
+      <div className="overflow-y-scroll">
         <TablaUsuarios listaUsuarios={usuarios} setEjecutarConsulta={setEjecutarConsulta}/>
         <ToastContainer position="bottom-center" autoClose={5000} />
       </div>

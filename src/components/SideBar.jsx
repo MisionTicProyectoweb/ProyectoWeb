@@ -9,8 +9,8 @@ let estado,setEstado;
 const Sidebar = (navegar) => {
     [estado, setEstado] = useState(true);
     return(
-        <div className="hidden lg:flex h-screen flex flex-col items-center justify-center bg-indigo-500">
-            <div>{btnHide()}</div>
+        <div className="w-56 hidden lg:flex h-screen flex flex-col items-center bg-indigo-500">
+            <div className="w-56">{btnHide()}</div>
             <div className="h-full">{estado===false ? hide():show()}</div>
         </div>        
 
@@ -70,12 +70,13 @@ const hide = () => {
 
 const btnHide = () =>{
     return(
-        <div className="bg-indigo-500 text-white flex items-center h-14"
+        <div className="w-full">
+        <button className="bg-indigo-500 text-white flex w-full items-center h-14"
         onClick={() => {
             setEstado(!estado);
         }}>
-        <i className={`mx-2 fas fa-${ estado ? 'chevron-left' : 'bars'} hover:text-black cursor-pointer h-15`}/> 
-        </div>
+        <i className={`mx-2 fas fa-${ estado ? 'chevron-left' : 'bars'} hover:text-black cursor-pointer h-15 w-full`}/> 
+        </button></div>
     );
 };
 
