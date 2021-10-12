@@ -1,9 +1,10 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useState, useRef } from "react";
 import { ToastContainer, toast } from "react-toastify";
-import axios from "axios";
+//import axios from "axios";
 import {NavBarFull} from 'components/Navbar';
 import "react-toastify/dist/ReactToastify.css";
 import { Link } from "react-router-dom";
+import { crearProducto } from "utils/api";
 
 const GestionProductos = () => {
   const [productos, setProductos] = useState([]);
@@ -33,33 +34,25 @@ const FormularioProductos = () => {
       nuevoProducto[key] = value;
     });
 
-    const options = {
-      method: "POST",
-      url: "http://localhost:5000/productos/nuevo/",
-      headers: { "Content-Type": "application/json" },
-      data: {
-        idProducto: nuevoProducto.idProducto,
-        nombreProducto: nuevoProducto.nombreProducto,
-        valorUnitario: nuevoProducto.valorUnitario,
-        estado: nuevoProducto.estado,
-      },
-    };
-
-    await axios
-      .request(options)
-      .then(function (response) {
+    await crearProducto(
+      {
+      idProducto: nuevoProducto.idProducto,
+      nombreProducto: nuevoProducto.nombreProducto,
+      valorUnitario: nuevoProducto.valorUnitario,
+      estado: nuevoProducto.estado,
+    },
+      (response) => {
         console.log(response.data);
-        toast.success("Se ha agregado el producto con éxito");
-        e.target.reset();           
-      })
-      .catch(function (error) {
+        toast.success('Producto agregado con éxito');
+        e.target.reset();
+      },
+      (error) => {
         console.error(error);
-        toast.error("Error creando un producto");
-      });
-      
-  }; 
-
-
+        toast.error('Error creando un producto');
+      }
+    );
+    
+  };
 
   return (
     <div className="flex flex-col items-center justify-center">

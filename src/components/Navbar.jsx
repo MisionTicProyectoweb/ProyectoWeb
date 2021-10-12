@@ -1,13 +1,18 @@
-import React, { useState } from 'react';
+
 import { Link } from 'react-router-dom';
 import logo from 'media/logoTSolutions.png';
-import Sidebar from 'components/SideBar';
+
 
 const NavBarFull = ({titulo, subtitulo,subtitulo2}) =>{
     
     return(
+<<<<<<< HEAD
         <div className="h-14 bg-white text-indigo-500 flex items-center w-full mb-1">
             <div className="flex text-indigo-500 justify-center w-full">
+=======
+        <div className="h-16 bg-indigo-400 text-white flex items-center w-full mb-2 rounded-b-3xl">
+            <div className="flex text-white justify-center w-full">
+>>>>>>> c30024464e89816f72c58b72f9ab11e875af7b43
                 <nav className="flex items-center ">
                     <div>
                         <ul className="flex items-center justify-center text-center">
