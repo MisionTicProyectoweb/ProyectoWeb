@@ -8,7 +8,7 @@ let estado,setEstado;
 const Sidebar = (navegar) => {
     [estado, setEstado] = useState(true);
     return(
-        <div className="lg:flex h-screen flex flex-col items-center justify-center bg-indigo-500">
+        <div className="hidden lg:flex h-screen flex-col items-center justify-center bg-indigo-500">
             <div>{btnHide()}</div>
             <div className="h-full">{estado===false ? hide():show()}</div>
         </div>        
