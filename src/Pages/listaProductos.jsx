@@ -44,36 +44,12 @@ const ListProductos = () => {
     setEjecutarConsulta(true);
   }, []);
   return (
-
-    <div className="flex h-full w-full flex-col items-center justify-start">
-      <div
-        id="barraNavegador"
-        className="bg-indigo-500 mb-16 flex items-center justify-center w-full h-20"
-      >
-        <nav className="flex text-white">
-          <div className="mr-10">
-            <ul className="flex">
-              <li className="ml-1 mr-4 text-5xl font-semibold">
-                Listado Productos
-              </li>
-            </ul>
-          </div>
-          <div className="font-sick">
-            <ul className="flex mt-1.5">
-              <li className="ml-3 mr-4 text-2xl">
-                Total: {productosFiltrados.length}
-              </li>
-            </ul>
-          </div>
-        </nav>
-      </div>
-
-
+    <div className="flex w-full flex-col items-center h-full m-0">
+      <NavBarFull titulo="Listado de productos" subtitulo={"productos: "+ productos.length}/>
       <div className="flex items-center justify-center w-full h-20">
         <label className="text-base font-semibold mr-5 text-black">
           Buscar:
         </label>
-
         <input
           value={busqueda}
           onChange={(e) => setBusqueda(e.target.value)}
@@ -90,12 +66,11 @@ const ListProductos = () => {
         </button>
         </Link>
       </div>
-
-      <div className="overflow-y-scroll h-96">
+      <div className="h-96 overflow-y-scroll">      
         <TablaProductos
-          listaProductos={productosFiltrados}
-          setEjecutarConsulta={setEjecutarConsulta}
-        />
+            listaProductos={productosFiltrados}
+            setEjecutarConsulta={setEjecutarConsulta}
+          />
         <ToastContainer position="bottom-center" autoClose={5000} />
       </div>
     </div>
@@ -111,7 +86,7 @@ const TablaProductos = ({ listaProductos, setEjecutarConsulta }) => {
   }, [listaProductos]);
 
   return (
-    <div className="flex items-center justify-center">
+    <div className="flex justify-center">
       <table className="table">
         <thead>
           <tr>
@@ -126,10 +101,10 @@ const TablaProductos = ({ listaProductos, setEjecutarConsulta }) => {
           {productosFiltrados.map((productos) => {
             return (
               <FilaProducto
-                key={nanoid()}
-                productos={productos}
-                setEjecutarConsulta={setEjecutarConsulta}
-              />
+              key={nanoid()}
+              productos={productos}
+              setEjecutarConsulta={setEjecutarConsulta}
+            />
             );
           })}
         </tbody>
