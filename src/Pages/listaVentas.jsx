@@ -4,181 +4,31 @@ import{Link} from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { NavBarFull } from 'components/Navbar';
-
-
-const ventasBackend  = [
-    {
-        id: 101,
-        fecha: "02-10-2021",
-        ccCliente: "1234567890",
-        idVendedor: "987654321",
-        valor: 250000,
-    },{
-        id: 101,
-        fecha: "02-10-2021",
-        ccCliente: "1234567890",
-        idVendedor: "987654321",
-        valor: 250000,
-    },{
-        id: 101,
-        fecha: "02-10-2021",
-        ccCliente: "1234567890",
-        idVendedor: "987654321",
-        valor: 250000,
-    },{
-        id: 101,
-        fecha: "02-10-2021",
-        ccCliente: "1234567890",
-        idVendedor: "987654321",
-        valor: 250000,
-    },{
-        id: 101,
-        fecha: "02-10-2021",
-        ccCliente: "1234567890",
-        idVendedor: "987654321",
-        valor: 250000,
-    },{
-        id: 101,
-        fecha: "02-10-2021",
-        ccCliente: "1234567890",
-        idVendedor: "987654321",
-        valor: 250000,
-    },{
-        id: 101,
-        fecha: "02-10-2021",
-        ccCliente: "1234567890",
-        idVendedor: "987654321",
-        valor: 250000,
-    },{
-        id: 101,
-        fecha: "02-10-2021",
-        ccCliente: "1234567890",
-        idVendedor: "987654321",
-        valor: 250000,
-    },{
-        id: 101,
-        fecha: "02-10-2021",
-        ccCliente: "1234567890",
-        idVendedor: "987654321",
-        valor: 250000,
-    },{
-        id: 101,
-        fecha: "02-10-2021",
-        ccCliente: "1234567890",
-        idVendedor: "987654321",
-        valor: 250000,
-    },{
-        id: 101,
-        fecha: "02-10-2021",
-        ccCliente: "1234567890",
-        idVendedor: "987654321",
-        valor: 250000,
-    },{
-        id: 101,
-        fecha: "02-10-2021",
-        ccCliente: "1234567890",
-        idVendedor: "987654321",
-        valor: 250000,
-    },{
-        id: 101,
-        fecha: "02-10-2021",
-        ccCliente: "1234567890",
-        idVendedor: "987654321",
-        valor: 250000,
-    },{
-        id: 101,
-        fecha: "02-10-2021",
-        ccCliente: "1234567890",
-        idVendedor: "987654321",
-        valor: 250000,
-    },{
-        id: 101,
-        fecha: "02-10-2021",
-        ccCliente: "1234567890",
-        idVendedor: "987654321",
-        valor: 250000,
-    },{
-        id: 101,
-        fecha: "02-10-2021",
-        ccCliente: "1234567890",
-        idVendedor: "987654321",
-        valor: 250000,
-    },{
-        id: 101,
-        fecha: "02-10-2021",
-        ccCliente: "1234567890",
-        idVendedor: "987654321",
-        valor: 250000,
-    },{
-        id: 101,
-        fecha: "02-10-2021",
-        ccCliente: "1234567890",
-        idVendedor: "987654321",
-        valor: 250000,
-    },{
-        id: 101,
-        fecha: "02-10-2021",
-        ccCliente: "1234567890",
-        idVendedor: "987654321",
-        valor: 250000,
-    },{
-        id: 101,
-        fecha: "02-10-2021",
-        ccCliente: "1234567890",
-        idVendedor: "987654321",
-        valor: 250000,
-    },{
-        id: 101,
-        fecha: "02-10-2021",
-        ccCliente: "1234567890",
-        idVendedor: "987654321",
-        valor: 250000,
-    },{
-        id: 101,
-        fecha: "02-10-2021",
-        ccCliente: "1234567890",
-        idVendedor: "987654321",
-        valor: 250000,
-    },{
-        id: 101,
-        fecha: "02-10-2021",
-        ccCliente: "1234567890",
-        idVendedor: "987654321",
-        valor: 250000,
-    },{
-        id: 101,
-        fecha: "02-10-2021",
-        ccCliente: "1234567890",
-        idVendedor: "987654321",
-        valor: 250000,
-    },
-  ];
-
-
+import {obtenerVentas} from 'utils/api';
 
 const ListVentas = () => {
 
-    const [ventas, setVentas] = useState([]); //
+    const [ventas, setVentas] = useState([]);
+    const [ejecutarConsulta, setEjecutarConsulta] = useState(true);
     useEffect(() => {
         //Obtener ventas desde el backend
-        setVentas(ventasBackend);
-      }, []);
+        if (ejecutarConsulta){
+            obtenerVentas(setVentas,setEjecutarConsulta);
+        }
+      }, [ejecutarConsulta]);
 
-    const Bienvenido = (valor) => {
-        toast.success("Bienvenido" + valor);
-    }
     return (   
         <div className="flex h-full w-full flex-col items-center justify-start">
-            <NavBarFull titulo="Listado de Ventas" subtitulo={`Ventas completadas: ${ventasBackend.length}`}/>
+            <NavBarFull titulo="Listado de Ventas" subtitulo={`Ventas completadas: ${ventas.length}`}/>
             <div className="mb-8 flex items-center justify-center w-full h-20">
                 <label className="text-base font-semibold mr-5 text-black">Buscar:</label>                    
                 <svg width="24" height="24" fill="none" class="text-gray-400 group-hover:text-gray-500 transition-colors duration-200"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
                 <input type="text" className="p-2 ml-4 w-96 h-10 rounded-lg border shadow-md" placeholder="Buscar por ..."></input>
-                <select name="select" className="font-semibold text-center ml-4 border h-10 rounded-lg shadow-md">
-                    <option value="value1" selected>Id</option>
-                    <option value="value2">Fecha</option>
-                    <option value="value2">Cc Cliente</option>
-                    <option value="value3">ID vendedor</option>
+                <select id="filtro" name="select" className="font-semibold text-center ml-4 border h-10 rounded-lg shadow-md">
+                    <option value="idVenta">Id</option>
+                    <option value="fecha">Fecha</option>
+                    <option value="ccCliente">Cc Cliente</option>
+                    <option value="idVendedor">ID vendedor</option>
                 </select>
                 <Link to="/admin/ventas/gestionVentas">
                     <button type="button" className="bg-indigo-500 text-white transform hover:scale-110 hover:bg-indigo-600   float-left ml-20 flex items-center p-2 rounded-lg border shadow-md">
@@ -191,7 +41,7 @@ const ListVentas = () => {
             </div>
 
             <div className="overflow-y-scroll h-96 w-10/12">
-                <TablaVentas listaventas = {ventas} />
+                <TablaVentas listaventas = {ventas} filtro={document.getElementById('filtro')} />
                 <ToastContainer position="bottom-center" autoClose={5000} />
             </div>
         </div>
@@ -199,15 +49,15 @@ const ListVentas = () => {
     );
 }
 
-const TablaVentas = ({listaventas}) => {
+const TablaVentas = ({listaventas,filtro}) => {
     return (
         <div className="flex items-center justify-center">
-            <table className="border-2">
+            <table className="table">
                 <thead className="border-2 font-semibold">
                     <tr>
                         <th>Id</th>
                         <th>Fecha</th>
-                        <th>C.C Clientes</th>
+                        <th>C.C Cliente</th>
                         <th>Id vendedor</th> 
                         <th>Valor</th> 
                         <th>Acción</th>
@@ -216,7 +66,7 @@ const TablaVentas = ({listaventas}) => {
                 <tbody className="border-2">{listaventas.map((ventas) => {
                     return (
                         <tr className="border-2 text-center justify-center">
-                            <td > {ventas.id} </td>
+                            <td > {ventas.idVentas} </td>
                             <td > {ventas.fecha} </td>
                             <td > {ventas.ccCliente} </td>
                             <td > {ventas.idVendedor} </td>
@@ -230,7 +80,7 @@ const TablaVentas = ({listaventas}) => {
                             </td>
                         </tr>
                     );
-                    })}
+                })}
                 </tbody>
             </table>
     </div>

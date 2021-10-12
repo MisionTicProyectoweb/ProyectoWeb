@@ -4,15 +4,15 @@ import logo from "media/logoTSolutions.png";
 //import 'Pages/Styles/Login.css';
 import useActiveRoute from "hooks/useActiveRoute";
 
-const Sidebar = () => {
-  let estado, setEstado;
-  const Sidebar = (navegar) => {
+let estado,setEstado;
+const Sidebar = (navegar) => {
     [estado, setEstado] = useState(true);
-    return (
-      <div className="hidden lg:flex h-screen flex flex-col items-center justify-center bg-indigo-500">
-        <div>{btnHide()}</div>
-        <div className="h-full">{estado === false ? hide() : show()}</div>
-      </div>
+    return(
+        <div className="lg:flex h-screen flex flex-col items-center justify-center bg-indigo-500">
+            <div>{btnHide()}</div>
+            <div className="h-full">{estado===false ? hide():show()}</div>
+        </div>        
+
     );
   };
 
@@ -65,20 +65,23 @@ const Sidebar = () => {
         <div className="w-full bottom-0">
           <Ruta icono="fas fa-sign-out-alt" ruta="/inicio" nombre="Salir" />
         </div>
-      </div>
-    );
-  };
 
-  const hide = () => {
-    return (
-      <div className="mt-48 flex-col bg-indigo-500 items-center">
-        <nav className="flex items-center hidden lg:flex lg:w-14 border border-indigo-500 h-full flex-col bg-indigo-500">
-          <div>
-            <Ruta icono="fas fa-users-cog" ruta="/admin/dashboard" />
-            <Ruta icono="fas fa-cart-plus" ruta="/admin/productos" />
-            <Ruta icono="fas fa-clipboard-list" ruta="/admin/ventas" />
-            <Ruta icono="fas fa-users" ruta="/admin/usuarios" />
-          </div>
+    </div>
+
+    );
+   
+    };
+
+const hide = () => {
+    return(
+    <div className="mt-48 flex-col bg-indigo-500 items-center">
+        <nav className='flex items-center lg:flex lg:w-14 border border-indigo-500 h-full flex-col bg-indigo-500'>
+            <div>
+                <Ruta icono='fas fa-users-cog' ruta='/admin/dashboard'/>
+                <Ruta icono='fas fa-cart-plus' ruta='/admin/productos'/>
+                <Ruta icono='fas fa-clipboard-list' ruta='/admin/ventas'/>
+                <Ruta icono='fas fa-users' ruta='/admin/usuarios'/>
+            </div>
         </nav>
         <div className="w-full flex items-center justify-center">
           <Ruta icono="fas fa-sign-out-alt" ruta="/inicio" />
@@ -102,7 +105,7 @@ const Sidebar = () => {
         />
       </div>
     );
-  };
 };
+
 
 export default Sidebar;
