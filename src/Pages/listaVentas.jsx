@@ -1,7 +1,7 @@
 import './Styles/listaVentas.css';
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import{Link} from "react-router-dom";
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { NavBarFull } from 'components/Navbar';
 import {obtenerVentas} from 'utils/api';
