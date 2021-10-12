@@ -55,14 +55,18 @@ const ListProductos = () => {
       <NavBarFull titulo="Listado de productos" subtitulo={"productos: "+ productos.length}/>
       <div className="flex items-center justify-center w-full h-20">
         <label className="text-base font-semibold mr-5 text-black">
-          Buscar:
+          Buscar por:
         </label>
+        <select name="opcion" className="p-2 ml-2 w-40 h-10 rounded-lg border shadow-md">
+
+        </select>
         <input
           value={busqueda}
           onChange={(e) => setBusqueda(e.target.value)}
           className="p-2 ml-2 w-96 h-10 rounded-lg border shadow-md"
           placeholder="Buscar por ..."
-        ></input>
+        >
+        </input>
         <span className=" fas fa-search text-gray-400 group-hover:text-gray-500 transition-colors duration-200 ml-4 ">  </span>
         <Link to="/admin/productos/gestionproductos">
         <button
@@ -73,7 +77,7 @@ const ListProductos = () => {
         </button>
         </Link>
       </div>
-      <div className="h-96 overflow-y-scroll">      
+      <div className="h-100 overflow-y-scroll">      
         <TablaProductos
             listaProductos={productosFiltrados}
             setEjecutarConsulta={setEjecutarConsulta}
@@ -93,7 +97,7 @@ const TablaProductos = ({ listaProductos, setEjecutarConsulta }) => {
   }, [listaProductos]);
 
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center w-full">
       <table className="table">
         <thead>
           <tr>
