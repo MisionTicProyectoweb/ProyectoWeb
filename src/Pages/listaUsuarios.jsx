@@ -1,4 +1,5 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState} from "react";
+import axios from 'axios';
 import { ToastContainer, toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
@@ -6,80 +7,22 @@ import {Dialog, Tooltip} from "@material-ui/core";
 import "./Styles/Tablas.css";
 import { nanoid } from "nanoid";
 import {NavBarFull} from 'components/Navbar';
-
-const usuariosBackend = [
-  {
-    cedula: 1006618199,
-    nombre: "Faber",
-    apellido: "Hoyos",
-    correo: "faberhoyos01@gmail.com",
-    estadoUsuario: "Autorizado",
-    rol: "Administrador",
-  },
-  {
-    cedula: 1007409899,
-    nombre: "Manuel",
-    apellido: "Guzman",
-    correo: "manuelguma25@gmail.com",
-    estadoUsuario: "Autorizado",
-    rol: "Administrador",
-  },
-  {
-    cedula: 1007141358,
-    nombre: "Yineth",
-    apellido: "Contreras",
-    correo: "yinethpao170@gmail.com",
-    estadoUsuario: "Autorizado",
-    rol: "Administrador",
-  },
-
-  {
-    cedula: 1015455974,
-    nombre: "Nicolas",
-    apellido: "Jimenez",
-    correo: "nicolasjimenez.d11@gmail.com",
-    estadoUsuario: "Autorizado",
-    rol: "Administrador",
-  },
-  {
-    cedula: 1057579801,
-    nombre: "Marcela",
-    apellido: "Reyes",
-    correo: "marcereyesq@gmail.com",
-    estadoUsuario: "Autorizado",
-    rol: "Administrador",
-  },
-  {
-    cedula: 15389042,
-    nombre: "Juan",
-    apellido: "Osorio",
-    correo: "jfelipe_o@hotmail.com",
-    estadoUsuario: "Autorizado",
-    rol: "Administrador",
-  },
-];
+import {obtenerUsuarios} from 'utils/api';
+import { unstable_renderSubtreeIntoContainer } from "react-dom";
 
 const Usuarios = () => {
-  // Estados
- /* const [mostrarTabla, setMostrarTabla] = useState(true);*/
-  const [usuarios, setUsuarios] = useState([]); //pata obtener informacion desde el backend
-  //const [textoBoton, setTextoBoton] = useState("Crear usuarios");
 
+  const [usuarios, setUsuarios] = useState([]);
+  const [ejecutarConsulta, setEjecutarConsulta] = useState(true);
   useEffect(() => {
-    //Obtener productos desde el backend
-    setUsuarios(usuariosBackend);
-  }, []);
-
-  /* useEffect(() => {
-    {
-      mostrarTabla
-        ? setTextoBoton("Crear usuarios")
-        : setTextoBoton("Mostrar usuarios");
-    }
-  }, [mostrarTabla]); */
+      //Obtener Usuarios desde el backend
+      if (ejecutarConsulta){
+          obtenerUsuarios(setUsuarios,setEjecutarConsulta);
+      }
+  }, [ejecutarConsulta]);
   return (
     <div className="flex h-full w-full flex-col items-center justify-start ">
-      <NavBarFull titulo="Listado de Usuarios" subtitulo={`Usuarios: ${usuariosBackend.length}`}/>
+      <NavBarFull titulo="Listado de Usuarios" subtitulo={`Usuarios: ${usuarios.length}`}/>
       <div className="mb-2 flex items-center justify-center w-full h-20">
         <label className="text-base font-semibold mr-5 text-black">Buscar:</label>
         <svg width="24" height="24" fill="none" class="text-gray-400 group-hover:text-gray-500 transition-colors duration-200"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
@@ -98,25 +41,8 @@ const Usuarios = () => {
           </button>
         </Link>
       </div>
-<<<<<<< HEAD
-      {/* <div className="p-10">
-          {mostrarTabla ? (
-            <TablaUsuarios listaUsuarios={usuarios} />
-          ) : (
-            <FormularioUsuarios
-              setMostrarTabla={setMostrarTabla}
-              listaUsuarios={Usuarios}
-              setUsuarios={setUsuarios}
-            />
-          )}
-          <ToastContainer position="bottom-center" autoClose={5000} />
-        </div> */}
-      <div className="overflow-y-scroll h-96 ">
-        <TablaUsuarios listaUsuarios={usuarios} />
-=======
       <div className="overflow-y-scroll">
         <TablaUsuarios listaUsuarios={usuarios} setEjecutarConsulta={setEjecutarConsulta}/>
->>>>>>> 2ceee66d19707ff37c8eac50f2249869397b66cc
         <ToastContainer position="bottom-center" autoClose={5000} />
       </div>
     </div>
@@ -124,11 +50,11 @@ const Usuarios = () => {
 };
 
 //componentes para mostar formulario o tabla
-const TablaUsuarios = ({ listaUsuarios }) => {
+const TablaUsuarios = ({ listaUsuarios, setEjecutarConsulta }) => {
   return (
-    <div className="flex items-center justify-center ">
+    <div className="ml-10 mr-10 flex items-center justify-center">
       <table className="table">
-        <thead >
+        <thead>
           <tr>
             <th>Cedula</th>
             <th>Nombre</th>
@@ -141,7 +67,7 @@ const TablaUsuarios = ({ listaUsuarios }) => {
         </thead>
         <tbody >
           {listaUsuarios.map((usuarios) => {
-            return <FilaUsuario key ={nanoid()} usuarios={usuarios} />
+            return <FilaUsuario key ={nanoid()} usuarios={usuarios} setEjecutarConsulta={setEjecutarConsulta} />
           })}
         </tbody>
       </table>
@@ -149,27 +75,71 @@ const TablaUsuarios = ({ listaUsuarios }) => {
   );
 };
 
-const FilaUsuario = ({usuarios}) => {
+const FilaUsuario = ({usuarios, setEjecutarConsulta}) => {
   const [edit, setEdit] = useState(false);
   const [openDialog, setOpenDialog] = useState(false);
+  const [infoEditarUsuario, setInfoEditarUsuario] = useState({
+    estado: usuarios.estado,
+    rol: usuarios.rol,
+  });
+
+  const actualizarUsuarios = async () => {
+
+    const options = {
+      method: 'PATCH',
+      url: `http://localhost:5000/usuarios/editar/${usuarios._id}`,
+      headers: { 'Content-Type': 'application/json' },
+      data: { ...infoEditarUsuario }
+    };
+    await axios
+      .request(options)
+      .then(function (response) {
+        console.log(response.data);
+        toast.success('Usuario modificado con éxito');
+        setEdit(false);
+        setEjecutarConsulta(true);
+      })
+      .catch(function (error) {
+        toast.error('Error modificando el usuario');
+        console.error(error);
+      });
+  }
+  
+  const eliminarUsuario = async () => {
+    const options = {
+      method: 'DELETE',
+      url: `http://localhost:5000/usuarios/${usuarios._id}`,
+      headers: { 'Content-Type': 'application/json' },
+      data: {id: usuarios._id}
+    };
+    await axios
+      .request(options)
+      .then(function (response) {
+        console.log(response.data);
+        toast.success('Usuario eliminado con éxito');
+        setEjecutarConsulta(true);
+      })
+      .catch(function (error) {
+        console.error(error);
+        toast.error('Error eliminando el usuario');
+      });
+    setOpenDialog(false);
+  };
   return (
     <tr>
       {edit ? (
         <>
+          <td>{usuarios.ccUsuario}</td>
+          <td> {usuarios.nombre} </td>
+          <td> {usuarios.apellido} </td>
+          <td> {usuarios.correo} </td>
           <td>
-            <input style={{margin: '0rem'}} className="Input" type="text" defaultValue={usuarios.cedula} />
-          </td>
-          <td>
-            <input style={{margin: '0rem'}} className="Input" type="text" defaultValue={usuarios.nombre} />
-          </td>
-          <td>
-            <input style={{margin: '0rem'}} className="Input" type="text" defaultValue={usuarios.apellido} />
-          </td>
-          <td>
-            <input style={{margin: '0rem'}} className="Input" type="text" defaultValue={usuarios.correo} />
-          </td>
-          <td>
-            <select style={{margin: '0rem'}} className="Input" type="text" defaultValue={usuarios.estadoUsuario}>
+            <select 
+            style={{margin: '0rem'}} 
+            className="Input" 
+            type="text" 
+            value={infoEditarUsuario.estado}
+            onChange={(e) => setInfoEditarUsuario({ ...infoEditarUsuario, estado: e.target.value})}>
               <option disabled value={0}>Seleccione un estado</option>
               <option >Autorizado</option>
               <option >Pendiente</option>
@@ -177,21 +147,25 @@ const FilaUsuario = ({usuarios}) => {
             </select>
           </td>
           <td>
-            <select style={{margin: '0rem'}} className="Input" type="text" defaultValue={usuarios.rol}>
+            <select 
+            style={{margin: '0rem'}} 
+            className="Input" 
+            type="text" 
+            value={infoEditarUsuario.rol}
+            onChange={(e) => setInfoEditarUsuario({ ...infoEditarUsuario, rol: e.target.value})}>
               <option disabled >Seleccione un rol</option>
               <option>Administrador</option>
               <option>Vendedor</option>
-            </select>
-          </td>
+            </select> </td>
         </>
       ) :
         (
           <>
-            <td> {usuarios.cedula} </td>
+            <td> {usuarios.ccUsuario} </td>
             <td> {usuarios.nombre} </td>
             <td> {usuarios.apellido} </td>
             <td> {usuarios.correo} </td>
-            <td> {usuarios.estadoUsuario} </td>
+            <td> {usuarios.estado} </td>
             <td> {usuarios.rol} </td>
           </>
         )}
@@ -200,7 +174,7 @@ const FilaUsuario = ({usuarios}) => {
           {edit ? (
             <>
               <Tooltip title="Confirmar Edición" arrow>
-                <i onClick={() => setEdit(!edit)} className="fas fa-check p-2 hover:bg-blue-600 rounded-full" />
+                <i onClick={() => actualizarUsuarios()} className="fas fa-check p-2 hover:bg-blue-600 rounded-full" />
               </Tooltip>
               <Tooltip title="Cancelar Edición" arrow>
                 <i onClick={() => setEdit(!edit)} className="fas fa-times p-2 hover:bg-blue-600 rounded-full" />
@@ -223,7 +197,7 @@ const FilaUsuario = ({usuarios}) => {
               ¿Está seguro de querer eliminar el usuario?
             </h1>
             <div className="flex w-full items-center justify-center my-4">
-              <button className="mx-2 px-4 py-2 bg-blue-500 text-white hover:bg-blue-700 rounded-md shadow-md">
+              <button onClick={() => eliminarUsuario()} className="mx-2 px-4 py-2 bg-blue-500 text-white hover:bg-blue-700 rounded-md shadow-md">
                 Sí
               </button>
               <button
