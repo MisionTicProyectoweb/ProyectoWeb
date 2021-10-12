@@ -120,13 +120,6 @@ const FormularioProductos = () => {
           <span className="mx-2">Registrar Producto</span>
           <span className=" fas fa-angle-right ">  </span>
         </button>
-        <button
-          type="reset"
-          className="w-44 mr-2 my-10 bg-indigo-500 text-white text-base transform hover:scale-110 hover:bg-indigo-600 float-left f  p-2 rounded-lg border shadow-md"
-          >
-          <span className="mx-2">Restaurar</span>
-          <span className=" fas fa-eraser ">  </span>
-        </button>
         <Link to="/admin/productos">
           <button
             className=" font w-44 mr-2 my-10 bg-indigo-500 text-white text-base transform hover:scale-110 hover:bg-indigo-600 float-left ml-5 p-2 rounded-lg border shadow-md">
