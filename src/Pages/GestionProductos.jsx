@@ -1,28 +1,16 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useState, useRef } from "react";
 import { ToastContainer, toast } from "react-toastify";
-import axios from "axios";
+//import axios from "axios";
 import {NavBarFull} from 'components/Navbar';
 import "react-toastify/dist/ReactToastify.css";
 import { Link } from "react-router-dom";
+import { crearProducto } from "utils/api";
 
 const GestionProductos = () => {
   const [productos, setProductos] = useState([]);
   return (
     <div className="w-full text-center">
-      <div
-        id="barraNavegador"
-        className="w-full text-center bg-indigo-500 mb-16 flex items-center justify-center h-20"
-      >
-        <nav className="flex text-white">
-          <div className="mr-10">
-            <ul className="flex">
-              <li className="ml-1 mr-4 text-5xl font-semibold">
-                Gestion Productos
-              </li>
-            </ul>
-          </div>
-        </nav>
-      </div>
+      <NavBarFull titulo="Gestion de productos"/>
       <div>
         <FormularioProductos
           listaProductos={productos}
@@ -46,33 +34,25 @@ const FormularioProductos = () => {
       nuevoProducto[key] = value;
     });
 
-    const options = {
-      method: "POST",
-      url: "http://localhost:5000/productos/nuevo/",
-      headers: { "Content-Type": "application/json" },
-      data: {
-        idProducto: nuevoProducto.idProducto,
-        nombreProducto: nuevoProducto.nombreProducto,
-        valorUnitario: nuevoProducto.valorUnitario,
-        estado: nuevoProducto.estado,
-      },
-    };
-
-    await axios
-      .request(options)
-      .then(function (response) {
+    await crearProducto(
+      {
+      idProducto: nuevoProducto.idProducto,
+      nombreProducto: nuevoProducto.nombreProducto,
+      valorUnitario: nuevoProducto.valorUnitario,
+      estado: nuevoProducto.estado,
+    },
+      (response) => {
         console.log(response.data);
-        toast.success("Se ha agregado el producto con éxito");
-        e.target.reset();           
-      })
-      .catch(function (error) {
+        toast.success('Producto agregado con éxito');
+        e.target.reset();
+      },
+      (error) => {
         console.error(error);
-        toast.error("Error creando un producto");
-      });
-      
-  }; 
-
-
+        toast.error('Error creando un producto');
+      }
+    );
+    
+  };
 
   return (
     <div className="flex flex-col items-center justify-center">

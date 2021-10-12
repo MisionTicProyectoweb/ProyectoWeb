@@ -73,6 +73,7 @@ const show = () => {
 >>>>>>> 4e8695723e6e714c0504dec961d132883fd0464e
 
 const hide = () => {
+<<<<<<< HEAD
     return (
         <div className="mt-48 flex-col bg-indigo-500 items-center">
             <nav className='flex items-center lg:flex lg:w-14 border border-indigo-500 h-full flex-col bg-indigo-500'>
@@ -85,6 +86,16 @@ const hide = () => {
             </nav>
             <div className="w-full flex items-center justify-center">
                 <Ruta icono='fas fa-sign-out-alt' ruta='/inicio' />
+=======
+    return(
+    <div className="mt-48 flex-col bg-indigo-500 items-center">
+        <nav className='flex items-center lg:flex lg:w-14 border border-indigo-500 h-full flex-col bg-indigo-500'>
+            <div>
+                <Ruta icono='fas fa-users-cog' ruta='/admin/dashboard'/>
+                <Ruta icono='fas fa-cart-plus' ruta='/admin/productos'/>
+                <Ruta icono='fas fa-clipboard-list' ruta='/admin/ventas'/>
+                <Ruta icono='fas fa-users' ruta='/admin/usuarios'/>
+>>>>>>> c30024464e89816f72c58b72f9ab11e875af7b43
             </div>
 <<<<<<< HEAD
         </div>);
@@ -98,6 +109,7 @@ const hide = () => {
 };
 >>>>>>> 4e8695723e6e714c0504dec961d132883fd0464e
 
+<<<<<<< HEAD
 const btnHide = () => {
     return (
         <div className="bg-indigo-500 text-white my-4"
@@ -106,6 +118,17 @@ const btnHide = () => {
             }}>
             <i className={`mx-8 fas fa-${estado ? 'chevron-left' : 'bars'} hover:text-black `} />
         </div>
+=======
+const btnHide = () =>{
+    return(
+        <div className="w-full">
+        <button className="bg-indigo-500 text-white flex w-full items-center h-14"
+        onClick={() => {
+            setEstado(!estado);
+        }}>
+        <i className={`mx-2 fas fa-${ estado ? 'chevron-left' : 'bars'} hover:text-black cursor-pointer h-15 w-full`}/> 
+        </button></div>
+>>>>>>> c30024464e89816f72c58b72f9ab11e875af7b43
     );
 };
 

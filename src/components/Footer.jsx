@@ -2,7 +2,7 @@ import React from 'react';
 
 const Footer = () => {
     return (
-        <nav className="absolute inset-x-0 bottom-0 bg-indigo-500 shadow-md text-right p-2 text-white bottom-0">
+        <nav className="absolute inset-x-0 bottom-0 bg-indigo-500 shadow-md text-right p-2 text-white ">
             <ul>
                 <li>Contáctenos: </li>
                 <li>Teléfono:  (00) 744 44 33

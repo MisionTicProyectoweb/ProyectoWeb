@@ -8,7 +8,7 @@ import "./Styles/Tablas.css";
 import { nanoid } from "nanoid";
 import {NavBarFull} from 'components/Navbar';
 import {obtenerUsuarios} from 'utils/api';
-import { unstable_renderSubtreeIntoContainer } from "react-dom";
+
 
 const Usuarios = () => {
 
@@ -41,7 +41,7 @@ const Usuarios = () => {
           </button>
         </Link>
       </div>
-      <div className="overflow-y-scroll h-96 ">
+      <div className="overflow-y-scroll">
         <TablaUsuarios listaUsuarios={usuarios} setEjecutarConsulta={setEjecutarConsulta}/>
         <ToastContainer position="bottom-center" autoClose={5000} />
       </div>
