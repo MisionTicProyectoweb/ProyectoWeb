@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import { ToastContainer, toast } from "react-toastify";
-
+import { Link } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import { NavBarFull } from "components/Navbar";
 import axios from "axios";
@@ -57,7 +57,7 @@ const CrearUsuario = () => {
     return (
     <div className="flex flex-col items-center justify-center">
     <h2 className="text-2xl font-extrabold text-gray-700">Crear nuevo usuario</h2>
-    <form ref={form} onSubmit={submitForm} className="flex flex-col grid-cols-2 m-4">
+    <form ref={form} onSubmit={submitForm} className="flex flex-col items-center grid-cols-2">
         <label htmlFor="ccUsuario">
             Cedula
             <input
@@ -132,14 +132,23 @@ const CrearUsuario = () => {
             <option>Administardor</option>
             </select>
         </label>
-        <button
-          type="submit"
-          className="flex justify-center py-2 px-4 my-6 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-400 hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-          <span>Registrar Usuario</span>
-          <svg xmlns="http://www.w3.org/2000/svg" class="ml-4 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-          </svg>
-        </button>
+        <div className="flex flex-row">
+          <button
+            type="submit"
+            className="h-10 mr-3 flex justify-center py-2 px-4 my-6 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-400 hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+            <span>Registrar Usuario</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="ml-4 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+          <Link to="/admin/usuarios/listausuario">
+            <button
+              className="h-10 flex items-center justify-center py-2 px-4 my-6 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-400 hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+              <span className="mr-2">Regresar</span>
+              <span className=" fas fa-angle-double-left "></span>
+            </button>
+          </Link>
+        </div>
     </form>
     <ToastContainer position="bottom-right" margin={2} theme="colored" autoClose={3000}/>
   </div>
