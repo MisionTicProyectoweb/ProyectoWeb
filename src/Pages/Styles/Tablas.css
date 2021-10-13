@@ -1,8 +1,7 @@
 
 .table{
-    width: 90%;
-    margin: 10px;
-    overflow-y: scroll;
+    width: 98%;
+    overflow-y:scroll;
 }
 
 .table th, .table td{
