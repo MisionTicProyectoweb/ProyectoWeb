@@ -8,7 +8,7 @@ import "./Styles/Tablas.css";
 import { nanoid } from "nanoid";
 import {NavBarFull} from 'components/Navbar';
 import {obtenerUsuarios} from 'utils/api';
-import { unstable_renderSubtreeIntoContainer } from "react-dom";
+
 
 const Usuarios = () => {
 

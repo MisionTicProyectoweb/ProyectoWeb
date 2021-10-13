@@ -1,9 +1,8 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
-import axios from "axios";
 import { nanoid } from "nanoid";
 import { Dialog, Tooltip } from "@material-ui/core";
-import { obtenerProductos } from "utils/api";
+import { obtenerProductos,editarProducto,eliminarProducto} from "utils/api/productos";
 import { Link } from "react-router-dom";
 import "./Styles/Tablas.css";
 import "react-toastify/dist/ReactToastify.css";
@@ -13,18 +12,28 @@ const ListProductos = () => {
   const [productos, setProductos] = useState([]);
   const [productosFiltrados, setProductosFiltrados] = useState([]);
   const [busqueda, setBusqueda] = useState('');
-  const [filtroCampo, setFilroCampo] = useState('idProducto');
+  const [filtroCampo, setFiltroCampo] = useState('idProducto');
   const [ejecutarConsulta, setEjecutarConsulta] = useState(true);
   
 
   useEffect(() => {
-    console.log("consulta", ejecutarConsulta);
+    console.log('consulta', ejecutarConsulta);
     if (ejecutarConsulta) {
-      obtenerProductos(setProductos, setEjecutarConsulta);
+      obtenerProductos(
+        (response) => {
+          console.log('La respuesta que se recibio fue:', response);
+          setProductos(response.data);
+          setProductosFiltrados(response.data);
+        },
+        (error) => {
+          console.error('Se genero un error:', error);
+        }
+      );
+      setEjecutarConsulta(false);
     }
-    setProductosFiltrados(productos);
-    console.log(productos);
   }, [ejecutarConsulta]);
+
+  
 
   useEffect(() => {
     console.log(busqueda, filtroCampo);
@@ -39,10 +48,8 @@ const ListProductos = () => {
 
   }, [busqueda, filtroCampo]);
 
-  useEffect(() => {
-    //Obtener productos desde el backend  
-    setEjecutarConsulta(true);
-  }, []);
+
+
   return (
     <div className="flex w-full flex-col items-center h-full m-0">
       <NavBarFull titulo="Listado de productos" subtitulo={"productos: "+ productos.length}/>
@@ -66,7 +73,8 @@ const ListProductos = () => {
         </button>
         </Link>
       </div>
-      <div className="h-96 overflow-y-scroll">      
+
+     <div className="overflow-y-scroll h-1/2 ">
         <TablaProductos
             listaProductos={productosFiltrados}
             setEjecutarConsulta={setEjecutarConsulta}
@@ -92,6 +100,7 @@ const TablaProductos = ({ listaProductos, setEjecutarConsulta }) => {
           <tr>
             <th>Id</th>
             <th>Descripción</th>
+            <th>Marca</th>
             <th>Valor ($)</th>
             <th>Estado</th>
             <th>Acción</th>
@@ -117,77 +126,59 @@ const FilaProducto = ({ productos, setEjecutarConsulta }) => {
   const [edit, setEdit] = useState(false);
   const [openDialog, setOpenDialog] = useState(false);
   const [infoNuevoProducto, setInfoNuevoProducto] = useState({
-    id: productos._id,
-    idProducto: productos.idProducto,
+    _id: productos._id,
     nombreProducto: productos.nombreProducto,
+    marca: productos.marca,
     valorUnitario: productos.valorUnitario,
     estado: productos.estado,
   });
 
   const actualizarProducto = async () => {
     //enviar la info al backend
-    const options = {
-      method: "PATCH",
-      url: `http://localhost:5000/productos/${productos._id}/`,
-      headers: { "Content-Type": "application/json" },
-      data: { ...infoNuevoProducto},
-    };
-
-    await axios
-      .request(options)
-      .then(function (response) {
+    await editarProducto(
+      productos._id,
+      {        
+        nombreProducto: infoNuevoProducto.nombreProducto,
+        marca: infoNuevoProducto.marca,
+        valorUnitario: infoNuevoProducto.valorUnitario,
+        estado: infoNuevoProducto.estado,
+      },
+      (response) => {
         console.log(response.data);
-        toast.success("El producto se ha modificado con éxito");
+        toast.success('Producto modificado con éxito');
         setEdit(false);
         setEjecutarConsulta(true);
-      })
-      .catch(function (error) {
-        toast.error("Error al modificar el producto");
+      },
+      (error) => {
+        toast.error('Error modificando el producto');
         console.error(error);
-      });
+      }
+    );
   };
 
-  const eliminarProducto = async () => {
-    console.log(productos);
-    const options = {
-      method: "DELETE",
-      url: `http://localhost:5000/productos/${productos._id}/`,
-      headers: { "Content-Type": "application/json" },
-      data: { id: productos._id },
-    };
 
-    await axios
-      .request(options)
-      .then(function (response) {
+  const deleteProducto = async () => {
+    await eliminarProducto(
+      productos._id,
+      (response) => {
         console.log(response.data);
-        toast.success("El producto se ha eliminado con éxito");
+        toast.success('Producto eliminado con éxito');
         setEjecutarConsulta(true);
-      })
-      .catch(function (error) {
+      },
+      (error) => {
         console.error(error);
-        toast.error("Error al eliminar el producto");
-      });
+        toast.error('Error eliminando el producto');
+      }
+    );
     setOpenDialog(false);
   };
 
+  
   return (
     <tr>
       {edit ? (
         <>
-          <td>
-            <input
-              //className="Input"
-              type="number"
-              disabled="true"
-              value={infoNuevoProducto.idProducto}
-              onChange={(e) =>
-                setInfoNuevoProducto({
-                  ...infoNuevoProducto,
-                  idProducto: e.target.value,
-                })
-              }
-            />
-          </td>
+          <td>{infoNuevoProducto._id.slice(18)}</td>
           <td>
             <input
               className="Input"
@@ -197,6 +188,19 @@ const FilaProducto = ({ productos, setEjecutarConsulta }) => {
                 setInfoNuevoProducto({
                   ...infoNuevoProducto,
                   nombreProducto: e.target.value,
+                })
+              }
+            />
+          </td>
+          <td>
+            <input
+              className="Input"
+              type="text"
+              value={infoNuevoProducto.marca}
+              onChange={(e) =>
+                setInfoNuevoProducto({
+                  ...infoNuevoProducto,
+                  marca: e.target.value,
                 })
               }
             />
@@ -236,10 +240,12 @@ const FilaProducto = ({ productos, setEjecutarConsulta }) => {
         </>
       ) : (
         <>
-          <td> {productos.idProducto} </td>
-          <td> {productos.nombreProducto} </td>
-          <td> {productos.valorUnitario} </td>
-          <td> {productos.estado} </td>
+          
+            <td> {productos._id.slice(18)} </td>
+            <td> {productos.nombreProducto} </td>
+            <td> {productos.marca} </td>
+            <td> {productos.valorUnitario} </td>
+            <td> {productos.estado} </td>
         </>
       )}
       <td>
@@ -283,7 +289,7 @@ const FilaProducto = ({ productos, setEjecutarConsulta }) => {
             </h1>
             <div className="flex w-full items-center justify-center my-4">
               <button
-                onClick={() => eliminarProducto()}
+                onClick={() => deleteProducto()}
                 className="mx-2 px-4 py-2 bg-green-400 text-white hover:bg-green-600 rounded-md shadow-md"
               >
                 Sí

@@ -1,9 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { ToastContainer, toast } from "react-toastify";
-import{Link} from "react-router-dom";
+//import{Link} from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
-import {Navbar} from 'components/Navbar';
-import Footer from 'components/Footer';
 
 import imagenLogin from 'media/login.svg';
 
