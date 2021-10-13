@@ -2,22 +2,27 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo from 'media/logoTSolutions.png';
 import useActiveRoute from 'hooks/useActiveRoute';
-
+import { useAuth0 } from "@auth0/auth0-react";
 let estado, setEstado;
+
+
 const Sidebar = (navegar) => {
+    
     [estado, setEstado] = useState(true);
     return (
         <div className=" lg:flex h-screen flex flex-col items-center justify-center bg-indigo-500">
             <div>{btnHide()}</div>
-            <div className="h-full">{estado === false ? hide() : show()}</div>
+            <div className="h-full">{estado === false ? hide() : Show()}</div>
         </div>
     );
 };
+
 const Ruta = ({ icono, ruta, nombre }) => {
     const isActive = useActiveRoute(ruta);
     return (
         <Link to={ruta}>
             <button
+           
                 className={`my-4 text-base bg-${isActive ? 'indigo' : 'bg-indigo-600'
                     }-700 w-full flex items-center py-3 text-sm font-semibold text-white dark-mode:hover:text-white dark-mode:text-white hover:bg-indigo-300 focus:shadow-outlin`}>
                 <i className={`${icono} w-8`} />
@@ -26,7 +31,8 @@ const Ruta = ({ icono, ruta, nombre }) => {
         </Link>
     );
 };
-const show = () => {
+const Show = () => {
+   const { logout } = useAuth0();
     return (
         <div className="flex flex-col items-center justify-center bg-indigo-500">
             <nav className='hidden lg:flex lg:w-56 border border-indigo-500 h-full flex-col bg-indigo-500 w-52'>
@@ -41,13 +47,20 @@ const show = () => {
                 </div>
             </nav>
             <div className="w-full bottom-0">
-                <Ruta icono='fas fa-sign-out-alt' ruta='/inicio' nombre='Salir' />
+                <button  className="w-full bottom-0"
+                 onClick={() => logout({ returnTo: window.location.origin })}
+                >
+                <Ruta icono='fas fa-sign-out-alt' ruta='' nombre='Salir' />
+
+                </button>
             </div>
         </div>);
 }
 
 const hide = () => {
+
     return (
+      
         <div className="mt-48 flex-col bg-indigo-500 items-center">
             <nav className='flex items-center lg:flex lg:w-14 border border-indigo-500 h-full flex-col bg-indigo-500'>
                 <div>

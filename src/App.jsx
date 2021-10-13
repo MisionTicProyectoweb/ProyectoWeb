@@ -11,12 +11,19 @@ import Inicio from "Pages/inicio";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import LayoutPrivado from "layouts/LayoutPrivado";
 import LayoutPublico from "layouts/LayoutPublico";
-
+import { Auth0Provider } from "@auth0/auth0-react";
 
 
 export default function App() {
   return (
+    <Auth0Provider
+    domain="mintic-proyecto.us.auth0.com"
+    clientId="c5zCRirAIchHValVZvDGG1GUiwX7D3TA"
+    redirectUri={window.location.origin}
+    >
+
     <div>
+    
       <Router>
         <Switch>
           {/* aqui va la administracion, y se desprenden paginas
@@ -83,6 +90,8 @@ export default function App() {
           </Route>
         </Switch>
       </Router>
+    
     </div>
+    </Auth0Provider>
   );
 }
