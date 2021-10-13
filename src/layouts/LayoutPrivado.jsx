@@ -4,7 +4,7 @@ import SidebarResponsive from 'components/SidebarResponsive';
 
 const LayoutPrivado = ({children}) => {
     return (
-        <div className='flex flex-col lg:flex-row flex-nowrap h-screen w-screen  overflow-y-scroll'>
+        <div className='flex flex-col lg:flex-row flex-nowrap h-screen w-screen overflow-y-scroll'>
             <Sidebar/>
             <SidebarResponsive />
             <main className="flex w-full bg-gray-100 ">{children}</main>

@@ -98,7 +98,7 @@ const TablaProductos = ({ listaProductos, setEjecutarConsulta }) => {
   }, [listaProductos]);
 
   return (
-    <div className="flex justify-center w-full">
+    <div className="flex justify-center">
       <table className="table">
         <thead>
           <tr>

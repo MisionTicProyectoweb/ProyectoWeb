@@ -1,11 +1,12 @@
 
 .table{
     width: 98%;
+    margin: 10px;
     overflow-y:scroll;
 }
 
 .table th, .table td{
-    @apply border border-gray-300 px-3 py-1 w-auto;
+    @apply border border-gray-300 px-3 py-1;
 }
 
 .table th{
