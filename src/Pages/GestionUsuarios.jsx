@@ -61,7 +61,7 @@ const CrearUsuario = () => {
         <label htmlFor="ccUsuario">
             Cedula
             <input
-              className=" mr-4 my-5 ml-5 p-2 bg-gray-50 border border-gray-200 prounded-lg appearance-none relative block focus:outline-none focus:ring-purple-500 focus:border-purple-500 focus:z-10 sm:text-sm"
+              className=" w-44 mr-4 my-5 ml-5 p-2 bg-gray-50 border border-gray-200 rounded-lg appearance-none relative block focus:outline-none focus:ring-purple-500 focus:border-purple-500 focus:z-10 sm:text-sm"
             name="ccUsuario"
             type="text"
             min={0}
@@ -135,9 +135,9 @@ const CrearUsuario = () => {
     
           <button
             type="submit"
-              className="w-48 mr-4 my-5 ml-5 p-2 flex justify-center border border-transparent text-sm font-medium rounded-md text-white bg-indigo-400 hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+              className="w-44 mr-4 my-5 ml-5 p-2 flex justify-center border border-transparent text-sm font-medium rounded-md text-white bg-indigo-400 hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
               <span className="mx-2" >Registrar Usuario</span>
-            <svg xmlns="http://www.w3.org/2000/svg" class="ml-4 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" class="ml-2 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
             </svg>
           </button>

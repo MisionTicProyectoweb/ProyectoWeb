@@ -37,7 +37,7 @@ const Usuarios = () => {
   return (
     <div className="flex h-full w-full flex-col items-center justify-start ">
       <NavBarFull titulo="Listado de Usuarios" subtitulo={`Usuarios: ${usuarios.length}`}/>
-      <div className="mb-2 flex items-center justify-center w-full h-20">
+      <div className="mb-2 flex items-center justify-center w-full h-44">
         <label className="text-base font-semibold mr-5 text-black">Buscar:</label>
         <svg width="24" height="24" fill="none" class="text-gray-400 group-hover:text-gray-500 transition-colors duration-200"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
         <input 
