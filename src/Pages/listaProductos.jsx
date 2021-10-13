@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { nanoid } from "nanoid";
 import { Dialog, Tooltip } from "@material-ui/core";
-import { obtenerProductos,editarProducto,eliminarProducto} from "utils/api";
+import { obtenerProductos,editarProducto,eliminarProducto} from "utils/api/productos";
 import { Link } from "react-router-dom";
 import "./Styles/Tablas.css";
 import "react-toastify/dist/ReactToastify.css";

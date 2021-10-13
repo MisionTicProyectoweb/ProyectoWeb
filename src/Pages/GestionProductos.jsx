@@ -4,7 +4,7 @@ import { ToastContainer, toast } from "react-toastify";
 import {NavBarFull} from 'components/Navbar';
 import "react-toastify/dist/ReactToastify.css";
 import { Link } from "react-router-dom";
-import { crearProducto } from "utils/api";
+import { crearProducto } from  "utils/api/productos";
 
 const GestionProductos = () => {
   const [productos, setProductos] = useState([]);
