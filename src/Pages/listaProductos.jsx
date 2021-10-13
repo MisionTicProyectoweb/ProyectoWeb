@@ -76,7 +76,7 @@ const ListProductos = () => {
         </Link>
       </div>
 
-      <div className="overflow-y-scroll h-96">
+      <div className="overflow-y-scroll h-1/2 ">
         <TablaProductos
           listaProductos={productosFiltrados}
           setEjecutarConsulta={setEjecutarConsulta}
@@ -102,6 +102,7 @@ const TablaProductos = ({ listaProductos, setEjecutarConsulta }) => {
           <tr>
             <th>Id</th>
             <th>Descripción</th>
+            <th>Marca</th>
             <th>Valor ($)</th>
             <th>Estado</th>
             <th>Acción</th>
@@ -127,9 +128,9 @@ const FilaProducto = ({ productos, setEjecutarConsulta }) => {
   const [edit, setEdit] = useState(false);
   const [openDialog, setOpenDialog] = useState(false);
   const [infoNuevoProducto, setInfoNuevoProducto] = useState({
-    id: productos._id,
-    idProducto: productos.idProducto,
+    _id: productos._id,
     nombreProducto: productos.nombreProducto,
+    marca: productos.marca,
     valorUnitario: productos.valorUnitario,
     estado: productos.estado,
   });
@@ -139,8 +140,8 @@ const FilaProducto = ({ productos, setEjecutarConsulta }) => {
     await editarProducto(
       productos._id,
       {        
-        idProducto: infoNuevoProducto.idProducto,
         nombreProducto: infoNuevoProducto.nombreProducto,
+        marca: infoNuevoProducto.marca,
         valorUnitario: infoNuevoProducto.valorUnitario,
         estado: infoNuevoProducto.estado,
       },
@@ -179,20 +180,7 @@ const FilaProducto = ({ productos, setEjecutarConsulta }) => {
     <tr>
       {edit ? (
         <>
-          <td>
-            <input
-              //className="Input"
-              type="number"
-              disabled="true"
-              value={infoNuevoProducto.idProducto}
-              onChange={(e) =>
-                setInfoNuevoProducto({
-                  ...infoNuevoProducto,
-                  idProducto: e.target.value,
-                })
-              }
-            />
-          </td>
+          <td>{infoNuevoProducto._id.slice(18)}</td>
           <td>
             <input
               className="Input"
@@ -202,6 +190,19 @@ const FilaProducto = ({ productos, setEjecutarConsulta }) => {
                 setInfoNuevoProducto({
                   ...infoNuevoProducto,
                   nombreProducto: e.target.value,
+                })
+              }
+            />
+          </td>
+          <td>
+            <input
+              className="Input"
+              type="text"
+              value={infoNuevoProducto.marca}
+              onChange={(e) =>
+                setInfoNuevoProducto({
+                  ...infoNuevoProducto,
+                  marca: e.target.value,
                 })
               }
             />
@@ -242,8 +243,9 @@ const FilaProducto = ({ productos, setEjecutarConsulta }) => {
       ) : (
         <>
           
-            <td> {productos.idProducto} </td>
+            <td> {productos._id.slice(18)} </td>
             <td> {productos.nombreProducto} </td>
+            <td> {productos.marca} </td>
             <td> {productos.valorUnitario} </td>
             <td> {productos.estado} </td>
         </>
