@@ -51,9 +51,9 @@ const ListProductos = () => {
 
 
   return (
-    <div className="flex w-full flex-col items-center h-full m-0">
+    <div className="flex w-full flex-col items-center h-full ">
       <NavBarFull titulo="Listado de productos" subtitulo={"productos: "+ productos.length}/>
-      <div className="flex items-center justify-center w-full h-20">
+      <div className="flex items-center justify-center w-full h-44">
         <label className="text-base font-semibold mr-5 text-black">
           Buscar por:
         </label>
