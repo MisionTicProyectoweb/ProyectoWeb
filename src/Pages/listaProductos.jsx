@@ -2,7 +2,11 @@ import React, { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { nanoid } from "nanoid";
 import { Dialog, Tooltip } from "@material-ui/core";
-import { obtenerProductos,editarProducto,eliminarProducto} from "utils/api/productos";
+import {
+  obtenerProductos,
+  editarProducto,
+  eliminarProducto,
+} from "utils/api/productos";
 import { Link } from "react-router-dom";
 import "./Styles/Tablas.css";
 import "react-toastify/dist/ReactToastify.css";
@@ -11,29 +15,26 @@ import { NavBarFull } from "components/Navbar";
 const ListProductos = () => {
   const [productos, setProductos] = useState([]);
   const [productosFiltrados, setProductosFiltrados] = useState([]);
-  const [busqueda, setBusqueda] = useState('');
-  const [filtroCampo, setFiltroCampo] = useState('idProducto');
+  const [busqueda, setBusqueda] = useState("");
+  const [filtroCampo, setFiltroCampo] = useState("idProducto");
   const [ejecutarConsulta, setEjecutarConsulta] = useState(true);
-  
 
   useEffect(() => {
-    console.log('consulta', ejecutarConsulta);
+    console.log("consulta", ejecutarConsulta);
     if (ejecutarConsulta) {
       obtenerProductos(
         (response) => {
-          console.log('La respuesta que se recibio fue:', response);
+          console.log("La respuesta que se recibio fue:", response);
           setProductos(response.data);
           setProductosFiltrados(response.data);
         },
         (error) => {
-          console.error('Se genero un error:', error);
+          console.error("Se genero un error:", error);
         }
       );
       setEjecutarConsulta(false);
     }
   }, [ejecutarConsulta]);
-
-  
 
   useEffect(() => {
     console.log(busqueda, filtroCampo);
@@ -42,47 +43,61 @@ const ListProductos = () => {
       productos.filter((elemento) => {
         console.log(busqueda);
         console.log(JSON.stringify(elemento));
-        return JSON.stringify(elemento).toLowerCase().includes(busqueda.toLowerCase());
+        return JSON.stringify(elemento)
+          .toLowerCase()
+          .includes(busqueda.toLowerCase());
       })
     );
-
   }, [busqueda, filtroCampo]);
-
-
 
   return (
     <div className="flex w-full flex-col items-center h-full ">
-      <NavBarFull titulo="Listado de productos" subtitulo={"productos: "+ productos.length}/>
-      <div className="flex items-center justify-center w-full h-44">
-        <label className="text-base font-semibold mr-5 text-black">
-          Buscar por:
-        </label>
-        <select name="opcion" className="p-2 ml-2 w-40 h-10 rounded-lg border shadow-md">
-
+      <NavBarFull
+        titulo="Listado de productos"
+        subtitulo={"productos: " + productos.length}
+      />
+      <div className="flex items-center justify-center w-full h-32">
+        <select
+          name="opcion"
+          className="p-2 ml-2 w-40 h-10 rounded-lg border shadow-md"
+          defaultValue={0}
+        >
+          <option disabled value={0}>
+            Buscar por:
+          </option>
+          <option>Id</option>
+          <option>Descripción</option>
+          <option>Marca</option>
+          <option>Estado</option>
         </select>
         <input
           value={busqueda}
           onChange={(e) => setBusqueda(e.target.value)}
           className="p-2 ml-2 w-96 h-10 rounded-lg border shadow-md"
-          placeholder="Buscar por ..."
-        >
-        </input>
-        <span className=" fas fa-search text-gray-400 group-hover:text-gray-500 transition-colors duration-200 ml-4 ">  </span>
-        <Link to="/admin/productos/gestionproductos">
-        <button
-         type="button"
-            className="w-36 bg-indigo-500 text-white text-base transform hover:scale-110 hover:bg-indigo-600 float-left ml-20 p-2 rounded-lg border shadow-md" >
-            <span className=" fas fa-plus-circle sm mx-2"> </span>
-            <span>Insertar</span>  
-        </button>
-        </Link>
+        ></input>
+        <>
+          <Tooltip title="Buscar" arrow>
+            <i className="fas fa-search p-2 text-gray-700 hover:text-green-500 hover:bg-gray-300 rounded-full" />
+          </Tooltip>
+        </>
+        <div className=" justify-center items-end w-full">
+          <Link to="/admin/productos/gestionproductos">
+            <button
+              type="button"
+              className="bg-indigo-500 text-white text-base transform hover:scale-110 hover:bg-indigo-600 float-left ml-20 p-2 rounded-lg border shadow-md"
+            >
+              <span className=" fas fa-plus-circle sm mx-2"> </span>
+              <span>Insertar</span>
+            </button>
+          </Link>
+        </div>
       </div>
 
-     <div className="overflow-y-scroll h-1/2 ">
+      <div className="h-1/2 overflow-y-scroll">
         <TablaProductos
-            listaProductos={productosFiltrados}
-            setEjecutarConsulta={setEjecutarConsulta}
-          />
+          listaProductos={productosFiltrados}
+          setEjecutarConsulta={setEjecutarConsulta}
+        />
         <ToastContainer position="bottom-center" autoClose={5000} />
       </div>
     </div>
@@ -114,10 +129,10 @@ const TablaProductos = ({ listaProductos, setEjecutarConsulta }) => {
           {productosFiltrados.map((productos) => {
             return (
               <FilaProducto
-              key={nanoid()}
-              productos={productos}
-              setEjecutarConsulta={setEjecutarConsulta}
-            />
+                key={nanoid()}
+                productos={productos}
+                setEjecutarConsulta={setEjecutarConsulta}
+              />
             );
           })}
         </tbody>
@@ -141,7 +156,7 @@ const FilaProducto = ({ productos, setEjecutarConsulta }) => {
     //enviar la info al backend
     await editarProducto(
       productos._id,
-      {        
+      {
         nombreProducto: infoNuevoProducto.nombreProducto,
         marca: infoNuevoProducto.marca,
         valorUnitario: infoNuevoProducto.valorUnitario,
@@ -149,35 +164,33 @@ const FilaProducto = ({ productos, setEjecutarConsulta }) => {
       },
       (response) => {
         console.log(response.data);
-        toast.success('Producto modificado con éxito');
+        toast.success("Producto modificado con éxito");
         setEdit(false);
         setEjecutarConsulta(true);
       },
       (error) => {
-        toast.error('Error modificando el producto');
+        toast.error("Error modificando el producto");
         console.error(error);
       }
     );
   };
-
 
   const deleteProducto = async () => {
     await eliminarProducto(
       productos._id,
       (response) => {
         console.log(response.data);
-        toast.success('Producto eliminado con éxito');
+        toast.success("Producto eliminado con éxito");
         setEjecutarConsulta(true);
       },
       (error) => {
         console.error(error);
-        toast.error('Error eliminando el producto');
+        toast.error("Error eliminando el producto");
       }
     );
     setOpenDialog(false);
   };
 
-  
   return (
     <tr>
       {edit ? (
@@ -244,12 +257,11 @@ const FilaProducto = ({ productos, setEjecutarConsulta }) => {
         </>
       ) : (
         <>
-          
-            <td> {productos._id.slice(18)} </td>
-            <td> {productos.nombreProducto} </td>
-            <td> {productos.marca} </td>
-            <td> {productos.valorUnitario} </td>
-            <td> {productos.estado} </td>
+          <td> {productos._id.slice(18)} </td>
+          <td> {productos.nombreProducto} </td>
+          <td> {productos.marca} </td>
+          <td> {productos.valorUnitario} </td>
+          <td> {productos.estado} </td>
         </>
       )}
       <td>
