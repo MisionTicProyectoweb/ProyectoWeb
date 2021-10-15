@@ -1,4 +1,4 @@
-import React, { useEffect, useState} from "react";
+import React, {useState, useEffect} from "react";
 import axios from 'axios';
 import { ToastContainer, toast } from "react-toastify";
 import { Link } from "react-router-dom";
@@ -22,7 +22,7 @@ const Usuarios = () => {
           obtenerUsuarios(setUsuarios,setEjecutarConsulta);
       }
       setUsuariosFiltrados(usuarios);
-  }, [ejecutarConsulta]);
+  }, [usuarios,ejecutarConsulta]);
 
   useEffect(()=>{
     setUsuariosFiltrados(
@@ -32,7 +32,7 @@ const Usuarios = () => {
       })
       
     );
-  }, [busqueda]);
+  }, [usuarios,busqueda]);
 
   return (
     <div className="flex h-full w-full flex-col items-center justify-start ">

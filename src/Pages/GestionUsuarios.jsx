@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, {useRef } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
@@ -69,7 +69,6 @@ const CrearUsuario = () => {
             placeholder=""
             />
         </label>
-  
         <label htmlFor="nombre">
             Nombre 
             <input
@@ -80,7 +79,6 @@ const CrearUsuario = () => {
             placeholder=""
             />
         </label>
-  
         <label htmlFor="apellido">
             Apellido
             <input

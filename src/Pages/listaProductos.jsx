@@ -12,7 +12,6 @@ const ListProductos = () => {
   const [productos, setProductos] = useState([]);
   const [productosFiltrados, setProductosFiltrados] = useState([]);
   const [busqueda, setBusqueda] = useState('');
-  const [filtroCampo, setFiltroCampo] = useState('idProducto');
   const [ejecutarConsulta, setEjecutarConsulta] = useState(true);
   
 
@@ -36,17 +35,13 @@ const ListProductos = () => {
   
 
   useEffect(() => {
-    console.log(busqueda, filtroCampo);
-
     setProductosFiltrados(
       productos.filter((elemento) => {
-        console.log(busqueda);
         console.log(JSON.stringify(elemento));
         return JSON.stringify(elemento).toLowerCase().includes(busqueda.toLowerCase());
       })
     );
-
-  }, [busqueda, filtroCampo]);
+  },[productos, busqueda]);
 
 
 
@@ -90,8 +85,7 @@ const TablaProductos = ({ listaProductos, setEjecutarConsulta }) => {
 
   useEffect(() => {
     setProductosFiltrados(listaProductos);
-    console.log(productosFiltrados);
-  }, [listaProductos]);
+  }, [listaProductos, productosFiltrados]);
 
   return (
     <div className="flex justify-center">

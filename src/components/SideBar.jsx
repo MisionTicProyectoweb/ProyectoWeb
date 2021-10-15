@@ -53,7 +53,8 @@ const show = () => {
             ruta="/admin/ventas"
             nombre="Ventas"
           />
-          <Ruta icono="fas fa-users" ruta="/admin/usuarios" nombre="Usuarios" />
+          <Ruta icono="fas fa-user-tie" ruta="/admin/usuarios" nombre="Usuairos" />
+          <Ruta icono="fas fa-users" ruta="/admin/clientes" nombre="Clientes"/>
         </div>
       </nav>
       <div className="w-full bottom-0">
@@ -71,7 +72,8 @@ const hide = () => {
           <Ruta icono="fas fa-users-cog" ruta="/admin/dashboard" />
           <Ruta icono="fas fa-cart-plus" ruta="/admin/productos" />
           <Ruta icono="fas fa-clipboard-list" ruta="/admin/ventas" />
-          <Ruta icono="fas fa-users" ruta="/admin/usuarios" />
+          <Ruta icono="fas fa-user-tie" ruta="/admin/usuarios" />
+          <Ruta icono="fas fa-users" ruta="/admin/clientes" />
         </div>
       </nav>
       <div className="w-full flex items-center justify-center">

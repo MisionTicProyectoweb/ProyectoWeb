@@ -1,13 +1,17 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "./Styles/gestionVentas.css";
 //import { Link } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {NavBarFull} from 'components/Navbar';
+import {consultarClientes} from 'utils/api';
+import {obtenerclientes} from 'utils/api';
 
-const GestVentas = () => {
-  // Estados
-  const [mostrarTabla, setMostrarTabla] = useState(true);
+const GestionVentas = () => {
+  
+  ///OBTENEMOS LA INFORMACIÓN DE LOS USUARIOS PARA COMPLETAR CAMPOS///
+  
+  const [tablas,setMostrarTabla] = useState(true);
   const [ventas, setVentas] = useState([]); //pata obtener informacion desde el backend
   return (
     <div className="font-sick flex-col" id="body">
@@ -26,7 +30,33 @@ const GestVentas = () => {
   );
 };
 
-const FormularioVentas = ({ setMostrarTabla, listaVentas, setVentas }) => {
+const FormularioVentas = ({setMostrarTabla, listaVentas, setVentas }) => {
+  const [clientes, setclientes] = useState([]);
+  const [busqueda, setBusqueda] = useState('');
+  const [clientesFiltrados, setclientesFiltrados] = useState([]);
+  const [ejecutarConsulta, setEjecutarConsulta] = useState(true);
+
+  useEffect(() => {
+      if (ejecutarConsulta){
+          obtenerclientes(setclientes,setEjecutarConsulta);
+      }
+      setclientesFiltrados(clientes);
+
+  }, [clientes,ejecutarConsulta]);
+  
+
+  useEffect(()=>{
+    setclientesFiltrados(
+      clientes.filter((elemento) =>{
+        return JSON.stringify(elemento).toLowerCase().includes(busqueda.toLowerCase());
+      })
+    );
+  }, [clientes,busqueda]);
+
+  
+  console.log()
+  ///AQUI ACABA SECCION DE USUARIOS///
+
   const form = useRef(null);
 
   const submitForm = (e) => {
@@ -49,8 +79,9 @@ const FormularioVentas = ({ setMostrarTabla, listaVentas, setVentas }) => {
       <h2 className="top-0 text-2xl font-extrabold text-gray-700">Registrar Venta</h2>
       <div className="grid grid-cols-4 border rounded-lg">
         <label htmlFor="idcliente">
-          Código Cliente
+          Cedula Cliente
           <input
+            onChange={(e) =>setBusqueda(e.target.value)}
             className=" bg-gray-50 border border-gray-200 m-1 p-3 rounded-lg appearance-none relative block px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
             name="idcliente"
             type="number"
@@ -64,7 +95,10 @@ const FormularioVentas = ({ setMostrarTabla, listaVentas, setVentas }) => {
             className=" bg-gray-50 border border-gray-200 m-1 p-3 rounded-lg appearance-none relative block px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
             name="nombreCliente"
             type="text"
-            placeholder=""
+            defaulValue=""
+            value={clientesFiltrados.map((clientres)=> (clientres.nombre + clientres.apellido))}
+            placeholder="Deshabilitado"
+            disabled
           />
         </label>
         <label htmlFor="estadoVenta">
@@ -113,7 +147,8 @@ const FormularioVentas = ({ setMostrarTabla, listaVentas, setVentas }) => {
               name="nombreProducto"
               type="text"
               required
-              placeholder=""
+              placeholder="Deshabilitado"
+              disabled
             />
           </label>
           <label htmlFor="cantidad">
@@ -135,7 +170,8 @@ const FormularioVentas = ({ setMostrarTabla, listaVentas, setVentas }) => {
               type="number"
               min={0}
               required
-              placeholder="$"
+              placeholder="Deshabilitado"
+              disabled
             />
           </label>
           <label htmlFor="valorTotal">
@@ -146,7 +182,8 @@ const FormularioVentas = ({ setMostrarTabla, listaVentas, setVentas }) => {
               type="number"
               min={0}
               required
-              placeholder="$"
+              placeholder="Deshabilitado"
+              disabled
             />
           </label>
           <button
@@ -230,4 +267,4 @@ const TablaVentas = ({ listaVentas }) => {
 const regisCompra = () => {
   toast.success("Compra Registrada");
 }
-export default GestVentas;
+export default GestionVentas;
