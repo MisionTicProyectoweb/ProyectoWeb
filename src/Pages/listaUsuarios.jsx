@@ -52,7 +52,7 @@ const Usuarios = () => {
 //componentes para mostar formulario o tabla
 const TablaUsuarios = ({ listaUsuarios, setEjecutarConsulta }) => {
   return (
-    <div className="ml-10 mr-10 flex items-center justify-center">
+    <div className="ml-10 mr-10 flex items-center justify-center grid">
       <table className="table">
         <thead>
           <tr>
@@ -84,11 +84,10 @@ const FilaUsuario = ({usuarios, setEjecutarConsulta}) => {
   });
 
   const actualizarUsuarios = async () => {
-
     const options = {
       method: 'PATCH',
       url: `http://localhost:5000/usuarios/editar/${usuarios._id}`,
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type':'application/json' },
       data: { ...infoEditarUsuario }
     };
     await axios

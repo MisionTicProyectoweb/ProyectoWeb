@@ -33,6 +33,11 @@ const Ruta = ({ icono, ruta, nombre }) => {
 };
 const Show = () => {
    const { logout } = useAuth0();
+
+   const cerrarsesion=()=>{
+    logout({ returnTo: window.location.origin })
+localStorage.setItem('token',null);
+   }
     return (
         <div className="flex flex-col items-center justify-center bg-indigo-500">
             <nav className='hidden lg:flex lg:w-56 border border-indigo-500 h-full flex-col bg-indigo-500 w-52'>
@@ -48,7 +53,7 @@ const Show = () => {
             </nav>
             <div className="w-full bottom-0">
                 <button  className="w-full bottom-0"
-                 onClick={() => logout({ returnTo: window.location.origin })}
+                 onClick={()=>cerrarsesion()}
                 >
                 <Ruta icono='fas fa-sign-out-alt' ruta='' nombre='Salir' />
 
