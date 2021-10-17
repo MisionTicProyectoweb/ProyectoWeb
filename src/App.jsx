@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Login from "Pages/login";
 import GestionVentas from "Pages/GestionVentas";
 import GestionProductos from "Pages/GestionProductos";
@@ -12,10 +12,11 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import LayoutPrivado from "layouts/LayoutPrivado";
 import LayoutPublico from "layouts/LayoutPublico";
 import { Auth0Provider } from "@auth0/auth0-react";
-
-
+import { UserContext } from "Contex/UserContext";
 export default function App() {
+  const [userData, setUserData] = useState({});
   return (
+ 
     <Auth0Provider
     domain="mintic-proyecto.us.auth0.com"
     clientId="c5zCRirAIchHValVZvDGG1GUiwX7D3TA"
@@ -23,9 +24,12 @@ export default function App() {
     audience="api-autenticacion-almacen-mintic"
     //scope="read:current_user update:current_user_metadata"
         >
-
+ 
     <div>
-    
+   {/*    contener los datos de usuarios queen toda la app */}
+  
+
+   <UserContext.Provider value={{ userData, setUserData }}>
       <Router>
         <Switch>
           {/* aqui va la administracion, y se desprenden paginas
@@ -92,8 +96,10 @@ export default function App() {
           </Route>
         </Switch>
       </Router>
-    
-    </div>
+      </UserContext.Provider>
+      </div>
+      
     </Auth0Provider>
+   
   );
 }

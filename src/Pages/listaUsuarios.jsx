@@ -8,33 +8,56 @@ import "./Styles/Tablas.css";
 import { nanoid } from "nanoid";
 import {NavBarFull} from 'components/Navbar';
 import {obtenerUsuarios} from 'utils/api';
+import { getToken } from "utils/api";
+
+
+
 
 
 const Usuarios = () => {
 
   const [usuarios, setUsuarios] = useState([]);
+  const [busqueda, setBusqueda] = useState('');
+  const [usuariosFiltrados, setUsuariosFiltrados] = useState([]);
   const [ejecutarConsulta, setEjecutarConsulta] = useState(true);
   useEffect(() => {
       //Obtener Usuarios desde el backend
       if (ejecutarConsulta){
           obtenerUsuarios(setUsuarios,setEjecutarConsulta);
       }
+      setUsuariosFiltrados(usuarios);
   }, [ejecutarConsulta]);
+
+  useEffect(()=>{
+    setUsuariosFiltrados(
+      
+      usuarios.filter((elemento) =>{
+        return JSON.stringify(elemento).toLowerCase().includes(busqueda.toLowerCase());
+      })
+      
+    );
+  }, [busqueda]);
+
   return (
     <div className="flex h-full w-full flex-col items-center justify-start ">
       <NavBarFull titulo="Listado de Usuarios" subtitulo={`Usuarios: ${usuarios.length}`}/>
-      <div className="mb-2 flex items-center justify-center w-full h-20">
+      <div className="mb-2 flex items-center justify-center w-full h-44">
         <label className="text-base font-semibold mr-5 text-black">Buscar:</label>
         <svg width="24" height="24" fill="none" class="text-gray-400 group-hover:text-gray-500 transition-colors duration-200"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-        <input type="text" className="p-2 ml-4 w-96 h-10 rounded-lg border shadow-md" placeholder="Buscar por ..."></input>
-        <select name="select" className="font-semibold text-center ml-4 border h-10 rounded-lg shadow-md">
-          <option value="value1" selected>Cedula</option>
-          <option value="value2">Nombre</option>
-          <option value="value3">Apellido</option>
-          <option value="value3">Correo</option>
-        </select>
+        <input 
+            value={busqueda}
+            onChange={(e) => setBusqueda(e.target.value)} 
+            type="text" 
+            className="p-2 ml-4 mr-5 w-96 h-10 rounded-lg border shadow-md" 
+            placeholder="Buscar por ..."></input>
+        {/* <select id="busPor" name="select" className="font-semibold text-center ml-4 border h-10 rounded-lg shadow-md">
+          <option value="ccUsuario" selected>Cedula</option>
+          <option value="nombre">Nombre</option>
+          <option value="apellido">Apellido</option>
+          <option value="correo">Correo</option>
+        </select> */}
         <Link to="/admin/usuarios/gestionusuario">
-          <button type="button" className="bg-indigo-500 text-white transform hover:scale-110 hover:bg-indigo-600   float-left ml-20 flex items-center p-2 rounded-lg border shadow-md">
+          <button type="button" className="bg-indigo-500 text-white transform hover:scale-110 hover:bg-indigo-600 float-left flex items-center p-2 rounded-lg border shadow-md">
             <svg xmlns="http://www.w3.org/2000/svg" class="mr-2 h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
               <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clip-rule="evenodd" />
             </svg>Agregar Usuarios
@@ -42,7 +65,9 @@ const Usuarios = () => {
         </Link>
       </div>
       <div className="overflow-y-scroll">
-        <TablaUsuarios listaUsuarios={usuarios} setEjecutarConsulta={setEjecutarConsulta}/>
+        <TablaUsuarios 
+          listaUsuarios={usuariosFiltrados} 
+          setEjecutarConsulta={setEjecutarConsulta}/>
         <ToastContainer position="bottom-center" autoClose={5000} />
       </div>
     </div>
@@ -52,16 +77,20 @@ const Usuarios = () => {
 //componentes para mostar formulario o tabla
 const TablaUsuarios = ({ listaUsuarios, setEjecutarConsulta }) => {
   return (
-    <div className="ml-10 mr-10 flex items-center justify-center grid">
+    <div className="ml-10 mr-10 flex items-center justify-center">
       <table className="table">
         <thead>
           <tr>
-            <th>Cedula</th>
+            <th>ID</th>
             <th>Nombre</th>
-            <th>Apellido</th>
-            <th>Correo</th>
+          {/*   <th>Apellido</th> */}
+            {/* <th>Correo</th> */}
+            <th>Email</th>
             <th>Estado</th>
             <th>Rol</th>
+          
+            
+            
             <th>Acción</th>
           </tr>
         </thead>
@@ -79,17 +108,21 @@ const FilaUsuario = ({usuarios, setEjecutarConsulta}) => {
   const [edit, setEdit] = useState(false);
   const [openDialog, setOpenDialog] = useState(false);
   const [infoEditarUsuario, setInfoEditarUsuario] = useState({
-    estado: usuarios.estado,
     rol: usuarios.rol,
+    estado: usuarios.estado,
+    
   });
 
   const actualizarUsuarios = async () => {
+
     const options = {
       method: 'PATCH',
       url: `http://localhost:5000/usuarios/editar/${usuarios._id}`,
-      headers: { 'Content-Type':'application/json' },
+      headers: { 'Content-Type': 'application/json',
+       Authorization: getToken() },
       data: { ...infoEditarUsuario }
-    };
+    
+    };  console.log(getToken);
     await axios
       .request(options)
       .then(function (response) {
@@ -108,7 +141,10 @@ const FilaUsuario = ({usuarios, setEjecutarConsulta}) => {
     const options = {
       method: 'DELETE',
       url: `http://localhost:5000/usuarios/${usuarios._id}`,
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json',
+
+       Authorization: getToken()
+       },
       data: {id: usuarios._id}
     };
     await axios
@@ -128,10 +164,10 @@ const FilaUsuario = ({usuarios, setEjecutarConsulta}) => {
     <tr>
       {edit ? (
         <>
-          <td>{usuarios.ccUsuario}</td>
-          <td> {usuarios.nombre} </td>
-          <td> {usuarios.apellido} </td>
-          <td> {usuarios.correo} </td>
+          <td>{usuarios._id}</td>
+          <td> {usuarios.name} </td>
+          <td> {usuarios.email} </td>
+         {/*  <td> {usuarios.estado} </td> */}
           <td>
             <select 
             style={{margin: '0rem'}} 
@@ -160,16 +196,19 @@ const FilaUsuario = ({usuarios, setEjecutarConsulta}) => {
       ) :
         (
           <>
-            <td> {usuarios.ccUsuario} </td>
-            <td> {usuarios.nombre} </td>
-            <td> {usuarios.apellido} </td>
-            <td> {usuarios.correo} </td>
+            <td> {usuarios._id} </td>
+            <td> {usuarios.name} </td>
+           {/*  <td> {usuarios.apellido} </td> */}
+            <td> {usuarios.email} </td>
             <td> {usuarios.estado} </td>
             <td> {usuarios.rol} </td>
+            
+            
           </>
         )}
       <td>
         <div className="flex w-full justify-around">
+          
           {edit ? (
             <>
               <Tooltip title="Confirmar Edición" arrow>
