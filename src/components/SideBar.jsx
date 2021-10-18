@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom';
 import logo from 'media/logoTSolutions.png';
 import useActiveRoute from 'hooks/useActiveRoute';
 import { useAuth0 } from "@auth0/auth0-react";
+import PrivateRoute from './PrivateRoute';
+import PrivateComponent from './PrivateComponent';
+
 let estado, setEstado;
 
 
@@ -46,16 +49,23 @@ localStorage.setItem('token',null);
                 </Link>
                 <div className='my-6 '>
                     <Ruta icono='fas fa-users-cog' ruta='/admin/dashboard' nombre='DashBoard' />
+                   <PrivateComponent roleslist={['Administrador']}>
                     <Ruta icono='fas fa-cart-plus' ruta='/admin/productos' nombre='Productos' />
+                    </PrivateComponent>
+                    <PrivateComponent roleslist={['Administrador','Vendedor']}>
                     <Ruta icono='fas fa-clipboard-list' ruta='/admin/ventas' nombre='Ventas' />
-                    <Ruta icono='fas fa-users' ruta='/admin/usuarios' nombre='Usuarios' />
+                  </PrivateComponent>
+                  <PrivateComponent roleslist={['Administrador']}>
+                  <Ruta icono='fas fa-users' ruta='/admin/usuarios' nombre='Usuarios' />
+
+                  </PrivateComponent>
                 </div>
             </nav>
             <div className="w-full bottom-0">
                 <button  className="w-full bottom-0"
                  onClick={()=>cerrarsesion()}
                 >
-                <Ruta icono='fas fa-sign-out-alt' ruta='' nombre='Salir' />
+                <Ruta className="w-full  " icono='fas fa-sign-out-alt ' ruta='' nombre='Salir' />
 
                 </button>
             </div>

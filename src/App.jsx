@@ -13,6 +13,7 @@ import LayoutPrivado from "layouts/LayoutPrivado";
 import LayoutPublico from "layouts/LayoutPublico";
 import { Auth0Provider } from "@auth0/auth0-react";
 import { UserContext } from "Contex/UserContext";
+import PrivateRoute from "components/PrivateRoute";
 export default function App() {
   const [userData, setUserData] = useState({});
   return (
@@ -55,19 +56,30 @@ export default function App() {
                   <GestionProductos />
                 </Route>
                 <Route path="/admin/productos">
+                  <PrivateRoute roleslist={['Administrador']}>
                   <ListProductos />
+                  </PrivateRoute>
                 </Route>
                 <Route path="/admin/ventas/gestionVentas">
-                  <GestionVentas />
+                <PrivateRoute roleslist={['Administrador','Vendedor']}>
+                <GestionVentas />
+                  </PrivateRoute>
+                
                 </Route>
                 <Route path="/admin/ventas">
-                  <ListVentas />
+                <PrivateRoute roleslist={['Administrador','Vendedor']}>
+                <ListVentas />
+                  </PrivateRoute>
+                 
                 </Route>
                 <Route path="/admin/usuarios/gestionusuario">
                   <GestionUsuarios />
                 </Route>
                 <Route path="/admin/usuarios">
-                  <Usuarios />
+                <PrivateRoute roleslist={['Administrador','Vendedor']}>
+                <Usuarios />
+                  </PrivateRoute> 
+            
                 </Route>
                 <Route path="/admin/dashboard">
                   <Bienvenida />

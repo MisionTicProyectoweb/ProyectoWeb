@@ -1,7 +1,7 @@
 import React from 'react'
 import {Navbar} from 'components/Navbar';
 import Footer from 'components/Footer';
-import { PrivateRoute } from 'components/PrivateRoute';
+
 const LayoutPublico = ({children}) => {
     return (
        
