@@ -8,8 +8,8 @@ import "./Styles/Tablas.css";
 import { nanoid } from "nanoid";
 import {NavBarFull} from 'components/Navbar';
 import {obtenerUsuarios} from 'utils/api';
-
-
+import { getToken } from "utils/api";
+import PrivateComponent from "components/PrivateComponent";
 const Usuarios = () => {
 
   const [usuarios, setUsuarios] = useState([]);
@@ -36,7 +36,7 @@ const Usuarios = () => {
 
   return (
     <div className="flex h-full w-full flex-col items-center justify-start ">
-      <NavBarFull titulo="Listado de Usuarios" subtitulo={`Usuarios: ${usuarios.length}`}/>
+      <NavBarFull titulo="Listado de Usuarios" subtitulo={`Total: ${usuarios.length}`}/>
       <div className="mb-2 flex items-center justify-center w-full h-44">
         <label className="text-base font-semibold mr-5 text-black">Buscar:</label>
         <svg width="24" height="24" fill="none" class="text-gray-400 group-hover:text-gray-500 transition-colors duration-200"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
@@ -60,6 +60,8 @@ const Usuarios = () => {
           </button>
         </Link>
       </div>
+    {/*   <PrivateComponent roleslist={["admin" ,"Vendedor"]}> 
+      </PrivateComponent> */}
       <div className="overflow-y-scroll">
         <TablaUsuarios 
           listaUsuarios={usuariosFiltrados} 
@@ -77,12 +79,16 @@ const TablaUsuarios = ({ listaUsuarios, setEjecutarConsulta }) => {
       <table className="table">
         <thead>
           <tr>
-            <th>Cedula</th>
+            <th>ID</th>
             <th>Nombre</th>
-            <th>Apellido</th>
-            <th>Correo</th>
+          {/*   <th>Apellido</th> */}
+            {/* <th>Correo</th> */}
+            <th>Email</th>
             <th>Estado</th>
             <th>Rol</th>
+          
+            
+            
             <th>Acción</th>
           </tr>
         </thead>
@@ -100,8 +106,9 @@ const FilaUsuario = ({usuarios, setEjecutarConsulta}) => {
   const [edit, setEdit] = useState(false);
   const [openDialog, setOpenDialog] = useState(false);
   const [infoEditarUsuario, setInfoEditarUsuario] = useState({
-    estado: usuarios.estado,
     rol: usuarios.rol,
+    estado: usuarios.estado,
+    
   });
 
   const actualizarUsuarios = async () => {
@@ -109,9 +116,11 @@ const FilaUsuario = ({usuarios, setEjecutarConsulta}) => {
     const options = {
       method: 'PATCH',
       url: `http://localhost:5000/usuarios/editar/${usuarios._id}`,
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json',
+       Authorization: getToken() },
       data: { ...infoEditarUsuario }
-    };
+    
+    };  console.log(getToken);
     await axios
       .request(options)
       .then(function (response) {
@@ -130,7 +139,10 @@ const FilaUsuario = ({usuarios, setEjecutarConsulta}) => {
     const options = {
       method: 'DELETE',
       url: `http://localhost:5000/usuarios/${usuarios._id}`,
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json',
+
+       Authorization: getToken()
+       },
       data: {id: usuarios._id}
     };
     await axios
@@ -150,10 +162,10 @@ const FilaUsuario = ({usuarios, setEjecutarConsulta}) => {
     <tr>
       {edit ? (
         <>
-          <td>{usuarios.ccUsuario}</td>
-          <td> {usuarios.nombre} </td>
-          <td> {usuarios.apellido} </td>
-          <td> {usuarios.correo} </td>
+          <td>{usuarios._id}</td>
+          <td> {usuarios.name} </td>
+          <td> {usuarios.email} </td>
+         {/*  <td> {usuarios.estado} </td> */}
           <td>
             <select 
             style={{margin: '0rem'}} 
@@ -182,16 +194,19 @@ const FilaUsuario = ({usuarios, setEjecutarConsulta}) => {
       ) :
         (
           <>
-            <td> {usuarios.ccUsuario} </td>
-            <td> {usuarios.nombre} </td>
-            <td> {usuarios.apellido} </td>
-            <td> {usuarios.correo} </td>
+            <td> {usuarios._id} </td>
+            <td> {usuarios.name} </td>
+           {/*  <td> {usuarios.apellido} </td> */}
+            <td> {usuarios.email} </td>
             <td> {usuarios.estado} </td>
             <td> {usuarios.rol} </td>
+            
+            
           </>
         )}
       <td>
         <div className="flex w-full justify-around">
+          
           {edit ? (
             <>
               <Tooltip title="Confirmar Edición" arrow>
