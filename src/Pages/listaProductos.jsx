@@ -15,8 +15,8 @@ import { NavBarFull } from "components/Navbar";
 const ListProductos = () => {
   const [productos, setProductos] = useState([]);
   const [productosFiltrados, setProductosFiltrados] = useState([]);
-  const [busqueda, setBusqueda] = useState("");
-  const [filtroCampo, setFiltroCampo] = useState("idProducto");
+  const [busqueda, setBusqueda] = useState('');
+  const [filtroCampo, setFiltroCampo] = useState('idProducto');
   const [ejecutarConsulta, setEjecutarConsulta] = useState(true);
 
   useEffect(() => {
