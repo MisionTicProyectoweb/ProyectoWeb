@@ -57,12 +57,12 @@ const CrearUsuario = () => {
     }; 
     return (
     <div className="flex flex-col items-center justify-center">
-    <h2 className="text-2xl font-extrabold text-gray-700">Crear nuevo usuario</h2>
-    <form ref={form} onSubmit={submitForm} className="flex flex-col grid-cols-2 m-4">
+    <h2 className="text-2xl font-extrabold text-gray-700 my-6">Crear nuevo usuario</h2>
+        <form ref={form} onSubmit={submitForm} className="flex-col items-center justify-center grid grid-cols-2 m-6 my-4">
         <label htmlFor="ccUsuario">
             Cedula
             <input
-            className=" bg-gray-50 border border-gray-200 m-2 p-3 rounded-lg appearance-none relative block px-3 py-2 focus:outline-none focus:ring-purple-500 focus:border-purple-500 focus:z-10 sm:text-sm"
+              className=" w-44 mr-4 my-5 ml-5 p-2 bg-gray-50 border border-gray-200 rounded-lg appearance-none relative block focus:outline-none focus:ring-purple-500 focus:border-purple-500 focus:z-10 sm:text-sm"
             name="ccUsuario"
             type="text"
             min={0}
@@ -74,7 +74,7 @@ const CrearUsuario = () => {
         <label htmlFor="nombre">
             Nombre 
             <input
-            className=" bg-gray-50 border border-gray-200 m-2 p-3 rounded-lg appearance-none relative block px-3 py-2 focus:outline-none focus:ring-purple-500 focus:border-purple-500 focus:z-10 sm:text-sm"
+              className=" w-44 mr-4 my-5 ml-5 p-2 bg-gray-50 border border-gray-200 rounded-lg appearance-none relative block focus:outline-none focus:ring-purple-500 focus:border-purple-500 focus:z-10 sm:text-sm"
             name="nombre"
             type="text"
             required
@@ -85,7 +85,7 @@ const CrearUsuario = () => {
         <label htmlFor="apellido">
             Apellido
             <input
-            className=" bg-gray-50 border border-gray-200 m-2 p-3 rounded-lg appearance-none relative block px-3 py-2 focus:outline-none focus:ring-purple-500 focus:border-purple-500 focus:z-10 sm:text-sm"
+              className=" w-44 mr-4 my-5 ml-5 p-2 bg-gray-50 border border-gray-200 rounded-lg appearance-none relative block focus:outline-none focus:ring-purple-500 focus:border-purple-500 focus:z-10 sm:text-sm"
             name="apellido"
             type="text"
             required
@@ -95,7 +95,7 @@ const CrearUsuario = () => {
         <label htmlFor="correo">
             Correo
             <input
-            className=" bg-gray-50 border border-gray-200 m-2 p-3 rounded-lg appearance-none relative block px-3 py-2 focus:outline-none focus:ring-purple-500 focus:border-purple-500 focus:z-10 sm:text-sm"
+              className="w-44 mr-4 my-5 ml-5 p-2 bg-gray-50 border border-gray-200 rounded-lg appearance-none relative block focus:outline-none focus:ring-purple-500 focus:border-purple-500 focus:z-10 sm:text-sm"
             name="correo"
             type="text"
             required
@@ -106,7 +106,7 @@ const CrearUsuario = () => {
         <label htmlFor="estado">
             Estado 
             <select
-            className=" bg-gray-50 border border-gray-200 m-2 p-3 rounded-lg appearance-none relative block px-3 py-2 focus:outline-none focus:ring-purple-500 focus:border-purple-500 focus:z-10 sm:text-sm"
+              className=" w-44 mr-4 my-5 ml-5 p-2 bg-gray-50 border border-gray-200  rounded-lg appearance-none relative block focus:outline-none focus:ring-purple-500 focus:border-purple-500 focus:z-10 sm:text-sm"
             name="estado"
             defaultValue={0}
             >
@@ -122,7 +122,7 @@ const CrearUsuario = () => {
         <label htmlFor="rol">
             Rol
             <select
-            className=" bg-gray-50 border border-gray-200 m-2 p-3 rounded-lg appearance-none relative block px-3 py-2 focus:outline-none focus:ring-purple-500 focus:border-purple-500 focus:z-10 sm:text-sm"
+              className="w-44 mr-4 my-5 ml-5 p-2 bg-gray-50 border border-gray-200 rounded-lg appearance-none relative block focus:outline-none focus:ring-purple-500 focus:border-purple-500 focus:z-10 sm:text-sm"
             name="rol"
             defaultValue={0}
             >
@@ -133,14 +133,22 @@ const CrearUsuario = () => {
             <option>Administardor</option>
             </select>
         </label>
-        <button
-          type="submit"
-          className="flex justify-center py-2 px-4 my-6 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-400 hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-          <span>Registrar Usuario</span>
-          <svg xmlns="http://www.w3.org/2000/svg" class="ml-4 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-          </svg>
-        </button>
+    
+          <button
+            type="submit"
+              className="w-44 mr-4 my-5 ml-5 p-2 flex justify-center border border-transparent text-sm font-medium rounded-md text-white bg-indigo-400 hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+              <span className="mx-2" >Registrar Usuario</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="ml-2 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+          <Link to="/admin/usuarios/listausuario">
+            <button
+                className="w-44 mr-4 my-5 ml-5 p-2 flex items-center justify-center border border-transparent text-sm font-medium rounded-md text-white bg-indigo-400 hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+              <span className="mx-2">Atras</span>
+              <span className=" fas fa-angle-double-left "></span>
+            </button>
+          </Link>
     </form>
     <ToastContainer position="bottom-right" margin={2} theme="colored" autoClose={3000}/>
   </div>

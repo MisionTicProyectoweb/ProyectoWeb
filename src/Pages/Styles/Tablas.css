@@ -1,6 +1,7 @@
 
 .table{
     width: 98%;
+    margin: 10px;
     overflow-y:scroll;
 }
 

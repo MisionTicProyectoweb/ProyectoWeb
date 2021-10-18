@@ -104,3 +104,4 @@ export const obtenerdatosUsuario = async(successCallback, errorCallback) => {
     };
     await axios.request(options).then(successCallback).catch(errorCallback);
 };
+

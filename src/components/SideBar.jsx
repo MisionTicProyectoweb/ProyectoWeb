@@ -92,14 +92,22 @@ const hide = () => {
 }
 
 const btnHide = () => {
-    return (
-        <div className="bg-indigo-500 text-white my-4"
-            onClick={() => {
-                setEstado(!estado);
-            }}>
-            <i className={`mx-8 fas fa-${estado ? 'chevron-left' : 'bars'} hover:text-black `} />
-        </div>
-    );
+  return (
+    <div className="w-full">
+      <button
+        className="bg-indigo-500 text-white flex w-full items-center h-14"
+        onClick={() => {
+          setEstado(!estado);
+        }}
+      >
+        <i
+          className={`mx-2 fas fa-${
+            estado ? "chevron-left" : "bars"
+          } hover:text-black cursor-pointer h-15 w-full`}
+        />
+      </button>
+    </div>
+  );
 };
 
 export default Sidebar;
