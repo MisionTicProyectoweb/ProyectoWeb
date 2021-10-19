@@ -2,11 +2,7 @@ import React, { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { nanoid } from "nanoid";
 import { Dialog, Tooltip } from "@material-ui/core";
-import {
-  obtenerProductos,
-  editarProducto,
-  eliminarProducto,
-} from "utils/api/productos";
+import { obtenerProductos, editarProducto, eliminarProducto} from "utils/api/productos";
 import { Link } from "react-router-dom";
 import "./Styles/Tablas.css";
 import "react-toastify/dist/ReactToastify.css";
@@ -43,9 +39,7 @@ const ListProductos = () => {
       productos.filter((elemento) => {
         console.log(busqueda);
         console.log(JSON.stringify(elemento));
-        return JSON.stringify(elemento)
-          .toLowerCase()
-          .includes(busqueda.toLowerCase());
+        return JSON.stringify(elemento).toLowerCase().includes(busqueda.toLowerCase());
       })
     );
   }, [busqueda, filtroCampo]);
