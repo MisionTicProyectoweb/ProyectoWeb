@@ -1,5 +1,10 @@
 import axios from 'axios';
 
+export const getToken = () => {
+  return `Bearer ${localStorage.getItem('token')}`
+}
+console.log(getToken());
+
 export const obtenerVentas = async (setVentas, setEjecutarVentas = () => {}) => {
   const options = { method: 'GET', url: 'http://localhost:5000/ventas/' };
   await axios
@@ -65,5 +70,16 @@ export const obtenerclientes = async (setVentas, setEjecutarClientes = () => { }
       setVentas(response.data);
       setEjecutarClientes(false);
     });
+};
+
+export const obtenerdatosUsuario = async(successCallback, errorCallback) => {
+  const options = {
+      method: 'GET',
+      url: 'http://localhost:5000/usuarios/self',
+      headers: {
+          Authorization: getToken() //3. ENVIARLE EL TOKEN AL BACKEN 
+      }
+  };
+  await axios.request(options).then(successCallback).catch(errorCallback);
 };
 

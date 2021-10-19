@@ -22,11 +22,7 @@ const Usuarios = () => {
           obtenerUsuarios(setUsuarios,setEjecutarConsulta);
       }
       setUsuariosFiltrados(usuarios);
-<<<<<<< HEAD
-  }, [ejecutarConsulta]);
-=======
   }, [usuarios,ejecutarConsulta]);
->>>>>>> pruebaventas
 
   useEffect(()=>{
     setUsuariosFiltrados(
