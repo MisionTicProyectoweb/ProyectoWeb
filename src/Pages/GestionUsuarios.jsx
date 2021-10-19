@@ -20,8 +20,10 @@ const CrearUsuario = () => {
   
     const form = useRef(null);
   
-    const submitForm = async (e) => {e.preventDefault();
+    const submitForm = async (e) => {
+      e.preventDefault();
       const fd = new FormData(form.current);
+      
       const nuevoUsuarios = {};
       fd.forEach((value, key) => {
         nuevoUsuarios[key] = value;
