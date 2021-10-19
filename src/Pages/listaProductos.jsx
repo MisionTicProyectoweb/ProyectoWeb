@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { nanoid } from "nanoid";
 import { Dialog, Tooltip } from "@material-ui/core";
-import { obtenerProductos,editarProducto,eliminarProducto} from "utils/api";
+import { obtenerProductos,editarProducto,eliminarProducto} from "utils/api/productos";
 import { Link } from "react-router-dom";
 import "./Styles/Tablas.css";
 import "react-toastify/dist/ReactToastify.css";
@@ -12,7 +12,6 @@ const ListProductos = () => {
   const [productos, setProductos] = useState([]);
   const [productosFiltrados, setProductosFiltrados] = useState([]);
   const [busqueda, setBusqueda] = useState('');
-  const [filtroCampo, setFiltroCampo] = useState('idProducto');
   const [ejecutarConsulta, setEjecutarConsulta] = useState(true);
   
 
@@ -36,24 +35,20 @@ const ListProductos = () => {
   
 
   useEffect(() => {
-    console.log(busqueda, filtroCampo);
-
     setProductosFiltrados(
       productos.filter((elemento) => {
-        console.log(busqueda);
         console.log(JSON.stringify(elemento));
         return JSON.stringify(elemento).toLowerCase().includes(busqueda.toLowerCase());
       })
     );
-
-  }, [busqueda, filtroCampo]);
+  },[productos, busqueda]);
 
 
 
   return (
-    <div className="flex w-full flex-col items-center h-full m-0">
+    <div className="flex w-full flex-col items-center h-full ">
       <NavBarFull titulo="Listado de productos" subtitulo={"productos: "+ productos.length}/>
-      <div className="flex items-center justify-center w-full h-20">
+      <div className="flex items-center justify-center w-full h-44">
         <label className="text-base font-semibold mr-5 text-black">
           Buscar:
         </label>
@@ -73,7 +68,8 @@ const ListProductos = () => {
         </button>
         </Link>
       </div>
-      <div className="h-96 overflow-y-scroll">      
+
+     <div className="overflow-y-scroll h-1/2 ">
         <TablaProductos
             listaProductos={productosFiltrados}
             setEjecutarConsulta={setEjecutarConsulta}
@@ -89,8 +85,7 @@ const TablaProductos = ({ listaProductos, setEjecutarConsulta }) => {
 
   useEffect(() => {
     setProductosFiltrados(listaProductos);
-    console.log(productosFiltrados);
-  }, [listaProductos]);
+  }, [listaProductos, productosFiltrados]);
 
   return (
     <div className="flex justify-center">
@@ -99,6 +94,7 @@ const TablaProductos = ({ listaProductos, setEjecutarConsulta }) => {
           <tr>
             <th>Id</th>
             <th>Descripción</th>
+            <th>Marca</th>
             <th>Valor ($)</th>
             <th>Estado</th>
             <th>Acción</th>
@@ -124,9 +120,9 @@ const FilaProducto = ({ productos, setEjecutarConsulta }) => {
   const [edit, setEdit] = useState(false);
   const [openDialog, setOpenDialog] = useState(false);
   const [infoNuevoProducto, setInfoNuevoProducto] = useState({
-    id: productos._id,
-    idProducto: productos.idProducto,
+    _id: productos._id,
     nombreProducto: productos.nombreProducto,
+    marca: productos.marca,
     valorUnitario: productos.valorUnitario,
     estado: productos.estado,
   });
@@ -136,8 +132,8 @@ const FilaProducto = ({ productos, setEjecutarConsulta }) => {
     await editarProducto(
       productos._id,
       {        
-        idProducto: infoNuevoProducto.idProducto,
         nombreProducto: infoNuevoProducto.nombreProducto,
+        marca: infoNuevoProducto.marca,
         valorUnitario: infoNuevoProducto.valorUnitario,
         estado: infoNuevoProducto.estado,
       },
@@ -176,20 +172,7 @@ const FilaProducto = ({ productos, setEjecutarConsulta }) => {
     <tr>
       {edit ? (
         <>
-          <td>
-            <input
-              //className="Input"
-              type="number"
-              disabled="true"
-              value={infoNuevoProducto.idProducto}
-              onChange={(e) =>
-                setInfoNuevoProducto({
-                  ...infoNuevoProducto,
-                  idProducto: e.target.value,
-                })
-              }
-            />
-          </td>
+          <td>{infoNuevoProducto._id.slice(18)}</td>
           <td>
             <input
               className="Input"
@@ -199,6 +182,19 @@ const FilaProducto = ({ productos, setEjecutarConsulta }) => {
                 setInfoNuevoProducto({
                   ...infoNuevoProducto,
                   nombreProducto: e.target.value,
+                })
+              }
+            />
+          </td>
+          <td>
+            <input
+              className="Input"
+              type="text"
+              value={infoNuevoProducto.marca}
+              onChange={(e) =>
+                setInfoNuevoProducto({
+                  ...infoNuevoProducto,
+                  marca: e.target.value,
                 })
               }
             />
@@ -239,8 +235,9 @@ const FilaProducto = ({ productos, setEjecutarConsulta }) => {
       ) : (
         <>
           
-            <td> {productos.idProducto} </td>
+            <td> {productos._id.slice(18)} </td>
             <td> {productos.nombreProducto} </td>
+            <td> {productos.marca} </td>
             <td> {productos.valorUnitario} </td>
             <td> {productos.estado} </td>
         </>

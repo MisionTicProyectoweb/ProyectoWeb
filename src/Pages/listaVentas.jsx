@@ -20,7 +20,7 @@ const ListVentas = () => {
     return (   
         <div className="flex h-full w-full flex-col items-center justify-start">
             <NavBarFull titulo="Listado de Ventas" subtitulo={`Ventas completadas: ${ventas.length}`}/>
-            <div className="mb-8 flex items-center justify-center w-full h-20">
+            <div className="mb-2 flex items-center justify-center w-full h-44">
                 <label className="text-base font-semibold mr-5 text-black">Buscar:</label>                    
                 <svg width="24" height="24" fill="none" class="text-gray-400 group-hover:text-gray-500 transition-colors duration-200"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
                 <input type="text" className="p-2 ml-4 w-96 h-10 rounded-lg border shadow-md" placeholder="Buscar por ..."></input>
@@ -72,11 +72,14 @@ const TablaVentas = ({listaventas,filtro}) => {
                             <td > {ventas.idVendedor} </td>
                             <td > {ventas.valor} </td>
                             <td className="flex justify-center">
-                                <button>
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="hover:bg-gray-300 rounded-full h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                                    </svg>
-                                </button>
+                                <Link to={`/admin/ventas/EditarVentas/${ventas._id}`}>
+                                        {/* //EditVentas(ventas.ccCliente,"Faber",ventas.fecha,['Mouse','monitor','teclado']) */}
+                                    <button>
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="hover:bg-gray-300 rounded-full h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                                        </svg>
+                                    </button>
+                                </Link>
                             </td>
                         </tr>
                     );

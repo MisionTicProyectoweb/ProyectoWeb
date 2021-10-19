@@ -1,4 +1,4 @@
-
+import React from "react";
 import { Link } from 'react-router-dom';
 import logo from 'media/logoTSolutions.png';
 import { useAuth0 } from "@auth0/auth0-react";
@@ -37,10 +37,9 @@ const NavBarFull = ({titulo, subtitulo,subtitulo2}) =>{
                     
                       
                         <ul className="flex items-center justify-center text-center">
-                       
-                            <li className="text-black ml-1 mr-4 text-4xl font-semibold">{titulo}</li>
-                            <li className="ml-1 mr-4 text-2xl font-semibold text-black ml-10">{subtitulo}</li>
-                            <li className="ml-1 mr-4 text-2xl font-semibold ">{subtitulo2}</li>
+                            <li className="ml-1 mr-4 text-5xl font-semibold">{titulo}</li>
+                            <li className="ml-1 mr-4 text-2xl font-semibold">{subtitulo}</li>
+                            <li className="ml-1 mr-4 text-2xl font-semibold">{subtitulo2}</li>
                         </ul>
                     </div>
                 </nav>

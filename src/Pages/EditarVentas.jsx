@@ -1,26 +1,33 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./Styles/gestionVentas.css";
-//import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {NavBarFull} from 'components/Navbar';
-import {consultarClientes} from 'utils/api';
-import {obtenerclientes} from 'utils/api';
+import {consultarVentas} from 'utils/api';
 
-const GestionVentas = () => {
-  
-  ///OBTENEMOS LA INFORMACIÓN DE LOS USUARIOS PARA COMPLETAR CAMPOS///
-  
+const EditVentas = () => {
+
   const [tablas,setMostrarTabla] = useState(true);
-  const [ventas, setVentas] = useState([]); //pata obtener informacion desde el backend
+  const [ventas, setVentas] = useState([]);
+  const idVenta = useParams();
+  const [consulta, setEjecutarConsulta] = useState(true);
+    useEffect(() => {
+        //Obtener ventas desde el backend
+        if (consulta){
+            consultarVentas(idVenta.id,setVentas,setEjecutarConsulta);
+        }
+      }, [consulta]);
   return (
     <div className="font-sick flex-col" id="body">
-      <NavBarFull titulo="Gestion de Ventas"/>
+      <NavBarFull titulo="Editar de Venta"/>
       <div className="p-1">
         <FormularioVentas
           setMostrarTabla={setMostrarTabla}
           listaVentas={ventas}
           setVentas={setVentas}
+          idCliente ={ventas.ccCliente}
+          fecha = {ventas.fecha}
         />
       </div>
       <div>
@@ -30,35 +37,9 @@ const GestionVentas = () => {
   );
 };
 
-const FormularioVentas = ({setMostrarTabla, listaVentas, setVentas }) => {
-  const [clientes, setclientes] = useState([]);
-  const [busqueda, setBusqueda] = useState('');
-  const [clientesFiltrados, setclientesFiltrados] = useState([]);
-  const [ejecutarConsulta, setEjecutarConsulta] = useState(true);
 
-  useEffect(() => {
-      if (ejecutarConsulta){
-          obtenerclientes(setclientes,setEjecutarConsulta);
-      }
-      setclientesFiltrados(clientes);
-
-  }, [clientes,ejecutarConsulta]);
-  
-
-  useEffect(()=>{
-    setclientesFiltrados(
-      clientes.filter((elemento) =>{
-        return JSON.stringify(elemento).toLowerCase().includes(busqueda.toLowerCase());
-      })
-    );
-  }, [clientes,busqueda]);
-
-  
-  console.log()
-  ///AQUI ACABA SECCION DE USUARIOS///
-
+const FormularioVentas = ({ idCliente,fecha, setMostrarTabla, listaVentas, setVentas }) => {
   const form = useRef(null);
-
   const submitForm = (e) => {
     e.preventDefault();
     const fd = new FormData(form.current);
@@ -79,12 +60,12 @@ const FormularioVentas = ({setMostrarTabla, listaVentas, setVentas }) => {
       <h2 className="top-0 text-2xl font-extrabold text-gray-700">Registrar Venta</h2>
       <div className="grid grid-cols-4 border rounded-lg">
         <label htmlFor="idcliente">
-          Cedula Cliente
+          Código Cliente
           <input
-            onChange={(e) =>setBusqueda(e.target.value)}
             className=" bg-gray-50 border border-gray-200 m-1 p-3 rounded-lg appearance-none relative block px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
             name="idcliente"
             type="number"
+            value={idCliente}
             min={0}
             placeholder=""
           />
@@ -95,10 +76,8 @@ const FormularioVentas = ({setMostrarTabla, listaVentas, setVentas }) => {
             className=" bg-gray-50 border border-gray-200 m-1 p-3 rounded-lg appearance-none relative block px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
             name="nombreCliente"
             type="text"
-            defaulValue=""
-            value={clientesFiltrados.map((clientres)=> (clientres.nombre + clientres.apellido))}
-            placeholder="Deshabilitado"
-            disabled
+            value="Faber"
+            placeholder=""
           />
         </label>
         <label htmlFor="estadoVenta">
@@ -106,7 +85,6 @@ const FormularioVentas = ({setMostrarTabla, listaVentas, setVentas }) => {
           <select
             className=" bg-gray-50 border border-gray-200 m-1 p-3 rounded-lg appearance-none relative block px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
             name="estadoVenta"
-            defaultValue={0}
           >
             <option disabled value={0}>
               Seleccione una opción{" "}
@@ -121,9 +99,10 @@ const FormularioVentas = ({setMostrarTabla, listaVentas, setVentas }) => {
           <input
             className="bg-gray-50 border border-gray-200 m-1 p-3 rounded-lg appearance-none relative block px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
             name="fechaVenta"
+            value={fecha}
             type="date"
             required
-            placeholder="dd/mm/año"
+            placeholder="yyyy/mm/dd"
           />
         </label>
       </div>
@@ -147,8 +126,7 @@ const FormularioVentas = ({setMostrarTabla, listaVentas, setVentas }) => {
               name="nombreProducto"
               type="text"
               required
-              placeholder="Deshabilitado"
-              disabled
+              placeholder=""
             />
           </label>
           <label htmlFor="cantidad">
@@ -170,8 +148,7 @@ const FormularioVentas = ({setMostrarTabla, listaVentas, setVentas }) => {
               type="number"
               min={0}
               required
-              placeholder="Deshabilitado"
-              disabled
+              placeholder="$"
             />
           </label>
           <label htmlFor="valorTotal">
@@ -182,8 +159,7 @@ const FormularioVentas = ({setMostrarTabla, listaVentas, setVentas }) => {
               type="number"
               min={0}
               required
-              placeholder="Deshabilitado"
-              disabled
+              placeholder="$"
             />
           </label>
           <button
@@ -218,14 +194,14 @@ const TablaVentas = ({ listaVentas }) => {
               </tr>
             </thead>
             <tbody>
-              {listaVentas.map((ventas) => {
+              {/* {listaVentas.map((productos) => {
                 return (
                   <tr className="justify-center">
-                    <td> {ventas.idProducto} </td>
-                    <td> {ventas.nombreProducto} </td>
-                    <td> {ventas.cantidad} </td>
-                    <td> {ventas.valorUnitario} </td>
-                    <td> {ventas.valorTotal} </td>
+                    <td> {productos.nombre} </td>
+                    <td></td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
                     <td className="flex justify-center">
                       <button>
                         <svg xmlns="http://www.w3.org/2000/svg" class="hover:bg-gray-300 rounded-full h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -240,7 +216,7 @@ const TablaVentas = ({ listaVentas }) => {
                     </td>
                   </tr>
                 );
-              })}
+              })} */}
             </tbody>
           </table>
         </div>
@@ -267,4 +243,4 @@ const TablaVentas = ({ listaVentas }) => {
 const regisCompra = () => {
   toast.success("Compra Registrada");
 }
-export default GestionVentas;
+export default EditVentas;

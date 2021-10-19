@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Login from "Pages/login";
 import GestionVentas from "Pages/GestionVentas";
+import EditarVentas from "Pages/EditarVentas";
 import GestionProductos from "Pages/GestionProductos";
 import GestionUsuarios from "Pages/GestionUsuarios";
 import ListVentas from "Pages/listaVentas";
@@ -8,6 +9,7 @@ import Usuarios from "Pages/listaUsuarios";
 import ListProductos from "Pages/listaProductos";
 import Bienvenida from "Pages/bienvenida";
 import Inicio from "Pages/inicio";
+import Clientes from "Pages/clientes";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import LayoutPrivado from "layouts/LayoutPrivado";
 import LayoutPublico from "layouts/LayoutPublico";
@@ -45,6 +47,7 @@ export default function App() {
               "/admin/productos/gestionproductos",
               "/admin/ventas",
               "/admin/ventas/gestionVentas",
+              "/admin/ventas/EditarVentas",
               "/admin/usuarios",
               "/admin/usuarios/modificaciones",
               "/admin/usuarios/gestionusuario",
@@ -66,6 +69,9 @@ export default function App() {
                   </PrivateRoute>
                 
                 </Route>
+                <Route path="/admin/ventas/EditarVentas/:id">
+                  <EditarVentas />
+                </Route>
                 <Route path="/admin/ventas">
                 <PrivateRoute roleslist={['Administrador','Vendedor']}>
                 <ListVentas />
@@ -80,6 +86,9 @@ export default function App() {
                 <Usuarios />
                   </PrivateRoute> 
             
+                </Route>
+                <Route path="/admin/clientes">
+                  <Clientes />
                 </Route>
                 <Route path="/admin/dashboard">
                   <Bienvenida />
