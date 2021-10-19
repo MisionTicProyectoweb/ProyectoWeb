@@ -14,7 +14,7 @@ console.log("estas es la cvgtrhtryhyhgfgthgtrs ", userData); */
         return children;
     }else{
         return( 
-        <div className="bg-indigo-400 p-10">
+        <div className="flex justify-center  bg-indigo-400 p-10  text-4xl text-red-400">
           no estas autenticado para entrar
         </div>
         )
