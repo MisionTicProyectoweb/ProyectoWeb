@@ -4,6 +4,7 @@ import { getToken } from "utils/api";
 import "react-toastify/dist/ReactToastify.css";
 import { NavBarFull } from "components/Navbar";
 import axios from "axios";
+import {Link} from "react-router-dom";
 
 
 const GestionUsuarios = () => {
