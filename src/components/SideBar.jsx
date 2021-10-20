@@ -49,16 +49,18 @@ localStorage.setItem('token',null);
                 </Link>
                 <div className='my-6 '>
                     <Ruta icono='fas fa-users-cog' ruta='/admin/dashboard' nombre='DashBoard' />
-                   <PrivateComponent roleslist={['Administrador']}>
-                    <Ruta icono='fas fa-cart-plus' ruta='/admin/productos' nombre='Productos' />
+                    <PrivateComponent roleslist={['Administrador']}>
+                        <Ruta icono='fas fa-cart-plus' ruta='/admin/productos' nombre='Productos' />
                     </PrivateComponent>
                     <PrivateComponent roleslist={['Administrador','Vendedor']}>
-                    <Ruta icono='fas fa-clipboard-list' ruta='/admin/ventas' nombre='Ventas' />
-                  </PrivateComponent>
-                  <PrivateComponent roleslist={['Administrador']}>
-                  <Ruta icono='fas fa-users' ruta='/admin/usuarios' nombre='Usuarios' />
-
-                  </PrivateComponent>
+                        <Ruta icono='fas fa-clipboard-list' ruta='/admin/ventas' nombre='Ventas' />
+                    </PrivateComponent>
+                    <PrivateComponent roleslist={['Administrador']}>
+                        <Ruta icono='fas fa-users' ruta='/admin/usuarios' nombre='Usuarios' />
+                    </PrivateComponent>
+                    <PrivateComponent roleslist={['Administrador']}>
+                        <Ruta icono="fas fa-users" ruta="/admin/clientes" nombre='Clientes'/>
+                    </PrivateComponent>
                 </div>
             </nav>
             <div className="w-full bottom-0">
@@ -66,7 +68,6 @@ localStorage.setItem('token',null);
                  onClick={()=>cerrarsesion()}
                 >
                 <Ruta className="w-full  " icono='fas fa-sign-out-alt ' ruta='' nombre='Salir' />
-
                 </button>
             </div>
         </div>);
@@ -79,10 +80,19 @@ const hide = () => {
         <div className="mt-48 flex-col bg-indigo-500 items-center">
             <nav className='flex items-center lg:flex lg:w-14 border border-indigo-500 h-full flex-col bg-indigo-500'>
                 <div>
-                    <Ruta icono='fas fa-users-cog' ruta='/admin/dashboard' />
-                    <Ruta icono='fas fa-cart-plus' ruta='/admin/productos' />
-                    <Ruta icono='fas fa-clipboard-list' ruta='/admin/ventas' />
-                    <Ruta icono='fas fa-users' ruta='/admin/usuarios' />
+                    <Ruta icono='fas fa-users-cog' ruta='/admin/dashboard'/>
+                    <PrivateComponent roleslist={['Administrador']}>
+                        <Ruta icono='fas fa-cart-plus' ruta='/admin/productos'/>
+                    </PrivateComponent>
+                    <PrivateComponent roleslist={['Administrador','Vendedor']}>
+                        <Ruta icono='fas fa-clipboard-list' ruta='/admin/ventas'/>
+                    </PrivateComponent>
+                    <PrivateComponent roleslist={['Administrador']}>
+                        <Ruta icono='fas fa-users' ruta='/admin/usuarios'/>
+                    </PrivateComponent>
+                    <PrivateComponent roleslist={['Administrador']}>
+                        <Ruta icono="fas fa-users" ruta="/admin/clientes"/>
+                    </PrivateComponent>
                 </div>
             </nav>
             <div className="w-full flex items-center justify-center">

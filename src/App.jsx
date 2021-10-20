@@ -3,6 +3,7 @@ import Login from "Pages/login";
 import GestionVentas from "Pages/GestionVentas";
 import GestionProductos from "Pages/GestionProductos";
 import GestionUsuarios from "Pages/GestionUsuarios";
+import GestionClientes from "Pages/GestionClientes";
 import ListVentas from "Pages/listaVentas";
 import Usuarios from "Pages/listaUsuarios";
 import ListProductos from "Pages/listaProductos";
@@ -14,6 +15,8 @@ import LayoutPublico from "layouts/LayoutPublico";
 import { Auth0Provider } from "@auth0/auth0-react";
 import { UserContext } from "Contex/UserContext";
 import PrivateRoute from "components/PrivateRoute";
+import Clientes from "Pages/clientes";
+
 export default function App() {
   const [userData, setUserData] = useState({});
   return (
@@ -46,6 +49,8 @@ export default function App() {
               "/admin/ventas",
               "/admin/ventas/gestionVentas",
               "/admin/usuarios",
+              "/admin/clientes",
+              "/admin/clientes/gestionCliente",
               "/admin/usuarios/modificaciones",
               "/admin/usuarios/gestionusuario",
             ]}
@@ -57,29 +62,36 @@ export default function App() {
                 </Route>
                 <Route path="/admin/productos">
                   <PrivateRoute roleslist={['Administrador']}>
-                  <ListProductos />
+                    <ListProductos />
                   </PrivateRoute>
                 </Route>
                 <Route path="/admin/ventas/gestionVentas">
-                <PrivateRoute roleslist={['Administrador','Vendedor']}>
-                <GestionVentas />
+                  <PrivateRoute roleslist={['Administrador','Vendedor']}>
+                    <GestionVentas />
                   </PrivateRoute>
-                
                 </Route>
                 <Route path="/admin/ventas">
-                <PrivateRoute roleslist={['Administrador','Vendedor']}>
-                <ListVentas />
+                  <PrivateRoute roleslist={['Administrador','Vendedor']}>
+                    <ListVentas />
                   </PrivateRoute>
-                 
                 </Route>
                 <Route path="/admin/usuarios/gestionusuario">
                   <GestionUsuarios />
                 </Route>
                 <Route path="/admin/usuarios">
-                <PrivateRoute roleslist={['Administrador','Vendedor']}>
-                <Usuarios />
+                  <PrivateRoute roleslist={['Administrador','Vendedor']}>
+                    <Usuarios />
                   </PrivateRoute> 
-            
+                </Route>
+                <Route path="/admin/clientes/gestionCliente">
+                  <PrivateRoute roleslist={['Administrador','vendedor']}>
+                    <GestionClientes />
+                  </PrivateRoute>
+                </Route>
+                <Route path="/admin/clientes">
+                  <PrivateRoute roleslist={['Administrador','vendedor']}>
+                    <Clientes />
+                  </PrivateRoute>
                 </Route>
                 <Route path="/admin/dashboard">
                   <Bienvenida />

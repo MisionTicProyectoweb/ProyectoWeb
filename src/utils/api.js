@@ -47,7 +47,20 @@ export const obtenerUsuarios = async(setVentas, setEjecutarUsuarios = () => {}) 
 export const crearProducto = async(data, successCallback, errorCallback) => {
     const options = {
         method: 'POST',
-        url: 'http://localhost:5000/productos/',
+        url: 'http://localhost:5000/productos/nuevo',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: getToken()
+        },
+        data,
+    };
+    await axios.request(options).then(successCallback).catch(errorCallback);
+};
+
+export const editarProducto = async(id, data, successCallback, errorCallback) => {
+    const options = {
+        method: 'PATCH',
+        url: `http://localhost:5000/productos/${id}/`,
         headers: {
             'Content-Type': 'application/json',
             Authorization: getToken()
@@ -64,21 +77,6 @@ export const obtenerProductos = async(successCallback, errorCallback) => {
         headers: {
             Authorization: getToken()
         },
-    };
-    await axios.request(options).then(successCallback).catch(errorCallback);
-};
-
-
-
-export const editarProducto = async(id, data, successCallback, errorCallback) => {
-    const options = {
-        method: 'PATCH',
-        url: `http://localhost:5000/productos/${id}/`,
-        headers: {
-            'Content-Type': 'application/json',
-            Authorization: getToken()
-        },
-        data,
     };
     await axios.request(options).then(successCallback).catch(errorCallback);
 };
@@ -104,3 +102,16 @@ export const obtenerdatosUsuario = async(successCallback, errorCallback) => {
     };
     await axios.request(options).then(successCallback).catch(errorCallback);
 };
+
+export const obtenerclientes = async (setVentas, setEjecutarClientes = () => { }) => {
+    const options = { method: 'GET', url: 'http://localhost:5000/clientes/' ,
+    headers: {
+        Authorization: getToken()
+    }};
+    await axios
+      .request(options)
+      .then(function (response) {
+        setVentas(response.data);
+        setEjecutarClientes(false);
+      });
+  };
