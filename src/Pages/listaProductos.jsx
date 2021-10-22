@@ -51,9 +51,9 @@ const ListProductos = () => {
 
 
   return (
-    <div className="flex w-full flex-col items-center h-full m-0">
+    <div className="flex w-full flex-col items-center h-full">
       <NavBarFull titulo="Listado de productos" subtitulo={"productos: "+ productos.length}/>
-      <div className="flex items-center justify-center w-full h-20">
+      <div className="flex items-center justify-center w-full h-44">
         <label className="text-base font-semibold mr-5 text-black">
           Buscar:
         </label>
@@ -73,7 +73,7 @@ const ListProductos = () => {
         </button>
         </Link>
       </div>
-      <div className="h-96 overflow-y-scroll">      
+      <div className="h-1/2 overflow-y-scroll">
         <TablaProductos
             listaProductos={productosFiltrados}
             setEjecutarConsulta={setEjecutarConsulta}
@@ -99,6 +99,7 @@ const TablaProductos = ({ listaProductos, setEjecutarConsulta }) => {
           <tr>
             <th>Id</th>
             <th>Descripción</th>
+            <th>Marca</th>
             <th>Valor ($)</th>
             <th>Estado</th>
             <th>Acción</th>
@@ -125,8 +126,8 @@ const FilaProducto = ({ productos, setEjecutarConsulta }) => {
   const [openDialog, setOpenDialog] = useState(false);
   const [infoNuevoProducto, setInfoNuevoProducto] = useState({
     id: productos._id,
-    idProducto: productos.idProducto,
     nombreProducto: productos.nombreProducto,
+    marca: productos.marca,
     valorUnitario: productos.valorUnitario,
     estado: productos.estado,
   });
@@ -136,8 +137,8 @@ const FilaProducto = ({ productos, setEjecutarConsulta }) => {
     await editarProducto(
       productos._id,
       {        
-        idProducto: infoNuevoProducto.idProducto,
         nombreProducto: infoNuevoProducto.nombreProducto,
+        marca: infoNuevoProducto.marca,
         valorUnitario: infoNuevoProducto.valorUnitario,
         estado: infoNuevoProducto.estado,
       },
@@ -176,6 +177,7 @@ const FilaProducto = ({ productos, setEjecutarConsulta }) => {
     <tr>
       {edit ? (
         <>
+          <td>{infoNuevoProducto._id.slice(18)}</td>
           <td>
             <input
               //className="Input"
