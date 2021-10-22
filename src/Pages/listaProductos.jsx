@@ -177,21 +177,7 @@ const FilaProducto = ({ productos, setEjecutarConsulta }) => {
     <tr>
       {edit ? (
         <>
-          <td>{infoNuevoProducto._id.slice(18)}</td>
-          <td>
-            <input
-              //className="Input"
-              type="number"
-              disabled="true"
-              value={infoNuevoProducto.idProducto}
-              onChange={(e) =>
-                setInfoNuevoProducto({
-                  ...infoNuevoProducto,
-                  idProducto: e.target.value,
-                })
-              }
-            />
-          </td>
+          <td> {productos._id.slice(18)} </td>
           <td>
             <input
               className="Input"
@@ -205,6 +191,19 @@ const FilaProducto = ({ productos, setEjecutarConsulta }) => {
               }
             />
           </td>
+          <td>
+            <input
+              className="Input"
+              type="text"
+              value={infoNuevoProducto.marca}
+              onChange={(e) =>
+                setInfoNuevoProducto({
+                  ...infoNuevoProducto,
+                  marca: e.target.value,
+                })
+              }
+            />
+          </td>        
           <td>
             <input
               className="Input"
@@ -240,9 +239,9 @@ const FilaProducto = ({ productos, setEjecutarConsulta }) => {
         </>
       ) : (
         <>
-          
-            <td> {productos.idProducto} </td>
+            <td> {productos._id.slice(18)} </td>
             <td> {productos.nombreProducto} </td>
+            <td> {productos.marca} </td>
             <td> {productos.valorUnitario} </td>
             <td> {productos.estado} </td>
         </>

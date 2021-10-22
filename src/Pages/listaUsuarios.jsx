@@ -156,7 +156,7 @@ const FilaUsuario = ({usuarios, setEjecutarConsulta}) => {
     <tr>
       {edit ? (
         <>
-          <td>{usuarios._id}</td>
+          <td>{usuarios._id.slice(18)}</td>
           <td> {usuarios.name} </td>
           <td> {usuarios.email} </td>
           <td>
@@ -187,7 +187,7 @@ const FilaUsuario = ({usuarios, setEjecutarConsulta}) => {
       ) :
         (
           <>
-            <td> {usuarios._id} </td>
+            <td> {usuarios._id.slice(18)} </td>
             <td> {usuarios.name} </td>
             <td> {usuarios.email} </td>
             <td> {usuarios.estado} </td>
