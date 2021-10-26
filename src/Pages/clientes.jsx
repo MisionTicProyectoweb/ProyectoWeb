@@ -10,6 +10,9 @@ import {NavBarFull} from 'components/Navbar';
 import {obtenerclientes} from 'utils/api';
 import {getToken} from "utils/api";
 
+const baseURL = "https://tranquil-spire-34546.herokuapp.com"
+//const baseURL = "http://localhost:5000"
+
 
 const Clientes = () => {
 
@@ -101,7 +104,7 @@ const FilaCliente = ({clientes, setEjecutarConsulta}) => {
 
     const options = {
       method: 'PATCH',
-      url: `http://localhost:5000/clientes/editar/${clientes._id}`,
+      url: `${baseURL}/clientes/editar/${clientes._id}`,
       headers: { 'Content-Type': 'application/json',
        Authorization: getToken() },
       data: { ...infoEditarCliente }
@@ -123,7 +126,7 @@ const FilaCliente = ({clientes, setEjecutarConsulta}) => {
   const eliminarCliente = async () => {
     const options = {
       method: 'DELETE',
-      url: `http://localhost:5000/clientes/${clientes._id}`,
+      url: `${baseURL}/clientes/${clientes._id}`,
       headers: { 'Content-Type': 'application/json',
         Authorization: getToken()},
       data: {id: clientes._id}

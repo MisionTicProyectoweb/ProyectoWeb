@@ -10,6 +10,9 @@ import {NavBarFull} from 'components/Navbar';
 import {obtenerUsuarios} from 'utils/api';
 import { getToken } from "utils/api";
 
+const baseURL = "https://tranquil-spire-34546.herokuapp.com"
+//const baseURL = "http://localhost:5000"
+
 const Usuarios = () => {
   const [usuarios, setUsuarios] = useState([]);
   const [busqueda, setBusqueda] = useState('');
@@ -99,7 +102,7 @@ const FilaUsuario = ({usuarios, setEjecutarConsulta}) => {
 
     const options = {
       method: 'PATCH',
-      url: `http://localhost:5000/usuarios/editar/${usuarios._id}`,
+      url: `${baseURL}/usuarios/editar/${usuarios._id}`,
       headers: { 'Content-Type': 'application/json',
        Authorization: getToken() },
       data: { ...infoEditarUsuario }
@@ -122,7 +125,7 @@ const FilaUsuario = ({usuarios, setEjecutarConsulta}) => {
   const eliminarUsuario = async () => {
     const options = {
       method: 'DELETE',
-      url: `http://localhost:5000/usuarios/${usuarios._id}`,
+      url: `${baseURL}/usuarios/${usuarios._id}`,
       headers: { 'Content-Type': 'application/json',
 
        Authorization: getToken()

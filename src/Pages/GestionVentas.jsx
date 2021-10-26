@@ -13,6 +13,9 @@ import {obtenerVentas} from 'utils/api';
 import {obtenerUsuarios} from 'utils/api';
 import { useAuth0 } from "@auth0/auth0-react";
 
+const baseURL = "https://tranquil-spire-34546.herokuapp.com"
+//const baseURL = "http://localhost:5000"
+
 
 const GestVentas = () => {
   const [clientes,setClientes] = useState([]);
@@ -610,7 +613,7 @@ const RegisCompra = async (setVentas,
       console.log(total)
       const options = {
         method: "POST",
-        url: "http://localhost:5000/ventas/nuevo/",
+        url: `${baseURL}/ventas/nuevo/`,
         headers: { "Content-Type": "application/json",
             Authorization: getToken() },
         data: {
