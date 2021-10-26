@@ -70,7 +70,11 @@ localStorage.setItem('token',null);
                 <button  className="w-full bottom-0"
                  onClick={()=>cerrarsesion()}
                 >
+<<<<<<< HEAD
                     <Ruta className="w-full  " icono='fas fa-sign-out-alt ' ruta='/inicio'  nombre='Salir' />
+=======
+                <Ruta className="w-full  " icono='fas fa-sign-out-alt ' ruta='/inicio' nombre='Salir' />
+>>>>>>> 9fb193ebfb088e87fcc5a22aa5fbb40dc47ba2aa
                 </button>
             </div>
         </div>);

@@ -1,5 +1,8 @@
 import axios from 'axios';
 
+const baseURL = "https://tranquil-spire-34546.herokuapp.com"
+//const baseURL = "http://localhost:5000"
+
 export const getToken = () => {
     return `Bearer ${localStorage.getItem('token')}`
 }
@@ -9,7 +12,7 @@ export const obtenerVentas = async(setVentas, setEjecutarVentas = () => {}) => {
 
     const options = {
         method: 'GET',
-        url: 'http://localhost:5000/ventas/',
+        url: `${baseURL}/ventas/`,
         headers: {
             Authorization: getToken()
         },
@@ -30,7 +33,7 @@ export const obtenerUsuarios = async(setUsuarios, setEjecutarUsuarios = () => {}
 
     const options = {
         method: 'GET',
-        url: 'http://localhost:5000/usuarios/',
+        url: `${baseURL}/usuarios/`,
         headers: {
             Authorization: getToken()
         },
@@ -48,7 +51,11 @@ export const obtenerUsuarios = async(setUsuarios, setEjecutarUsuarios = () => {}
 export const crearProducto = async(data, successCallback, errorCallback) => {
     const options = {
         method: 'POST',
+<<<<<<< HEAD
         url: 'http://localhost:5000/productos/',
+=======
+        url: `${baseURL}/productos/`,
+>>>>>>> 9fb193ebfb088e87fcc5a22aa5fbb40dc47ba2aa
         headers: {
             'Content-Type': 'application/json',
             Authorization: getToken()
@@ -61,7 +68,7 @@ export const crearProducto = async(data, successCallback, errorCallback) => {
 export const editarProducto = async(id, data, successCallback, errorCallback) => {
     const options = {
         method: 'PATCH',
-        url: `http://localhost:5000/productos/${id}/`,
+        url: `${baseURL}/productos/${id}/`,
         headers: {
             'Content-Type': 'application/json',
             Authorization: getToken()
@@ -74,7 +81,7 @@ export const editarProducto = async(id, data, successCallback, errorCallback) =>
 export const obtenerProductos = async(successCallback, errorCallback) => {
     const options = {
         method: 'GET',
-        url: 'http://localhost:5000/productos/',
+        url: `${baseURL}/productos/`,
         headers: {
             Authorization: getToken()
         },
@@ -85,7 +92,7 @@ export const obtenerProductos = async(successCallback, errorCallback) => {
 export const eliminarProducto = async(id, successCallback, errorCallback) => {
     const options = {
         method: 'DELETE',
-        url: `http://localhost:5000/productos/${id}/`,
+        url: `${baseURL}/productos/${id}/`,
         headers: {
             'Content-Type': 'application/json',
             Authorization: getToken()
@@ -96,7 +103,7 @@ export const eliminarProducto = async(id, successCallback, errorCallback) => {
 export const obtenerdatosUsuario = async(successCallback, errorCallback) => {
     const options = {
         method: 'GET',
-        url: 'http://localhost:5000/usuarios/self',
+        url: `${baseURL}/usuarios/self`,
         headers: {
             Authorization: getToken() //3. ENVIARLE EL TOKEN AL BACKEN 
         }
@@ -107,7 +114,7 @@ export const obtenerdatosUsuario = async(successCallback, errorCallback) => {
 export const obtenerclientes = async(setClientes, setEjecutarClientes = () => {}) => {
     const options = {
         method: 'GET',
-        url: 'http://localhost:5000/clientes/',
+        url: `${baseURL}/clientes/`,
         headers: {
             Authorization: getToken()
         }
@@ -123,7 +130,7 @@ export const obtenerclientes = async(setClientes, setEjecutarClientes = () => {}
 export const eliminarventa = async(id, successCallback, errorCallback) => {
     const options = {
         method: 'DELETE',
-        url: `http://localhost:5000/ventas/${id}/`,
+        url: `${baseURL}/ventas/${id}/`,
         headers: {
             'Content-Type': 'application/json',
             Authorization: getToken()
@@ -134,7 +141,7 @@ export const eliminarventa = async(id, successCallback, errorCallback) => {
 export const editarventa = async(id, data, successCallback, errorCallback) => {
     const options = {
         method: 'PATCH',
-        url: `http://localhost:5000/ventas/${id}/`,
+        url: `${baseURL}/ventas/${id}/`,
         headers: {
             'Content-Type': 'application/json',
             Authorization: getToken()

@@ -127,12 +127,12 @@ const FilaVentas = ({ ventas, setEjecutarConsulta }) => {
         },
         (response) => {
           console.log(response.data);
-          toast.success('Producto modificado con éxito');
+          toast.success('Venta modificada con éxito');
           setEdit(false);
           setEjecutarConsulta(true);
         },
         (error) => {
-          toast.error('Error modificando el producto');
+          toast.error('Error modificando la venta');
           console.error(error);
         }
       );
@@ -144,12 +144,12 @@ const FilaVentas = ({ ventas, setEjecutarConsulta }) => {
         ventas._id,
         (response) => {
           console.log(response.data);
-          toast.success('Producto eliminado con éxito');
+          toast.success('Venta eliminada con éxito');
           setEjecutarConsulta(true);
         },
         (error) => {
           console.error(error);
-          toast.error('Error eliminando el producto');
+          toast.error('Error eliminando la venta');
         }
       );
       setOpenDialog(false);
@@ -249,13 +249,13 @@ const FilaVentas = ({ ventas, setEjecutarConsulta }) => {
               </>
             ) : (
               <>
-                <Tooltip title="Editar Producto" arrow>
+                <Tooltip title="Editar Venta" arrow>
                   <i
                     onClick={() => setEdit(!edit)}
                     className="fas fa-pencil-alt p-2 text-gray-700 hover:text-green-500 hover:bg-gray-300 rounded-full"
                   />
                 </Tooltip>
-                <Tooltip title="Eliminar Producto" arrow>
+                <Tooltip title="Eliminar Venta" arrow>
                   <i
                     onClick={() => setOpenDialog(true)}
                     className="fas fa-trash-alt p-2 text-gray-700 hover:text-red-500 hover:bg-gray-300  rounded-full"
@@ -267,7 +267,7 @@ const FilaVentas = ({ ventas, setEjecutarConsulta }) => {
           <Dialog open={openDialog}>
             <div className="p-8 flex flex-col">
               <h1 className="text-gray-800 text-xl font-bold">
-                ¿Está seguro de querer eliminar el producto?
+                ¿Está seguro de querer eliminar la venta?
               </h1>
               <div className="flex w-full items-center justify-center my-4">
                 <button

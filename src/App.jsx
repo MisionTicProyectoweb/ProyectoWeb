@@ -24,7 +24,7 @@ export default function App() {
     <Auth0Provider
     domain="mintic-proyecto.us.auth0.com"
     clientId="c5zCRirAIchHValVZvDGG1GUiwX7D3TA"
-    redirectUri='http://localhost:3000/admin/dashboard'
+    redirectUri='https://mighty-castle-43689.herokuapp.com/admin/dashboard'
     audience="api-autenticacion-almacen-mintic"
     //scope="read:current_user update:current_user_metadata"
         >
