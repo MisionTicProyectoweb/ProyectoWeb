@@ -1,18 +1,24 @@
 import './Styles/listaVentas.css';
 import React, { useEffect, useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import { nanoid } from "nanoid";
+import { Dialog, Tooltip } from "@material-ui/core";
 import{Link} from "react-router-dom";
-import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { NavBarFull } from 'components/Navbar';
 import {obtenerVentas} from 'utils/api';
+import { eliminarventa } from 'utils/api';
+import { editarventa } from 'utils/api';
 
 const ListVentas = () => {
 
     const [ventas, setVentas] = useState([]);
     const [ejecutarConsulta, setEjecutarConsulta] = useState(true);
+    
     useEffect(() => {
         if (ejecutarConsulta){
             obtenerVentas(setVentas,setEjecutarConsulta);
+            setEjecutarConsulta(false);
         }
       }, [ejecutarConsulta]);
 
@@ -40,7 +46,10 @@ const ListVentas = () => {
             </div>
 
             <div className="z-10 overflow-y-scroll h-96 w-10/12">
-                <TablaVentas listaventas = {ventas} filtro={document.getElementById('filtro')} />
+                <TablaVentas listaventas = {ventas} filtro={document.getElementById('filtro')}
+                
+                setEjecutarConsulta={setEjecutarConsulta}
+                />
                 <ToastContainer position="bottom-center" autoClose={5000} />
             </div>
         </div>
@@ -48,7 +57,7 @@ const ListVentas = () => {
     );
 }
 
-const TablaVentas = ({listaventas,filtro}) => {
+const TablaVentas = ({listaventas,filtro,setEjecutarConsulta}) => {
     return (
         <div className="flex items-center justify-center">
             <table className="table">
@@ -64,8 +73,13 @@ const TablaVentas = ({listaventas,filtro}) => {
                 </thead>
                 <tbody className="border-2">{listaventas.map((ventas) => {
                     return (
-                        <tr className="border-2 text-center justify-center">
-                            <td > {ventas.idVentas} </td>
+                       
+                             <FilaVentas
+                                key={nanoid()}
+                                ventas={ventas}
+                                setEjecutarConsulta={setEjecutarConsulta}
+                            />
+                           /*  <td > {ventas.idVentas} </td>
                             <td > {ventas.fecha} </td>
                             <td > {ventas.ccCliente} </td>
                             <td > {ventas.idVendedor} </td>
@@ -76,8 +90,8 @@ const TablaVentas = ({listaventas,filtro}) => {
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                                     </svg>
                                 </button>
-                            </td>
-                        </tr>
+                            </td> */
+                        
                     );
                 })}
                 </tbody>
@@ -85,4 +99,195 @@ const TablaVentas = ({listaventas,filtro}) => {
     </div>
     )
 }
+const FilaVentas = ({ ventas, setEjecutarConsulta }) => {
+    const [edit, setEdit] = useState(false);
+    const [openDialog, setOpenDialog] = useState(false);
+    const [infoNuevoProducto, setInfoNuevoProducto] = useState({
+      id: ventas.idVentas,
+      fecha: ventas.fecha,
+      ccCliente: ventas.ccCliente,
+      idVendedor: ventas.idVendedor,
+      valor: ventas.valor,
+    
+    });
+  
+     const actualizarProducto = async () => {
+      if(infoNuevoProducto.cantidad >= 1){
+        infoNuevoProducto.estado = "Disponible"
+      }else{
+        infoNuevoProducto.estado = "No disponible"
+      }
+      await editarventa(
+        ventas._id,
+        {        
+          fecha: infoNuevoProducto.fecha,
+          ccCliente: infoNuevoProducto.ccCliente,
+          idVendedor: infoNuevoProducto.idVendedor,
+          valor: infoNuevoProducto.valor
+        },
+        (response) => {
+          console.log(response.data);
+          toast.success('Producto modificado con éxito');
+          setEdit(false);
+          setEjecutarConsulta(true);
+        },
+        (error) => {
+          toast.error('Error modificando el producto');
+          console.error(error);
+        }
+      );
+    }; 
+  
+  
+    const deleteProducto = async () => {
+      await eliminarventa(
+        ventas._id,
+        (response) => {
+          console.log(response.data);
+          toast.success('Producto eliminado con éxito');
+          setEjecutarConsulta(true);
+        },
+        (error) => {
+          console.error(error);
+          toast.error('Error eliminando el producto');
+        }
+      );
+      setOpenDialog(false);
+    };
+  
+    
+    return (
+      <tr>
+        {edit ? (
+                <> <td>
+                {ventas.idVentas}
+                </td>
+            <td>
+              <input
+                //className="Input"
+                className="Input"
+                type="date"
+                
+                value={infoNuevoProducto.fecha}
+                onChange={(e) =>
+                  setInfoNuevoProducto({
+                    ...infoNuevoProducto,
+                    fecha: e.target.value,
+                  })
+                }
+              />
+            </td>
+            <td>
+              <input
+                className="Input"
+                type="text"
+                value={infoNuevoProducto.ccCliente}
+                onChange={(e) =>
+                  setInfoNuevoProducto({
+                    ...infoNuevoProducto,
+                    ccCliente: e.target.value,
+                  })
+                }
+              />
+            </td>
+            <td>
+              <input
+                className="Input"
+                type="number"
+                value={infoNuevoProducto.idVendedor}
+                onChange={(e) =>
+                  setInfoNuevoProducto({
+                    ...infoNuevoProducto,
+                    idVendedor: e.target.value,
+                  })
+                }
+              />
+            </td>
+            <td>
+              <input
+                className="Input"
+                type="number"
+                value={infoNuevoProducto.valor}
+                onChange={(e) =>
+                  setInfoNuevoProducto({
+                    ...infoNuevoProducto,
+                    valor: e.target.value,
+                  })
+                }
+              />
+            </td>
+        
+        
+          </>
+        ) : (
+          <>
+           
+              <td> {ventas.idVentas} </td>
+              <td> {ventas.fecha} </td>
+              <td> {ventas.ccCliente} </td>
+              <td> {ventas.idVendedor} </td>
+              <td> {ventas.valor} </td>
+
+          </>
+        )}
+        <td>
+          <div className="flex w-full justify-around">
+            {edit ? (
+              <>
+                <Tooltip title="Confirmar Edición" arrow>
+                  <i
+                    onClick={() => actualizarProducto()}
+                    className="fas fa-check p-2 text-gray-700 hover:text-green-500 hover:bg-gray-300 rounded-full"
+                  />
+                </Tooltip>
+                <Tooltip title="Cancelar Edición" arrow>
+                  <i
+                    onClick={() => setEdit(!edit)}
+                    className="fas fa-times p-2 text-gray-700 hover:text-red-500 hover:bg-gray-300 rounded-full"
+                  />
+                </Tooltip>
+              </>
+            ) : (
+              <>
+                <Tooltip title="Editar Producto" arrow>
+                  <i
+                    onClick={() => setEdit(!edit)}
+                    className="fas fa-pencil-alt p-2 text-gray-700 hover:text-green-500 hover:bg-gray-300 rounded-full"
+                  />
+                </Tooltip>
+                <Tooltip title="Eliminar Producto" arrow>
+                  <i
+                    onClick={() => setOpenDialog(true)}
+                    className="fas fa-trash-alt p-2 text-gray-700 hover:text-red-500 hover:bg-gray-300  rounded-full"
+                  />
+                </Tooltip>
+              </>
+            )}
+          </div>
+          <Dialog open={openDialog}>
+            <div className="p-8 flex flex-col">
+              <h1 className="text-gray-800 text-xl font-bold">
+                ¿Está seguro de querer eliminar el producto?
+              </h1>
+              <div className="flex w-full items-center justify-center my-4">
+                <button
+                  onClick={() => deleteProducto()}
+                  className="mx-2 px-4 py-2 bg-green-400 text-white hover:bg-green-600 rounded-md shadow-md"
+                >
+                  Sí
+                </button>
+                <button
+                  onClick={() => setOpenDialog(false)}
+                  className="mx-2 px-4 py-2 bg-red-400 text-white hover:bg-red-600 rounded-md shadow-md"
+                >
+                  No
+                </button>
+              </div>
+            </div>
+          </Dialog>
+        </td>
+      </tr>
+    );
+  };
+  
 export default ListVentas;
