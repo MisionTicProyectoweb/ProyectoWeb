@@ -1,0 +1,8 @@
+{
+  "short_name": "T-Solutions",
+  "name": "Create T-solutions",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}

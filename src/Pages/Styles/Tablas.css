@@ -1,0 +1,24 @@
+
+.table{
+    width: 100%;
+    overflow-y:scroll;
+}
+
+.table th, .table td{
+    @apply border border-gray-300 px-1 py-1 text-center;
+}
+
+.table th{
+    @apply  border-gray-300 text-white bg-indigo-400 pt-3 pb-3 text-center;
+}
+
+.table tr:nth-child(even){
+    @apply bg-gray-300;
+}
+.table tr:hover {
+    @apply bg-indigo-300 cursor-pointer;
+}
+
+.Input {
+    @apply bg-gray-50 border border-gray-200 m-1 p-1 rounded-lg appearance-none relative block px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm;
+}

@@ -1,0 +1,36 @@
+ul{
+    /*Quitar los botoncitos de las listas*/
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+  }
+
+.contenedorSideBar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(248, 144, 243);
+    height: 100vh;
+    width: 40vh;
+    padding-top: 30px;
+    padding-bottom: 30px;
+
+}
+
+.contenedorSideBar>li{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contenedorImagen{
+    width: 60px;
+    height: 60px;
+    
+}
+
+.contenedorImagen>img{
+    object-fit: cover;
+    width: 100%;
+}
