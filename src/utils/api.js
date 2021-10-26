@@ -4,6 +4,7 @@ export const getToken = () => {
     return `Bearer ${localStorage.getItem('token')}`
 }
 console.log(getToken());
+
 export const obtenerVentas = async(setVentas, setEjecutarVentas = () => {}) => {
 
     const options = {
@@ -25,7 +26,7 @@ export const obtenerVentas = async(setVentas, setEjecutarVentas = () => {}) => {
     setEjecutarVentas(false);
 };
 
-export const obtenerUsuarios = async(setVentas, setEjecutarUsuarios = () => {}) => {
+export const obtenerUsuarios = async (setUsuarios, setEjecutarUsuarios = () => {}) => {
 
     const options = {
         method: 'GET',
@@ -37,9 +38,9 @@ export const obtenerUsuarios = async(setVentas, setEjecutarUsuarios = () => {}) 
     };
 
     await axios
-        .request(options)
-        .then(function(response) {
-            setVentas(response.data);
+            .request(options)
+            .then(function(response) {
+            setUsuarios(response.data);
             setEjecutarUsuarios(false);
         });
 };
@@ -103,7 +104,7 @@ export const obtenerdatosUsuario = async(successCallback, errorCallback) => {
     await axios.request(options).then(successCallback).catch(errorCallback);
 };
 
-export const obtenerclientes = async (setVentas, setEjecutarClientes = () => { }) => {
+export const obtenerclientes = async (setClientes, setEjecutarClientes = () => { }) => {
     const options = { method: 'GET', url: 'http://localhost:5000/clientes/' ,
     headers: {
         Authorization: getToken()
@@ -111,7 +112,7 @@ export const obtenerclientes = async (setVentas, setEjecutarClientes = () => { }
     await axios
       .request(options)
       .then(function (response) {
-        setVentas(response.data);
+        setClientes(response.data);
         setEjecutarClientes(false);
       });
   };

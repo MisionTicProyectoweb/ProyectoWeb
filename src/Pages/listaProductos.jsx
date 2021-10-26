@@ -33,8 +33,6 @@ const ListProductos = () => {
     }
   }, [ejecutarConsulta]);
 
-  
-
   useEffect(() => {
     console.log(busqueda, filtroCampo);
 
@@ -47,9 +45,6 @@ const ListProductos = () => {
     );
 
   }, [busqueda, filtroCampo]);
-
-
-
   return (
     <div className="flex w-full flex-col items-center h-full m-0">
       <NavBarFull titulo="Listado de productos" subtitulo={"productos: "+ productos.length}/>
@@ -73,7 +68,7 @@ const ListProductos = () => {
         </button>
         </Link>
       </div>
-      <div className="h-96 overflow-y-scroll">      
+      <div className="flex flex-col items-center z-10 h-96 overflow-y-scroll">      
         <TablaProductos
             listaProductos={productosFiltrados}
             setEjecutarConsulta={setEjecutarConsulta}
@@ -93,13 +88,14 @@ const TablaProductos = ({ listaProductos, setEjecutarConsulta }) => {
   }, [listaProductos]);
 
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center w-10/12">
       <table className="table">
         <thead>
           <tr>
             <th>Id</th>
             <th>Descripción</th>
             <th>Valor ($)</th>
+            <th>Cantidad</th>
             <th>Estado</th>
             <th>Acción</th>
           </tr>
@@ -128,18 +124,24 @@ const FilaProducto = ({ productos, setEjecutarConsulta }) => {
     idProducto: productos.idProducto,
     nombreProducto: productos.nombreProducto,
     valorUnitario: productos.valorUnitario,
-    estado: productos.estado,
+    cantidad: productos.cantidad,
+    estado: productos.estado
   });
 
   const actualizarProducto = async () => {
-    //enviar la info al backend
+    if(infoNuevoProducto.cantidad >= 1){
+      infoNuevoProducto.estado = "Disponible"
+    }else{
+      infoNuevoProducto.estado = "No disponible"
+    }
     await editarProducto(
       productos._id,
       {        
         idProducto: infoNuevoProducto.idProducto,
         nombreProducto: infoNuevoProducto.nombreProducto,
         valorUnitario: infoNuevoProducto.valorUnitario,
-        estado: infoNuevoProducto.estado,
+        cantidad: infoNuevoProducto.cantidad,
+        estado: infoNuevoProducto.estado
       },
       (response) => {
         console.log(response.data);
@@ -217,8 +219,22 @@ const FilaProducto = ({ productos, setEjecutarConsulta }) => {
             />
           </td>
           <td>
-            <select
+            <input
               className="Input"
+              type="number"
+              value={infoNuevoProducto.cantidad}
+              onChange={(e) =>
+                setInfoNuevoProducto({
+                  ...infoNuevoProducto,
+                  cantidad: e.target.value,
+                })
+              }
+            />
+          </td>
+          <td>
+            <input
+              //className="Input"
+              disabled="true"
               type="text"
               value={infoNuevoProducto.estado}
               onChange={(e) =>
@@ -227,21 +243,15 @@ const FilaProducto = ({ productos, setEjecutarConsulta }) => {
                   estado: e.target.value,
                 })
               }
-            >
-              <option disabled value={0}>
-                Seleccione una opción
-              </option>
-              <option>Disponible </option>
-              <option>No disponible </option>
-            </select>
+            />
           </td>
         </>
       ) : (
         <>
-          
             <td> {productos.idProducto} </td>
             <td> {productos.nombreProducto} </td>
             <td> {productos.valorUnitario} </td>
+            <td> {productos.cantidad} </td>
             <td> {productos.estado} </td>
         </>
       )}

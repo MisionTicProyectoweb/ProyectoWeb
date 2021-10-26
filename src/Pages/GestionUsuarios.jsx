@@ -33,6 +33,7 @@ const CrearUsuario = () => {
         headers: { "Content-Type": "application/json",
         Authorization: getToken() },
         data: {
+          ccUsuario: nuevoUsuarios.ccUsuario,
           name: nuevoUsuarios.name,
           email: nuevoUsuarios.email,
           estado: nuevoUsuarios.estado,
@@ -57,6 +58,16 @@ const CrearUsuario = () => {
     <div className="flex flex-col items-center justify-center">
     <h2 className="text-2xl font-extrabold text-gray-700">Crear nuevo usuario</h2>
     <form ref={form} onSubmit={submitForm} className="flex flex-col grid-cols-2 m-4">
+        <label htmlFor="ccUsuario">
+            Cedula
+            <input
+            className=" bg-gray-50 border border-gray-200 m-2 p-3 rounded-lg appearance-none relative block px-3 py-2 focus:outline-none focus:ring-purple-500 focus:border-purple-500 focus:z-10 sm:text-sm"
+            name="ccUsuario"
+            type="number"
+            required
+            placeholder=""
+            />
+        </label>
         <label htmlFor="name">
             Nombre y Apellido
             <input

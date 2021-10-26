@@ -9,9 +9,8 @@ import { nanoid } from "nanoid";
 import {NavBarFull} from 'components/Navbar';
 import {obtenerUsuarios} from 'utils/api';
 import { getToken } from "utils/api";
-import PrivateComponent from "components/PrivateComponent";
-const Usuarios = () => {
 
+const Usuarios = () => {
   const [usuarios, setUsuarios] = useState([]);
   const [busqueda, setBusqueda] = useState('');
   const [usuariosFiltrados, setUsuariosFiltrados] = useState([]);
@@ -22,17 +21,16 @@ const Usuarios = () => {
           obtenerUsuarios(setUsuarios,setEjecutarConsulta);
       }
       setUsuariosFiltrados(usuarios);
-  }, [ejecutarConsulta]);
+  }, [usuarios,ejecutarConsulta]);
 
   useEffect(()=>{
     setUsuariosFiltrados(
-      
       usuarios.filter((elemento) =>{
         return JSON.stringify(elemento).toLowerCase().includes(busqueda.toLowerCase());
       })
       
     );
-  }, [busqueda]);
+  }, [usuarios, busqueda]);
 
   return (
     <div className="flex h-full w-full flex-col items-center justify-start ">
@@ -46,12 +44,6 @@ const Usuarios = () => {
             type="text" 
             className="p-2 ml-4 mr-5 w-96 h-10 rounded-lg border shadow-md" 
             placeholder="Buscar por ..."></input>
-        {/* <select id="busPor" name="select" className="font-semibold text-center ml-4 border h-10 rounded-lg shadow-md">
-          <option value="ccUsuario" selected>Cedula</option>
-          <option value="nombre">Nombre</option>
-          <option value="apellido">Apellido</option>
-          <option value="correo">Correo</option>
-        </select> */}
         <Link to="/admin/usuarios/gestionusuario">
           <button type="button" className="bg-indigo-500 text-white transform hover:scale-110 hover:bg-indigo-600 float-left flex items-center p-2 rounded-lg border shadow-md">
             <svg xmlns="http://www.w3.org/2000/svg" class="mr-2 h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
@@ -60,9 +52,7 @@ const Usuarios = () => {
           </button>
         </Link>
       </div>
-    {/*   <PrivateComponent roleslist={["admin" ,"Vendedor"]}> 
-      </PrivateComponent> */}
-      <div className="overflow-y-scroll">
+      <div className="z-10 overflow-y-scroll">
         <TablaUsuarios 
           listaUsuarios={usuariosFiltrados} 
           setEjecutarConsulta={setEjecutarConsulta}/>
@@ -79,7 +69,7 @@ const TablaUsuarios = ({ listaUsuarios, setEjecutarConsulta }) => {
       <table className="table">
         <thead>
           <tr>
-            <th>ID</th>
+            <th>Cedula</th>
             <th>Nombre</th>
             <th>Email</th>
             <th>Estado</th>
@@ -156,7 +146,7 @@ const FilaUsuario = ({usuarios, setEjecutarConsulta}) => {
     <tr>
       {edit ? (
         <>
-          <td>{usuarios._id}</td>
+          <td>{usuarios.ccUsuario}</td>
           <td> {usuarios.name} </td>
           <td> {usuarios.email} </td>
           <td>
@@ -187,7 +177,7 @@ const FilaUsuario = ({usuarios, setEjecutarConsulta}) => {
       ) :
         (
           <>
-            <td> {usuarios._id} </td>
+            <td> {usuarios.ccUsuario} </td>
             <td> {usuarios.name} </td>
             <td> {usuarios.email} </td>
             <td> {usuarios.estado} </td>

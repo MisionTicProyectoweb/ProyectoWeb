@@ -55,7 +55,7 @@ const Clientes = () => {
           </button>
         </Link>
       </div>
-      <div className="overflow-y-scroll">
+      <div className="z-10 overflow-y-scroll">
         <Tablaclientes 
           listaclientes={clientesFiltrados} 
           setEjecutarConsulta={setEjecutarConsulta}/>

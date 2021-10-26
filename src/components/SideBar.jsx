@@ -1,21 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import logo from 'media/logoTSolutions.png';
 import useActiveRoute from 'hooks/useActiveRoute';
 import { useAuth0 } from "@auth0/auth0-react";
-import PrivateRoute from './PrivateRoute';
 import PrivateComponent from './PrivateComponent';
 
-let estado, setEstado;
-
-
 const Sidebar = (navegar) => {
-    
-    [estado, setEstado] = useState(true);
+
+    const [state, setEstado] = useState(true);
     return (
-        <div className=" lg:flex h-screen flex flex-col items-center justify-center bg-indigo-500">
-            <div>{btnHide()}</div>
-            <div className="h-full">{estado === false ? hide() : Show()}</div>
+        <div className="h-screen flex flex-col items-center justify-center bg-indigo-500">
+            <div className="bg-indigo-500">
+                <div className="text-white my-4 w-1/3"
+                    onClick={() => {
+                        setEstado(!state);
+                    }}>
+                    <i className={`p-3 fas fa-${state ? 'chevron-left' : 'bars'} hover:text-black `} />
+                </div>
+            </div>
+            <div className="h-full">{state === false ? hide() : Show()}</div>
         </div>
     );
 };
@@ -101,15 +104,4 @@ const hide = () => {
         </div>);
 }
 
-const btnHide = () => {
-    return (
-        <div className="bg-indigo-500 text-white my-4"
-            onClick={() => {
-                setEstado(!estado);
-            }}>
-            <i className={`mx-8 fas fa-${estado ? 'chevron-left' : 'bars'} hover:text-black `} />
-        </div>
-    );
-};
-
-export default Sidebar;
+export {Sidebar};

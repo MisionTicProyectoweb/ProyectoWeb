@@ -94,7 +94,7 @@ export default function App() {
                   </PrivateRoute>
                 </Route>
                 <Route path="/admin/dashboard">
-                  <Bienvenida />
+                  <Bienvenida titulo="T-SOLUTIONS"/>
                 </Route>
               </Switch>
             </LayoutPrivado>

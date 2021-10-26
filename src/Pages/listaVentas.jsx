@@ -11,7 +11,6 @@ const ListVentas = () => {
     const [ventas, setVentas] = useState([]);
     const [ejecutarConsulta, setEjecutarConsulta] = useState(true);
     useEffect(() => {
-        //Obtener ventas desde el backend
         if (ejecutarConsulta){
             obtenerVentas(setVentas,setEjecutarConsulta);
         }
@@ -40,7 +39,7 @@ const ListVentas = () => {
                 </Link>
             </div>
 
-            <div className="overflow-y-scroll h-96 w-10/12">
+            <div className="z-10 overflow-y-scroll h-96 w-10/12">
                 <TablaVentas listaventas = {ventas} filtro={document.getElementById('filtro')} />
                 <ToastContainer position="bottom-center" autoClose={5000} />
             </div>
