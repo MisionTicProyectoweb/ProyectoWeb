@@ -1,0 +1,33 @@
+.tabla .tr {
+    background-color: red;
+}
+
+.tr {
+    background-color: aqua;
+}
+
+.table{
+    width: 100%;
+    margin: 10px;
+    overflow-y: scroll;
+    
+}
+
+.table th, .table td{
+    @apply border border-gray-300 px-3 py-1;
+}
+
+.table th{
+    @apply  border-gray-300 text-gray-200 bg-indigo-400 pt-3 pb-3 text-center;
+}
+
+.table tr:nth-child(even){
+    @apply bg-gray-300;
+}
+.table tr:hover {
+    @apply bg-indigo-300 cursor-pointer;
+}
+
+.Input {
+    @apply bg-gray-50 border border-gray-200 m-2 p-3 rounded-lg appearance-none relative block px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm;
+}

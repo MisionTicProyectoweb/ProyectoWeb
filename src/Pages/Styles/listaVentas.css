@@ -1,0 +1,28 @@
+#listabody {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Lato', sans-serif;
+    color: black;
+}
+
+#barraNavegador {
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+
+th {
+    border: 2px;
+    width: 200px;
+    height: 40px;
+    text-align: center;
+}
+
+span {
+    color: revert;
+}
+
+.tabla {
+    background-color: red;
+}
