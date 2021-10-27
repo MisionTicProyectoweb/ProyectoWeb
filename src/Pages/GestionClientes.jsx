@@ -5,6 +5,8 @@ import "react-toastify/dist/ReactToastify.css";
 import { NavBarFull } from "components/Navbar";
 import axios from "axios";
 
+const baseURL = "https://tranquil-spire-34546.herokuapp.com"
+//const baseURL = "http://localhost:5000"
 
 const GestionClientes = () => {
     
@@ -31,7 +33,7 @@ const CrearCliente = () => {
   
       const options = {
         method: "POST",
-        url: "http://localhost:5000/clientes/nuevo/",
+        url: `${baseURL}/clientes/nuevo/`,
         headers: { "Content-Type": "application/json",
             Authorization: getToken() },
         data: {
