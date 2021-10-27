@@ -23,9 +23,9 @@ const ListVentas = () => {
       }, [ejecutarConsulta]);
 
     return (   
-        <div className="flex h-full w-full flex-col items-center justify-start">
+      <div className="flex h-full w-full flex-col items-center justify-start ">
             <NavBarFull titulo="Listado de Ventas" subtitulo={`Ventas completadas: ${ventas.length}`}/>
-            <div className="mb-8 flex items-center justify-center w-full h-44">
+        <div className="mb-2 flex items-center justify-center w-full h-40">
                 <label className="text-base font-semibold mr-5 text-black">Buscar:</label>                    
                 <svg width="24" height="24" fill="none" class="text-gray-400 group-hover:text-gray-500 transition-colors duration-200"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
                 <input type="text" className="p-2 ml-4 w-96 h-10 rounded-lg border shadow-md" placeholder="Buscar por ..."></input>
@@ -45,7 +45,7 @@ const ListVentas = () => {
                 </Link>
             </div>
 
-            <div className="z-10 overflow-y-scroll h-96 w-10/12">
+        <div className="z-10 overflow-y-scroll">
                 <TablaVentas listaventas = {ventas} filtro={document.getElementById('filtro')}
                 
                 setEjecutarConsulta={setEjecutarConsulta}
@@ -59,7 +59,7 @@ const ListVentas = () => {
 
 const TablaVentas = ({listaventas,filtro,setEjecutarConsulta}) => {
     return (
-        <div className="flex items-center justify-center">
+      <div className="ml-10 mr-10 flex items-center justify-center">
             <table className="table">
                 <thead className="border-2 font-semibold">
                     <tr>

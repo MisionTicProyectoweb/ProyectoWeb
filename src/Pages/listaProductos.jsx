@@ -40,9 +40,9 @@ const ListProductos = () => {
 
   }, [busqueda, filtroCampo, productos]);
   return (
-    <div className="flex w-full flex-col items-center h-full m-0">
+    <div className="flex h-full w-full flex-col items-center justify-start ">
       <NavBarFull titulo="Listado de productos" subtitulo={"productos: "+ productos.length}/>
-      <div className="flex items-center justify-center w-full h-44">
+      <div className="mb-2 flex items-center justify-center w-full h-40">
         <label className="text-base font-semibold mr-5 text-black">
           Buscar:
         </label>
@@ -62,7 +62,7 @@ const ListProductos = () => {
         </button>
         </Link>
       </div>
-      <div className="flex flex-col items-center z-10 h-96 overflow-y-scroll">      
+      <div className="z-10 overflow-y-scroll">
         <TablaProductos
             listaProductos={productosFiltrados}
             setEjecutarConsulta={setEjecutarConsulta}
@@ -81,7 +81,7 @@ const TablaProductos = ({ listaProductos, setEjecutarConsulta }) => {
   }, [listaProductos, productosFiltrados]);
 
   return (
-    <div className="flex justify-center w-10/12">
+    <div className="ml-10 mr-10 flex items-center justify-center">
       <table className="table">
         <thead>
           <tr>

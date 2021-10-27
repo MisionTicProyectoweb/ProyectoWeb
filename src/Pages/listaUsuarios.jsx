@@ -38,7 +38,7 @@ const Usuarios = () => {
   return (
     <div className="flex h-full w-full flex-col items-center justify-start ">
       <NavBarFull titulo="Listado de Usuarios" subtitulo={`Total: ${usuarios.length}`}/>
-      <div className="mb-2 flex items-center justify-center w-full h-44">
+      <div className="mb-2 flex items-center justify-center w-full h-40">
         <label className="text-base font-semibold mr-5 text-black">Buscar:</label>
         <svg width="24" height="24" fill="none" class="text-gray-400 group-hover:text-gray-500 transition-colors duration-200"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
         <input 
@@ -191,19 +191,27 @@ const FilaUsuario = ({usuarios, setEjecutarConsulta}) => {
           {edit ? (
             <>
               <Tooltip title="Confirmar Edición" arrow>
-                <i onClick={() => actualizarUsuarios()} className="fas fa-check p-2 hover:bg-blue-600 rounded-full" />
+                <i onClick={() => actualizarUsuarios()}
+                  className="fas fa-check p-2 text-gray-700 hover:text-green-500 hover:bg-gray-300 rounded-full"
+                />
               </Tooltip>
               <Tooltip title="Cancelar Edición" arrow>
-                <i onClick={() => setEdit(!edit)} className="fas fa-times p-2 hover:bg-blue-600 rounded-full" />
+                <i onClick={() => setEdit(!edit)}
+                  className="fas fa-times p-2 text-gray-700 hover:text-red-500 hover:bg-gray-300 rounded-full"
+                />
               </Tooltip>
             </>
           ) : (
             <>
               <Tooltip title="Editar Usuario" arrow>
-                <i onClick={() => setEdit(!edit)} className="fas fa-pencil-alt p-2 hover:bg-blue-600 rounded-full"/>
+                  <i onClick={() => setEdit(!edit)}
+                    className="fas fa-pencil-alt p-2 text-gray-700 hover:text-green-500 hover:bg-gray-300 rounded-full"
+                  />
               </Tooltip>
               <Tooltip title="Elminar Usuario" arrow>
-                <i onClick={() => setOpenDialog(true)} className="fas fa-trash-alt p-2 hover:bg-blue-600 rounded-full"/>
+                  <i onClick={() => setOpenDialog(true)}
+                    className="fas fa-trash-alt p-2 text-gray-700 hover:text-red-500 hover:bg-gray-300  rounded-full"
+                  />
               </Tooltip>
             </>
           )}
@@ -214,12 +222,14 @@ const FilaUsuario = ({usuarios, setEjecutarConsulta}) => {
               ¿Está seguro de querer eliminar el usuario?
             </h1>
             <div className="flex w-full items-center justify-center my-4">
-              <button onClick={() => eliminarUsuario()} className="mx-2 px-4 py-2 bg-blue-500 text-white hover:bg-blue-700 rounded-md shadow-md">
+              <button onClick={() => eliminarUsuario()}
+                className="mx-2 px-4 py-2 bg-green-400 text-white hover:bg-green-600 rounded-md shadow-md"
+              >
                 Sí
               </button>
               <button
                 onClick={() => setOpenDialog(false)}
-                className="mx-2 px-4 py-2 bg-green-500 text-white hover:bg-green-700 rounded-md shadow-md"
+                className="mx-2 px-4 py-2 bg-red-400 text-white hover:bg-red-600 rounded-md shadow-md"
               >
                 No
               </button>
