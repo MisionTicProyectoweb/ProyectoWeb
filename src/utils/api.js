@@ -51,11 +51,7 @@ export const obtenerUsuarios = async(setUsuarios, setEjecutarUsuarios = () => {}
 export const crearProducto = async(data, successCallback, errorCallback) => {
     const options = {
         method: 'POST',
-<<<<<<< HEAD
-        url: 'http://localhost:5000/productos/',
-=======
         url: `${baseURL}/productos/`,
->>>>>>> 9fb193ebfb088e87fcc5a22aa5fbb40dc47ba2aa
         headers: {
             'Content-Type': 'application/json',
             Authorization: getToken()
