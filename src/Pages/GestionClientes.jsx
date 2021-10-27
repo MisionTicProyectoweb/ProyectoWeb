@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useRef } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { getToken } from "utils/api";
 import "react-toastify/dist/ReactToastify.css";
@@ -27,10 +27,7 @@ const CrearCliente = () => {
       const nuevoClientes = {};
       fd.forEach((value, key) => {
         nuevoClientes[key] = value;
-      });
-
-      console.log("entra")
-  
+      });  
       const options = {
         method: "POST",
         url: `${baseURL}/clientes/nuevo/`,
@@ -48,12 +45,10 @@ const CrearCliente = () => {
       await axios
         .request(options)
         .then(function (response) {
-          console.log(response.data);
           toast.success("Se ha agregado el Cliente con éxito");
           e.target.reset();           
         })
         .catch(function (error) {
-          console.error(error);
           toast.error("Error creando un Cliente");
         });
         

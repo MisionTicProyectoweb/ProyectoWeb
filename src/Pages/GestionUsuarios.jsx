@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, {useRef } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { getToken } from "utils/api";
 import "react-toastify/dist/ReactToastify.css";
@@ -47,12 +47,10 @@ const CrearUsuario = () => {
       await axios
         .request(options)
         .then(function (response) {
-          console.log(response.data);
           toast.success("Se ha agregado el usuario con éxito");
           e.target.reset();           
         })
         .catch(function (error) {
-          console.error(error);
           toast.error("Error creando un usuario");
         });
         

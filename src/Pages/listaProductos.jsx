@@ -12,21 +12,19 @@ const ListProductos = () => {
   const [productos, setProductos] = useState([]);
   const [productosFiltrados, setProductosFiltrados] = useState([]);
   const [busqueda, setBusqueda] = useState('');
-  const [filtroCampo, setFiltroCampo] = useState('idProducto');
+  const filtroCampo = useState('idProducto');
   const [ejecutarConsulta, setEjecutarConsulta] = useState(true);
   
 
   useEffect(() => {
-    console.log('consulta', ejecutarConsulta);
     if (ejecutarConsulta) {
       obtenerProductos(
         (response) => {
-          console.log('La respuesta que se recibio fue:', response);
           setProductos(response.data);
           setProductosFiltrados(response.data);
         },
         (error) => {
-          console.error('Se genero un error:', error);
+          return error;
         }
       );
       setEjecutarConsulta(false);
@@ -34,17 +32,13 @@ const ListProductos = () => {
   }, [ejecutarConsulta]);
 
   useEffect(() => {
-    console.log(busqueda, filtroCampo);
-
     setProductosFiltrados(
       productos.filter((elemento) => {
-        console.log(busqueda);
-        console.log(JSON.stringify(elemento));
         return JSON.stringify(elemento).toLowerCase().includes(busqueda.toLowerCase());
       })
     );
 
-  }, [busqueda, filtroCampo]);
+  }, [busqueda, filtroCampo, productos]);
   return (
     <div className="flex w-full flex-col items-center h-full m-0">
       <NavBarFull titulo="Listado de productos" subtitulo={"productos: "+ productos.length}/>
@@ -84,8 +78,7 @@ const TablaProductos = ({ listaProductos, setEjecutarConsulta }) => {
 
   useEffect(() => {
     setProductosFiltrados(listaProductos);
-    console.log(productosFiltrados);
-  }, [listaProductos]);
+  }, [listaProductos, productosFiltrados]);
 
   return (
     <div className="flex justify-center w-10/12">
@@ -144,14 +137,12 @@ const FilaProducto = ({ productos, setEjecutarConsulta }) => {
         estado: infoNuevoProducto.estado
       },
       (response) => {
-        console.log(response.data);
         toast.success('Producto modificado con éxito');
         setEdit(false);
         setEjecutarConsulta(true);
       },
       (error) => {
         toast.error('Error modificando el producto');
-        console.error(error);
       }
     );
   };
@@ -161,12 +152,10 @@ const FilaProducto = ({ productos, setEjecutarConsulta }) => {
     await eliminarProducto(
       productos._id,
       (response) => {
-        console.log(response.data);
         toast.success('Producto eliminado con éxito');
         setEjecutarConsulta(true);
       },
       (error) => {
-        console.error(error);
         toast.error('Error eliminando el producto');
       }
     );
