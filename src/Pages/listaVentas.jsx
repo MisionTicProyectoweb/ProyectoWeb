@@ -25,14 +25,14 @@ const ListVentas = () => {
     return (   
         <div className="flex h-full w-full flex-col items-center justify-start">
             <NavBarFull titulo="Listado de Ventas" subtitulo={`Ventas completadas: ${ventas.length}`}/>
-            <div className="mb-8 flex items-center justify-center w-full h-20">
+            <div className="mb-8 flex items-center justify-center w-full h-44">
                 <label className="text-base font-semibold mr-5 text-black">Buscar:</label>                    
                 <svg width="24" height="24" fill="none" class="text-gray-400 group-hover:text-gray-500 transition-colors duration-200"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
                 <input type="text" className="p-2 ml-4 w-96 h-10 rounded-lg border shadow-md" placeholder="Buscar por ..."></input>
                 <select id="filtro" name="select" className="font-semibold text-center ml-4 border h-10 rounded-lg shadow-md">
                     <option value="idVenta">Id</option>
                     <option value="fecha">Fecha</option>
-                    <option value="ccCliente">Cc Cliente</option>
+                    <option value="ccCliente">CC Cliente</option>
                     <option value="idVendedor">ID vendedor</option>
                 </select>
                 <Link to="/admin/ventas/gestionVentas">
