@@ -65,12 +65,10 @@ const FormularioProductos = () => {
       estado: estado
     },
       (response) => {
-        console.log(response.data);
         toast.success('Producto agregado con éxito');
         e.target.reset();
       },
       (error) => {
-        console.error(error);
         toast.error('Error creando un producto');
       }
     );

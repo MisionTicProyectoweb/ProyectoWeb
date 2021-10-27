@@ -95,7 +95,7 @@ const Tablaclientes = ({ listaclientes, setEjecutarConsulta }) => {
 const FilaCliente = ({clientes, setEjecutarConsulta}) => {
   const [edit, setEdit] = useState(false);
   const [openDialog, setOpenDialog] = useState(false);
-  const [infoEditarCliente, setInfoEditarCliente] = useState({
+  const infoEditarCliente = useState({
     estado: clientes.estado,
     rol: clientes.rol,
   });
@@ -112,14 +112,12 @@ const FilaCliente = ({clientes, setEjecutarConsulta}) => {
     await axios
       .request(options)
       .then(function (response) {
-        console.log(response.data);
         toast.success('Cliente modificado con éxito');
         setEdit(false);
         setEjecutarConsulta(true);
       })
       .catch(function (error) {
         toast.error('Error modificando el Cliente');
-        console.error(error);
       });
   }
   
@@ -134,12 +132,10 @@ const FilaCliente = ({clientes, setEjecutarConsulta}) => {
     await axios
       .request(options)
       .then(function (response) {
-        console.log(response.data);
         toast.success('Cliente eliminado con éxito');
         setEjecutarConsulta(true);
       })
       .catch(function (error) {
-        console.error(error);
         toast.error('Error eliminando el Cliente');
       });
     setOpenDialog(false);

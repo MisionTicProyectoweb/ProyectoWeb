@@ -5,8 +5,7 @@ const baseURL = "https://tranquil-spire-34546.herokuapp.com"
 
 export const getToken = () => {
     return `Bearer ${localStorage.getItem('token')}`
-}
-console.log(getToken());
+} 
 
 export const obtenerVentas = async(setVentas, setEjecutarVentas = () => {}) => {
 
@@ -24,7 +23,7 @@ export const obtenerVentas = async(setVentas, setEjecutarVentas = () => {}) => {
             setVentas(response.data);
         })
         .catch(function(error) {
-            console.error(error);
+            return error;
         });
     setEjecutarVentas(false);
 };

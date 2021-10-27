@@ -11,6 +11,7 @@ const LayoutPrivado = ({children}) => {
     const {isAuthenticated, isLoading,getAccessTokenSilently,logout  } = useAuth0();
     const {setUserData}=useUser();
     const [loadingUserInfromation,setloadingUserInfromation]= useState(false);
+    console.log(loadingUserInfromation);
     useEffect(() => {
       const FetchAuth0Token= async ()=>{
   //si se quiere hacer validaciones cn el token 
@@ -25,19 +26,16 @@ const LayoutPrivado = ({children}) => {
         
         });
         //2.RESIVIR TOKEN DE AUTH0
-          console.log(accessToken);
           localStorage.setItem('token',accessToken);
      
           //obtener usuarios con peticion de error o bien
              //3. ENVIARLE EL TOKEN AL BACKEN 
       await obtenerdatosUsuario(
         (response)=>{
-            console.log('response',response);
             setUserData(response.data);
             setloadingUserInfromation(false);
        // console.log("ressss",setUserData(response.data));
           },(error)=>{
-            console.log('error',error);
             setloadingUserInfromation(false);
             logout({returnTo:'http://localhost:3000'});
           }
@@ -49,7 +47,7 @@ const LayoutPrivado = ({children}) => {
       }
   
       }
-  , [isAuthenticated, getAccessTokenSilently]); 
+  , [isAuthenticated, getAccessTokenSilently, logout, setUserData]); 
     if(isLoading) return(
         <div className="">
             <div  className="p-10 flex justify-center text-green-300"><img alt="cargando..." src={loafing}  /> </div>

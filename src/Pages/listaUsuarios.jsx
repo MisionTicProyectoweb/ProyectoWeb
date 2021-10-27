@@ -107,18 +107,16 @@ const FilaUsuario = ({usuarios, setEjecutarConsulta}) => {
        Authorization: getToken() },
       data: { ...infoEditarUsuario }
     
-    };  console.log(getToken);
+    }; 
     await axios
       .request(options)
-      .then(function (response) {
-        console.log(response.data);
+      .then(function (response) { 
         toast.success('Usuario modificado con éxito');
         setEdit(false);
         setEjecutarConsulta(true);
       })
       .catch(function (error) {
-        toast.error('Error modificando el usuario');
-        console.error(error);
+        toast.error('Error modificando el usuario'); 
       });
   }
   
@@ -134,13 +132,11 @@ const FilaUsuario = ({usuarios, setEjecutarConsulta}) => {
     };
     await axios
       .request(options)
-      .then(function (response) {
-        console.log(response.data);
+      .then(function (response) { 
         toast.success('Usuario eliminado con éxito');
         setEjecutarConsulta(true);
       })
-      .catch(function (error) {
-        console.error(error);
+      .catch(function (error) { 
         toast.error('Error eliminando el usuario');
       });
     setOpenDialog(false);

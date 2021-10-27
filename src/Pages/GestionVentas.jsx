@@ -5,7 +5,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {NavBarFull} from 'components/Navbar';
 import {obtenerclientes} from 'utils/api';
-import {obtenerProductos, editarProducto} from 'utils/api';
+import {obtenerProductos/* , editarProducto */} from 'utils/api';
 import { Dialog, Tooltip } from "@material-ui/core";
 import axios from "axios";
 import { getToken } from "utils/api";
@@ -53,7 +53,7 @@ const GestVentas = () => {
           setProductos(response.data);
         },
         (error) => {
-          console.error('Se genero un error:', error);
+          return error;
         }
       );
       setEjecutarConsulta(false);
@@ -547,7 +547,7 @@ const RegisCompra = async (setVentas,
                             infoProducto,
                             setInfoProducto) => {
 
-  const actualizarProducto = async (v) => {
+  /* const actualizarProducto = async (v) => {
 
     const canti = parseInt(v.cantidad)
 
@@ -593,7 +593,7 @@ const RegisCompra = async (setVentas,
         console.error(error);
       }
     );
-  };
+  }; */
 
   if (ventas.length === 0){
     toast.error("Agrega uno más productos");
@@ -610,7 +610,6 @@ const RegisCompra = async (setVentas,
         total += parseFloat(e.valorTotal);
         return total;
       });
-      console.log(total)
       const options = {
         method: "POST",
         url: `${baseURL}/ventas/nuevo/`,
@@ -637,7 +636,6 @@ const RegisCompra = async (setVentas,
           }) */
         })
         .catch(function (error) {
-          console.log("error: ", error)
           toast.error("Error creando la venta");
         });
     }

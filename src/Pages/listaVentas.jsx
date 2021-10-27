@@ -125,15 +125,13 @@ const FilaVentas = ({ ventas, setEjecutarConsulta }) => {
           idVendedor: infoNuevoProducto.idVendedor,
           valor: infoNuevoProducto.valor
         },
-        (response) => {
-          console.log(response.data);
+        (response) => { 
           toast.success('Venta modificada con éxito');
           setEdit(false);
           setEjecutarConsulta(true);
         },
         (error) => {
-          toast.error('Error modificando la venta');
-          console.error(error);
+          toast.error('Error modificando la venta'); 
         }
       );
     }; 
@@ -142,13 +140,11 @@ const FilaVentas = ({ ventas, setEjecutarConsulta }) => {
     const deleteProducto = async () => {
       await eliminarventa(
         ventas._id,
-        (response) => {
-          console.log(response.data);
+        (response) => { 
           toast.success('Venta eliminada con éxito');
           setEjecutarConsulta(true);
         },
-        (error) => {
-          console.error(error);
+        (error) => { 
           toast.error('Error eliminando la venta');
         }
       );

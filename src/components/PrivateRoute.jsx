@@ -7,7 +7,6 @@ import React from 'react'
 //
  const PrivateRoute = ({roleslist,children}) => {
 const {userData}= useUser();
-console.log("userdata en el prievate",userData.rol);
 /* const {userData} = useUser();
 console.log("estas es la cvgtrhtryhyhgfgthgtrs ", userData); */
     if(roleslist.includes(userData.rol)){
