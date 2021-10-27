@@ -4,7 +4,16 @@ export const getToken = () => {
     return `Bearer ${localStorage.getItem('token')}`
 }
 console.log(getToken());
-
+export const obtenertablaventas = async(successCallback, errorCallback) => {
+    const options = {
+        method: 'GET',
+        url: 'http://localhost:5000/ventas/',
+        headers: {
+            Authorization: getToken()
+        },
+    };
+    await axios.request(options).then(successCallback).catch(errorCallback);
+};
 export const obtenerVentas = async(setVentas, setEjecutarVentas = () => {}) => {
 
     const options = {
